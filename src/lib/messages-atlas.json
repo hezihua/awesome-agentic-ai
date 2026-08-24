@@ -1,0 +1,2165 @@
+{
+  "zh-Hans": {
+    "tracks": [
+      {
+        "id": "A",
+        "icon": "⌨️",
+        "name": "Track A — CLI 能力者",
+        "duration": "8–10 周",
+        "description": "熟练使用现有 CLI Agent 工具（Claude Code、Codex、Gemini CLI）。适合 PM、知识工作者、想快速提效的人。",
+        "tags": [
+          "CLAUDE.md",
+          "Slash 命令",
+          "MCP 整合",
+          "GitHub Actions",
+          "成本追踪"
+        ],
+        "steps": [
+          {
+            "code": "A1",
+            "title": "CLI Agent 入门",
+            "description": "安装、第一个对话、CLAUDE.md 起步",
+            "path": "/docs/tracks/cli/A1-cli-intro"
+          },
+          {
+            "code": "A2",
+            "title": "CLI 工作流",
+            "description": "Slash 命令、子代理、MCP 整合",
+            "path": "/docs/tracks/cli/A2-cli-workflow"
+          },
+          {
+            "code": "A3",
+            "title": "CLI 生产级",
+            "description": "GitHub Actions、成本追踪、团队协作",
+            "path": "/docs/tracks/cli/A3-cli-production"
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "icon": "🛠",
+        "name": "Track B — Agent 构建者",
+        "duration": "16–22 周（约 5–7 个月）",
+        "description": "从零构建自己的 Agent 系统。涵盖 Tool Use、框架对比、RAG、多 Agent、部署。适合开发者、研究者。",
+        "tags": [
+          "Function Calling",
+          "LangGraph",
+          "CrewAI",
+          "RAG",
+          "FastAPI",
+          "Docker"
+        ],
+        "cta": {
+          "label": "7 步构建第一个 Agent",
+          "path": "/docs/walkthroughs/build-first-agent-in-7-steps"
+        }
+      }
+    ],
+    "roles": [
+      {
+        "icon": "💻",
+        "title": "给开发者",
+        "description": "已有编程基础，想构建生产级 Agent 系统。重点：Tool Use、框架、部署、可观测性。",
+        "path": "Track B 主修",
+        "doc": "/docs/branches/for-developer"
+      },
+      {
+        "icon": "🔬",
+        "title": "给研究者",
+        "description": "学术或工业研究背景，关注 Agent 评估与前沿。重点：Eval 方法、论文阅读、可重现实验。",
+        "path": "Track B + 7.5",
+        "doc": "/docs/branches/for-researcher"
+      },
+      {
+        "icon": "📊",
+        "title": "给知识工作者",
+        "description": "PM、分析师、运营人员。重点：CLI Agent 提效、MCP 整合 Office、自动化日常工作。",
+        "path": "Track A 主修",
+        "doc": "/docs/branches/for-knowledge-worker"
+      },
+      {
+        "icon": "🎓",
+        "title": "给教师",
+        "description": "教育工作者，想把 AI 融入教学。重点：Skills 设计、课件生成、学生反馈分析。",
+        "path": "Track A + Stage 5",
+        "doc": "/docs/branches/for-teacher"
+      },
+      {
+        "icon": "👥",
+        "title": "给普通用户",
+        "description": "没有编程背景，想理解并用好 AI 工具。重点：Prompt 技巧、CLI 入门、避坑指南。",
+        "path": "Stage 0-2 + Track A",
+        "doc": "/docs/branches/for-everyday-users"
+      }
+    ],
+    "layers": [
+      {
+        "name": "Harness Engineering",
+        "stage": "Stage 7",
+        "kind": "实线 · 官方标准",
+        "solid": true,
+        "description": "把 Agent 跑稳：评估、可观测性、部署与护栏。框架本身也可编程。"
+      },
+      {
+        "name": "Graph Engineering",
+        "stage": "Stage 4, 7",
+        "kind": "虚线 · 社区范式",
+        "solid": false,
+        "description": "用图状态机编排分支、回环与人类审批（HITL）。"
+      },
+      {
+        "name": "Loop Engineering",
+        "stage": "Stage 5+",
+        "kind": "虚线 · 社区范式",
+        "solid": false,
+        "description": "目标驱动的自主循环：计划、行动、反思与持续改进。"
+      },
+      {
+        "name": "Context Engineering",
+        "stage": "Stage 3+",
+        "kind": "实线 · 官方标准",
+        "solid": true,
+        "description": "动态管理上下文、工具结果与记忆，让多步任务保持连贯。"
+      },
+      {
+        "name": "Prompt Engineering",
+        "stage": "Stage 2",
+        "kind": "实线 · 官方标准",
+        "solid": true,
+        "description": "设计一个好的问法，让模型单次回答准确。涵盖 System Prompt、Few-shot、Chain-of-Thought 等技术。"
+      }
+    ],
+    "stages": [
+      {
+        "id": "0",
+        "number": "0",
+        "title": "环境准备 — Foundations",
+        "subtitle": "A+B 共修",
+        "duration": "1–2 周",
+        "track": "shared",
+        "badge": "🔧 两条 Track 共修",
+        "learn": "Python 基础、CLI 操作、Git 版本控制、API 概念、JSON 格式。这是一切的起点——确保你的开发环境就绪。",
+        "do": "安装 Ollama → 拉取 gemma4:e4b 模型（约 7.5GB）→ 运行第一个本地 LLM 对话。",
+        "doc": "/docs/stages/00-foundations",
+        "resources": [
+          {
+            "title": "setup-guide.md",
+            "description": "30-45 分钟从零到 Hello World",
+            "path": "/docs/resources/setup-guide"
+          },
+          {
+            "title": "00-foundations.md",
+            "description": "Stage 文档",
+            "path": "/docs/stages/00-foundations"
+          }
+        ]
+      },
+      {
+        "id": "1",
+        "number": "1",
+        "title": "LLM 基础 — Language Model Basics",
+        "subtitle": "A+B 共修",
+        "duration": "1 周",
+        "track": "shared",
+        "badge": "🔧 两条 Track 共修 · 2 个练习",
+        "learn": "Token 概念、API 调用方式、LLM 供应商对比、本地 vs 云端 LLM 的取舍。理解 LLM 的本质——一个概率性的文本生成器。",
+        "doc": "/docs/stages/01-llm-basics",
+        "exercises": [
+          {
+            "id": "04-cross-provider",
+            "title": "04-cross-provider",
+            "description": "多供应商 LLM 调用——同一个请求发给不同模型",
+            "tags": [
+              "Ollama",
+              "Anthropic",
+              "$0"
+            ],
+            "path": "/docs/examples/stage-1/04-cross-provider/README"
+          },
+          {
+            "id": "05-error-handling",
+            "title": "05-error-handling",
+            "description": "OpenAI SDK 异常处理 + 重试包装器",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-1/05-error-handling/README"
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "number": "2",
+        "title": "Prompt Engineering — 提示词工程",
+        "subtitle": "A+B 共修",
+        "duration": "1–2 周",
+        "track": "shared",
+        "badge": "🔧 两条 Track 共修 · 内嵌练习",
+        "learn": "System Prompt 设计、Few-shot 示例、Chain-of-Thought 推理链、Context Engineering 入门。这是概念演进的第一层。",
+        "do": "练习形式：内嵌在 stage 文档的折叠块中，每个练习 8-15 行核心代码。",
+        "doc": "/docs/stages/02-prompt-engineering",
+        "resources": [
+          {
+            "title": "02-prompt-engineering.md",
+            "description": "Stage 文档 + 内嵌练习",
+            "path": "/docs/stages/02-prompt-engineering"
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "number": "3",
+        "title": "Tool Use + 第一个 Agent",
+        "subtitle": "Track B",
+        "duration": "2–3 周",
+        "track": "B",
+        "badge": "🛠 Track B 核心 · 5 个练习",
+        "learn": "Function Calling、ReAct 循环、工具选择策略、Schema 设计。这是从使用者到构建者的转折点——你将手写第一个 Agent 循环。",
+        "doc": "/docs/stages/03-tool-use-and-hello-agent",
+        "exercises": [
+          {
+            "id": "02-multi-tool-selection",
+            "title": "02-multi-tool-selection",
+            "description": "多工具选择——Agent 如何决定用哪个工具",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-3/02-multi-tool-selection/README"
+          },
+          {
+            "id": "03-react-from-scratch",
+            "title": "03-react-from-scratch",
+            "description": "手写 ReAct 循环——最重要的练习",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "highlight": true,
+            "path": "/docs/examples/stage-3/03-react-from-scratch/README"
+          },
+          {
+            "id": "04-multi-step-reasoning",
+            "title": "04-multi-step-reasoning",
+            "description": "多步推理链——复杂任务分解",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-3/04-multi-step-reasoning/README"
+          },
+          {
+            "id": "05-error-handling",
+            "title": "05-error-handling",
+            "description": "Agent 上下文中的错误处理",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-3/05-error-handling/README"
+          },
+          {
+            "id": "06-schema-design",
+            "title": "06-schema-design",
+            "description": "Schema 设计好/坏对比（含 bad + good 版本）",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-3/06-schema-design/README"
+          }
+        ],
+        "resources": [
+          {
+            "title": "schema-design-cheatsheet.md",
+            "description": "5 条黄金法则 + 5 个反模式",
+            "path": "/docs/resources/schema-design-cheatsheet"
+          },
+          {
+            "title": "glossary.md",
+            "description": "30+ 术语表",
+            "path": "/docs/resources/glossary"
+          }
+        ]
+      },
+      {
+        "id": "4",
+        "number": "4",
+        "title": "Agent 框架 — Frameworks",
+        "subtitle": "Track B",
+        "duration": "2–3 周",
+        "track": "B",
+        "badge": "🛠 Track B 核心 · 5 个练习",
+        "learn": "LangGraph、CrewAI、Smolagents、Pydantic AI 四大框架对比。理解不同框架的设计哲学——图状态机 vs 角色扮演 vs CodeAct vs 类型安全。",
+        "doc": "/docs/stages/04-agent-frameworks",
+        "exercises": [
+          {
+            "id": "01-same-agent-two-frameworks",
+            "title": "01-same-agent-two-frameworks",
+            "description": "同一 Agent 用 LangGraph vs CrewAI 实现",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-4/01-same-agent-two-frameworks/README"
+          },
+          {
+            "id": "02-multi-agent-roles",
+            "title": "02-multi-agent-roles",
+            "description": "CrewAI 多角色分配——让 Agent 扮演不同专家",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-4/02-multi-agent-roles/README"
+          },
+          {
+            "id": "03-graph-workflow",
+            "title": "03-graph-workflow",
+            "description": "LangGraph 分支 + 人类审批（HITL）",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-4/03-graph-workflow/README"
+          },
+          {
+            "id": "04-codeact-vs-json-tool",
+            "title": "04-codeact-vs-json-tool",
+            "description": "Smolagents CodeAct vs JSON 工具调用",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-4/04-codeact-vs-json-tool/README"
+          },
+          {
+            "id": "05-typed-agent",
+            "title": "05-typed-agent",
+            "description": "Pydantic AI 类型化输出——结构化数据保证",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-4/05-typed-agent/README"
+          }
+        ],
+        "resources": [
+          {
+            "title": "agent-paradigms.md",
+            "description": "5 种 Agent 范式心智模型",
+            "path": "/docs/resources/agent-paradigms"
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "number": "5",
+        "title": "Claude Code 生态 — Ecosystem",
+        "subtitle": "A+B 共修",
+        "duration": "3–4 周 Track B / 1–2 周 Track A",
+        "track": "shared",
+        "badge": "🔗 两条 Track 共享",
+        "learn": "MCP Server 协议、Skills 系统、Plugins 架构、Subagents 子代理。这是 Claude 生态的全景图——从工具协议到技能系统到多代理编排。",
+        "do": "已有的 meta 示例：tool-calling-tutor — 一个可安装的 Claude Code Skill，用于诊断 tool-calling 问题。",
+        "doc": "/docs/stages/05-claude-code-ecosystem",
+        "exercises": [
+          {
+            "id": "tool-calling-tutor",
+            "title": "tool-calling-tutor",
+            "description": "Meta 示例：可安装的 Claude Code Skill",
+            "tags": [
+              "Skill",
+              "$0"
+            ],
+            "highlight": true,
+            "path": "/docs/examples/stage-5/tool-calling-tutor/README"
+          }
+        ],
+        "resources": [
+          {
+            "title": "mcp-skills-catalog.md",
+            "description": "77 个 MCP Server / Skills 分 6 类",
+            "path": "/docs/resources/mcp-skills-catalog"
+          },
+          {
+            "title": "subagent-cookbook.md",
+            "description": "15 个即用子 Agent 调度模板",
+            "path": "/docs/resources/subagent-cookbook"
+          },
+          {
+            "title": "subagent-advanced.md",
+            "description": "高阶子 Agent 调试 + 组合模式",
+            "path": "/docs/resources/subagent-advanced"
+          },
+          {
+            "title": "cookbook.md",
+            "description": "6 个 30-50 分钟实操菜谱",
+            "path": "/docs/resources/cookbook"
+          },
+          {
+            "title": "cli-agents-guide.md",
+            "description": "7 个 CLI Agent 对比 + 决策矩阵",
+            "path": "/docs/resources/cli-agents-guide"
+          }
+        ]
+      },
+      {
+        "id": "6",
+        "number": "6",
+        "title": "Memory + RAG — 记忆与检索",
+        "subtitle": "Track B",
+        "duration": "2 周",
+        "track": "B",
+        "badge": "🛠 Track B 核心 · 5 个练习",
+        "learn": "向量数据库、Embedding 原理、文档分块策略、完整 RAG 管道、Agent 长期记忆。让你的 Agent 拥有「记忆」——能记住对话历史和外部知识。",
+        "doc": "/docs/stages/06-memory-rag",
+        "exercises": [
+          {
+            "id": "01-embeddings",
+            "title": "01-embeddings",
+            "description": "文本 Embedding 基础——语义向量化",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-6/01-embeddings/README"
+          },
+          {
+            "id": "02-vector-db",
+            "title": "02-vector-db",
+            "description": "ChromaDB 向量数据库操作",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-6/02-vector-db/README"
+          },
+          {
+            "id": "03-chunking-comparison",
+            "title": "03-chunking-comparison",
+            "description": "文档分块策略对比——固定 vs 语义",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-6/03-chunking-comparison/README"
+          },
+          {
+            "id": "04-full-rag-pipeline",
+            "title": "04-full-rag-pipeline",
+            "description": "完整 RAG 管道——端到端实现",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "highlight": true,
+            "path": "/docs/examples/stage-6/04-full-rag-pipeline/README"
+          },
+          {
+            "id": "05-long-term-memory",
+            "title": "05-long-term-memory",
+            "description": "Agent 长期记忆——跨会话记忆持久化",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-6/05-long-term-memory/README"
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "number": "7",
+        "title": "多 Agent + 生产级 — Production",
+        "subtitle": "Track B",
+        "duration": "2–4 周",
+        "track": "B",
+        "badge": "🛠 Track B 核心 · 5 个练习",
+        "learn": "多 Agent 编排模式、Agent 评估方法、可观测性/监控、高级 SDK（Streaming + Caching）、FastAPI 部署。这是概念演进的顶层——Harness Engineering。",
+        "doc": "/docs/stages/07-multi-agent-production",
+        "exercises": [
+          {
+            "id": "01-multi-agent-debate",
+            "title": "01-multi-agent-debate",
+            "description": "多 Agent 辩论模式——观点碰撞",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-7/01-multi-agent-debate/README"
+          },
+          {
+            "id": "02-eval",
+            "title": "02-eval",
+            "description": "Agent 评估——如何衡量 Agent 好坏",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-7/02-eval/README"
+          },
+          {
+            "id": "03-observability",
+            "title": "03-observability",
+            "description": "可观测性/监控——看透 Agent 内部",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-7/03-observability/README"
+          },
+          {
+            "id": "04-sdk-advanced",
+            "title": "04-sdk-advanced",
+            "description": "Streaming + Caching 高级技巧",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-7/04-sdk-advanced/README"
+          },
+          {
+            "id": "05-deploy",
+            "title": "05-deploy",
+            "description": "FastAPI 部署（含 Dockerfile）",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-7/05-deploy/README"
+          }
+        ]
+      },
+      {
+        "id": "7.5",
+        "number": "7.5",
+        "title": "高阶概念阅读图 — Advanced Concepts",
+        "subtitle": "A+B 共修",
+        "duration": "1 周",
+        "track": "shared",
+        "badge": "📖 纯理论 · 无代码",
+        "learn": "12 个高阶概念的阅读地图：PAR 循环（Plan-Act-Reflex）、Agent-as-Judge、Guardrail 模式、Reflexion 持久记忆回圈等。没有代码，纯粹的概念理解。",
+        "do": "这是 Stage 7 到 Stage 8 之间的「桥梁」——用一周时间消化高阶概念，为最后的 Agent 接口学习做准备。",
+        "doc": "/docs/stages/07.5-advanced-agentic-concepts"
+      },
+      {
+        "id": "8",
+        "number": "8",
+        "title": "Agent 接口 — Interfaces",
+        "subtitle": "A+B 共修",
+        "duration": "2–3 周",
+        "track": "shared",
+        "badge": "🔗 两条 Track 共享 · 内嵌练习",
+        "learn": "Computer Use（屏幕操控）、Browser Use（网页浏览）、Code Sandbox（代码沙箱）。让 Agent 不仅能对话，还能「看见」和「操作」真实世界。",
+        "do": "练习形式：练习内嵌在 stage 文档中，因为涉及特殊环境（浏览器、屏幕录制等）。",
+        "doc": "/docs/stages/08-agent-interfaces",
+        "resources": [
+          {
+            "title": "08-agent-interfaces.md",
+            "description": "Stage 文档 + 内嵌练习",
+            "path": "/docs/stages/08-agent-interfaces"
+          }
+        ]
+      }
+    ],
+    "steps": [
+      {
+        "n": "1",
+        "title": "读 README",
+        "body": "选择语言版本，理解练习目标和预期成果。"
+      },
+      {
+        "n": "2",
+        "title": "安装依赖",
+        "body": "读 requirements.txt，执行 pip install -r requirements.txt。注意同时包含 openai 和 anthropic SDK。"
+      },
+      {
+        "n": "3",
+        "title": "自己先尝试",
+        "body": "关键：starter.py 是完整解答，不是 TODO 骨架。先自己尝试写，哪怕写不出来也没关系。"
+      },
+      {
+        "n": "4",
+        "title": "对照学习",
+        "body": "读 starter.py（Path A: Ollama），理解差距。运行它，观察输出。看末尾的自我验证块。"
+      },
+      {
+        "n": "5",
+        "title": "跑测试验证",
+        "body": "执行 pytest test.py 验证理解。测试使用 mock，不需要真实 API 调用。"
+      },
+      {
+        "n": "6",
+        "title": "（可选）云端对比",
+        "body": "读 starter_anthropic.py（Path B: Anthropic），对比本地 vs 云端的实现差异。"
+      },
+      {
+        "n": "7",
+        "title": "深度路由",
+        "body": "看 README 的深度 callout，路由到 Datawhale hello-agents、Anthropic Cookbook 等教程继续学习。"
+      }
+    ],
+    "resources": [
+      {
+        "icon": "📚",
+        "title": "术语表 Glossary",
+        "description": "30+ 术语，每个 30-80 词，带阶段交叉引用。",
+        "meta": "全程适用",
+        "path": "/docs/resources/glossary"
+      },
+      {
+        "icon": "🧠",
+        "title": "Agent 范式",
+        "description": "5 种心智模型：ReAct、Plan-and-Execute、Reflection、Multi-Agent、Tool-Use。",
+        "meta": "Stage 3+",
+        "path": "/docs/resources/agent-paradigms"
+      },
+      {
+        "icon": "📐",
+        "title": "Schema 速查表",
+        "description": "5 条黄金法则 + 5 个反模式。Function Calling Schema 设计指南。",
+        "meta": "Stage 3",
+        "path": "/docs/resources/schema-design-cheatsheet"
+      },
+      {
+        "icon": "🔌",
+        "title": "MCP / Skills 目录",
+        "description": "77 个 MCP Server / Skills，分 6 类，带 GitHub 星数和评分。",
+        "meta": "Stage 5",
+        "path": "/docs/resources/mcp-skills-catalog"
+      },
+      {
+        "icon": "🤖",
+        "title": "子 Agent 菜谱",
+        "description": "15 个即用子 Agent 调度模板，可直接复制使用。",
+        "meta": "Stage 5",
+        "path": "/docs/resources/subagent-cookbook"
+      },
+      {
+        "icon": "🔬",
+        "title": "子 Agent 进阶",
+        "description": "Description Bug、组合模式、调试技巧。",
+        "meta": "Stage 5+",
+        "path": "/docs/resources/subagent-advanced"
+      },
+      {
+        "icon": "🍳",
+        "title": "实操菜谱",
+        "description": "6 个 30-50 分钟 step-by-step：Skills、MCP、Office 整合。",
+        "meta": "Stage 5",
+        "path": "/docs/resources/cookbook"
+      },
+      {
+        "icon": "🎓",
+        "title": "线上课程",
+        "description": "10 个有证书的可信 AI Agent 线上课程，附评价和适合人群。",
+        "meta": "全程适用",
+        "path": "/docs/resources/courses"
+      },
+      {
+        "icon": "⌨️",
+        "title": "CLI Agent 指南",
+        "description": "7 个 CLI Agent 对比 + 决策矩阵。",
+        "meta": "Track A",
+        "path": "/docs/resources/cli-agents-guide"
+      },
+      {
+        "icon": "🚀",
+        "title": "环境搭建",
+        "description": "30-45 分钟从零到 Hello World。API Key、Python、Ollama。",
+        "meta": "Stage 0",
+        "path": "/docs/resources/setup-guide"
+      },
+      {
+        "icon": "🗺",
+        "title": "7 步构建第一个 Agent",
+        "description": "端到端 walkthrough：Paper Summary Bot，约 350 行真实代码。",
+        "meta": "Track B",
+        "path": "/docs/walkthroughs/build-first-agent-in-7-steps"
+      },
+      {
+        "icon": "🏆",
+        "title": "Capstone 项目",
+        "description": "Track A + Track B 各一个毕业项目，附 4 级评分标准。",
+        "meta": "最终检验",
+        "path": "/docs/CAPSTONE"
+      },
+      {
+        "icon": "✏️",
+        "title": "内容风格指南",
+        "description": "写作规范：术语、语气、结构、代码范例风格。",
+        "meta": "贡献者",
+        "path": "/docs/resources/style-guide"
+      },
+      {
+        "icon": "📂",
+        "title": "Resources 索引",
+        "description": "resources/ 目录完整索引——找不到时来这里。",
+        "meta": "全程适用",
+        "path": "/docs/resources/README"
+      }
+    ],
+    "budget": [
+      {
+        "plan": "全本地 Ollama",
+        "detail": "所有练习用本地 LLM，零 API 费用",
+        "cost": "$0"
+      },
+      {
+        "plan": "混合推荐 ⭐",
+        "detail": "本地练习（Path A）+ 云端对比（Path B，用 Haiku）",
+        "cost": "$2–5",
+        "highlight": true
+      },
+      {
+        "plan": "全 Sonnet",
+        "detail": "所有练习用 Claude Sonnet，最高质量",
+        "cost": "$20–50"
+      }
+    ]
+  },
+  "zh-TW": {
+    "tracks": [
+      {
+        "id": "A",
+        "icon": "⌨️",
+        "name": "Track A — CLI 能力者",
+        "duration": "8–10 周",
+        "description": "熟練使用現有 CLI Agent 工具（Claude Code、Codex、Gemini CLI）。適合 PM、知識工作者、想快速提效的人。",
+        "tags": [
+          "CLAUDE.md",
+          "Slash 命令",
+          "MCP 整合",
+          "GitHub Actions",
+          "成本追蹤"
+        ],
+        "steps": [
+          {
+            "code": "A1",
+            "title": "CLI Agent 入門",
+            "description": "安裝、第一個對話、CLAUDE.md 起步",
+            "path": "/docs/tracks/cli/A1-cli-intro"
+          },
+          {
+            "code": "A2",
+            "title": "CLI 工作流",
+            "description": "Slash 命令、子代理、MCP 整合",
+            "path": "/docs/tracks/cli/A2-cli-workflow"
+          },
+          {
+            "code": "A3",
+            "title": "CLI 生產級",
+            "description": "GitHub Actions、成本追蹤、團隊協作",
+            "path": "/docs/tracks/cli/A3-cli-production"
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "icon": "🛠",
+        "name": "Track B — Agent 建構者",
+        "duration": "16–22 周（約 5–7 個月）",
+        "description": "從零構建自己的 Agent 系統。涵蓋 Tool Use、框架對比、RAG、多 Agent、部署。適合開發者、研究者。",
+        "tags": [
+          "Function Calling",
+          "LangGraph",
+          "CrewAI",
+          "RAG",
+          "FastAPI",
+          "Docker"
+        ],
+        "cta": {
+          "label": "7 步構建第一個 Agent",
+          "path": "/docs/walkthroughs/build-first-agent-in-7-steps"
+        }
+      }
+    ],
+    "roles": [
+      {
+        "icon": "💻",
+        "title": "給開發者",
+        "description": "已有程式設計基礎，想構建生產級 Agent 系統。重點：Tool Use、框架、部署、可觀測性。",
+        "path": "Track B 主修",
+        "doc": "/docs/branches/for-developer"
+      },
+      {
+        "icon": "🔬",
+        "title": "給研究者",
+        "description": "學術或工業研究背景，關注 Agent 評估與前沿。重點：Eval 方法、論文閱讀、可重現實驗。",
+        "path": "Track B + 7.5",
+        "doc": "/docs/branches/for-researcher"
+      },
+      {
+        "icon": "📊",
+        "title": "給知識工作者",
+        "description": "PM、分析師、運營人員。重點：CLI Agent 提效、MCP 整合 Office、自動化日常工作。",
+        "path": "Track A 主修",
+        "doc": "/docs/branches/for-knowledge-worker"
+      },
+      {
+        "icon": "🎓",
+        "title": "給教師",
+        "description": "教育工作者，想把 AI 融入教學。重點：Skills 設計、課件生成、學生反饋分析。",
+        "path": "Track A + Stage 5",
+        "doc": "/docs/branches/for-teacher"
+      },
+      {
+        "icon": "👥",
+        "title": "給普通使用者",
+        "description": "沒有程式設計背景，想理解並用好 AI 工具。重點：Prompt 技巧、CLI 入門、避坑指南。",
+        "path": "Stage 0-2 + Track A",
+        "doc": "/docs/branches/for-everyday-users"
+      }
+    ],
+    "layers": [
+      {
+        "name": "Harness Engineering",
+        "stage": "Stage 7",
+        "kind": "實線 · 官方標準",
+        "solid": true,
+        "description": "把 Agent 跑穩：評估、可觀測性、部署與護欄。框架本身也可程式設計。"
+      },
+      {
+        "name": "Graph Engineering",
+        "stage": "Stage 4, 7",
+        "kind": "虛線 · 社群正規化",
+        "solid": false,
+        "description": "用圖狀態機編排分支、迴環與人類審批（HITL）。"
+      },
+      {
+        "name": "Loop Engineering",
+        "stage": "Stage 5+",
+        "kind": "虛線 · 社群正規化",
+        "solid": false,
+        "description": "目標驅動的自主迴圈：計劃、行動、反思與持續改進。"
+      },
+      {
+        "name": "Context Engineering",
+        "stage": "Stage 3+",
+        "kind": "實線 · 官方標準",
+        "solid": true,
+        "description": "動態管理上下文、工具結果與記憶，讓多步任務保持連貫。"
+      },
+      {
+        "name": "Prompt Engineering",
+        "stage": "Stage 2",
+        "kind": "實線 · 官方標準",
+        "solid": true,
+        "description": "設計一個好的問法，讓模型單次回答準確。涵蓋 System Prompt、Few-shot、Chain-of-Thought 等技術。"
+      }
+    ],
+    "stages": [
+      {
+        "id": "0",
+        "number": "0",
+        "title": "環境準備 — Foundations",
+        "subtitle": "A+B 共修",
+        "duration": "1–2 周",
+        "track": "shared",
+        "badge": "🔧 兩條 Track 共修",
+        "learn": "Python 基礎、CLI 操作、Git 版本控制、API 概念、JSON 格式。這是一切的起點——確保你的開發環境就緒。",
+        "do": "安裝 Ollama → 拉取 gemma4:e4b 模型（約 7.5GB）→ 執行第一個本地 LLM 對話。",
+        "doc": "/docs/stages/00-foundations",
+        "resources": [
+          {
+            "title": "setup-guide.md",
+            "description": "30-45 分鐘從零到 Hello World",
+            "path": "/docs/resources/setup-guide"
+          },
+          {
+            "title": "00-foundations.md",
+            "description": "Stage 文件",
+            "path": "/docs/stages/00-foundations"
+          }
+        ]
+      },
+      {
+        "id": "1",
+        "number": "1",
+        "title": "LLM 基礎 — Language Model Basics",
+        "subtitle": "A+B 共修",
+        "duration": "1 周",
+        "track": "shared",
+        "badge": "🔧 兩條 Track 共修 · 2 個練習",
+        "learn": "Token 概念、API 呼叫方式、LLM 供應商對比、本地 vs 雲端 LLM 的取捨。理解 LLM 的本質——一個機率性的文字生成器。",
+        "doc": "/docs/stages/01-llm-basics",
+        "exercises": [
+          {
+            "id": "04-cross-provider",
+            "title": "04-cross-provider",
+            "description": "多供應商 LLM 呼叫——同一個請求發給不同模型",
+            "tags": [
+              "Ollama",
+              "Anthropic",
+              "$0"
+            ],
+            "path": "/docs/examples/stage-1/04-cross-provider/README"
+          },
+          {
+            "id": "05-error-handling",
+            "title": "05-error-handling",
+            "description": "OpenAI SDK 異常處理 + 重試包裝器",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-1/05-error-handling/README"
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "number": "2",
+        "title": "Prompt Engineering — 提示詞工程",
+        "subtitle": "A+B 共修",
+        "duration": "1–2 周",
+        "track": "shared",
+        "badge": "🔧 兩條 Track 共修 · 內嵌練習",
+        "learn": "System Prompt 設計、Few-shot 示例、Chain-of-Thought 推理鏈、Context Engineering 入門。這是概念演進的第一層。",
+        "do": "練習形式：內嵌在 stage 文件的摺疊塊中，每個練習 8-15 行核心程式碼。",
+        "doc": "/docs/stages/02-prompt-engineering",
+        "resources": [
+          {
+            "title": "02-prompt-engineering.md",
+            "description": "Stage 文件 + 內嵌練習",
+            "path": "/docs/stages/02-prompt-engineering"
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "number": "3",
+        "title": "Tool Use + 第一個 Agent",
+        "subtitle": "Track B",
+        "duration": "2–3 周",
+        "track": "B",
+        "badge": "🛠 Track B 核心 · 5 個練習",
+        "learn": "Function Calling、ReAct 迴圈、工具選擇策略、Schema 設計。這是從使用者到構建者的轉折點——你將手寫第一個 Agent 迴圈。",
+        "doc": "/docs/stages/03-tool-use-and-hello-agent",
+        "exercises": [
+          {
+            "id": "02-multi-tool-selection",
+            "title": "02-multi-tool-selection",
+            "description": "多工具選擇——Agent 如何決定用哪個工具",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-3/02-multi-tool-selection/README"
+          },
+          {
+            "id": "03-react-from-scratch",
+            "title": "03-react-from-scratch",
+            "description": "手寫 ReAct 迴圈——最重要的練習",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "highlight": true,
+            "path": "/docs/examples/stage-3/03-react-from-scratch/README"
+          },
+          {
+            "id": "04-multi-step-reasoning",
+            "title": "04-multi-step-reasoning",
+            "description": "多步推理鏈——複雜任務分解",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-3/04-multi-step-reasoning/README"
+          },
+          {
+            "id": "05-error-handling",
+            "title": "05-error-handling",
+            "description": "Agent 上下文中的錯誤處理",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-3/05-error-handling/README"
+          },
+          {
+            "id": "06-schema-design",
+            "title": "06-schema-design",
+            "description": "Schema 設計好/壞對比（含 bad + good 版本）",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-3/06-schema-design/README"
+          }
+        ],
+        "resources": [
+          {
+            "title": "schema-design-cheatsheet.md",
+            "description": "5 條黃金法則 + 5 個反模式",
+            "path": "/docs/resources/schema-design-cheatsheet"
+          },
+          {
+            "title": "glossary.md",
+            "description": "30+ 術語表",
+            "path": "/docs/resources/glossary"
+          }
+        ]
+      },
+      {
+        "id": "4",
+        "number": "4",
+        "title": "Agent 框架 — Frameworks",
+        "subtitle": "Track B",
+        "duration": "2–3 周",
+        "track": "B",
+        "badge": "🛠 Track B 核心 · 5 個練習",
+        "learn": "LangGraph、CrewAI、Smolagents、Pydantic AI 四大框架對比。理解不同框架的設計哲學——圖狀態機 vs 角色扮演 vs CodeAct vs 型別安全。",
+        "doc": "/docs/stages/04-agent-frameworks",
+        "exercises": [
+          {
+            "id": "01-same-agent-two-frameworks",
+            "title": "01-same-agent-two-frameworks",
+            "description": "同一 Agent 用 LangGraph vs CrewAI 實現",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-4/01-same-agent-two-frameworks/README"
+          },
+          {
+            "id": "02-multi-agent-roles",
+            "title": "02-multi-agent-roles",
+            "description": "CrewAI 多角色分配——讓 Agent 扮演不同專家",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-4/02-multi-agent-roles/README"
+          },
+          {
+            "id": "03-graph-workflow",
+            "title": "03-graph-workflow",
+            "description": "LangGraph 分支 + 人類審批（HITL）",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-4/03-graph-workflow/README"
+          },
+          {
+            "id": "04-codeact-vs-json-tool",
+            "title": "04-codeact-vs-json-tool",
+            "description": "Smolagents CodeAct vs JSON 工具呼叫",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-4/04-codeact-vs-json-tool/README"
+          },
+          {
+            "id": "05-typed-agent",
+            "title": "05-typed-agent",
+            "description": "Pydantic AI 型別化輸出——結構化資料保證",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-4/05-typed-agent/README"
+          }
+        ],
+        "resources": [
+          {
+            "title": "agent-paradigms.md",
+            "description": "5 種 Agent 正規化心智模型",
+            "path": "/docs/resources/agent-paradigms"
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "number": "5",
+        "title": "Claude Code 生態 — Ecosystem",
+        "subtitle": "A+B 共修",
+        "duration": "3–4 周 Track B / 1–2 周 Track A",
+        "track": "shared",
+        "badge": "🔗 兩條 Track 共享",
+        "learn": "MCP Server 協議、Skills 系統、Plugins 架構、Subagents 子代理。這是 Claude 生態的全景圖——從工具協議到技能系統到多代理編排。",
+        "do": "已有的 meta 示例：tool-calling-tutor — 一個可安裝的 Claude Code Skill，用於診斷 tool-calling 問題。",
+        "doc": "/docs/stages/05-claude-code-ecosystem",
+        "exercises": [
+          {
+            "id": "tool-calling-tutor",
+            "title": "tool-calling-tutor",
+            "description": "Meta 示例：可安裝的 Claude Code Skill",
+            "tags": [
+              "Skill",
+              "$0"
+            ],
+            "highlight": true,
+            "path": "/docs/examples/stage-5/tool-calling-tutor/README"
+          }
+        ],
+        "resources": [
+          {
+            "title": "mcp-skills-catalog.md",
+            "description": "77 個 MCP Server / Skills 分 6 類",
+            "path": "/docs/resources/mcp-skills-catalog"
+          },
+          {
+            "title": "subagent-cookbook.md",
+            "description": "15 個即用子 Agent 排程模板",
+            "path": "/docs/resources/subagent-cookbook"
+          },
+          {
+            "title": "subagent-advanced.md",
+            "description": "高階子 Agent 除錯 + 組合模式",
+            "path": "/docs/resources/subagent-advanced"
+          },
+          {
+            "title": "cookbook.md",
+            "description": "6 個 30-50 分鐘實操菜譜",
+            "path": "/docs/resources/cookbook"
+          },
+          {
+            "title": "cli-agents-guide.md",
+            "description": "7 個 CLI Agent 對比 + 決策矩陣",
+            "path": "/docs/resources/cli-agents-guide"
+          }
+        ]
+      },
+      {
+        "id": "6",
+        "number": "6",
+        "title": "Memory + RAG — 記憶與檢索",
+        "subtitle": "Track B",
+        "duration": "2 周",
+        "track": "B",
+        "badge": "🛠 Track B 核心 · 5 個練習",
+        "learn": "向量資料庫、Embedding 原理、文件分塊策略、完整 RAG 管道、Agent 長期記憶。讓你的 Agent 擁有「記憶」——能記住對話歷史和外部知識。",
+        "doc": "/docs/stages/06-memory-rag",
+        "exercises": [
+          {
+            "id": "01-embeddings",
+            "title": "01-embeddings",
+            "description": "文字 Embedding 基礎——語義向量化",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-6/01-embeddings/README"
+          },
+          {
+            "id": "02-vector-db",
+            "title": "02-vector-db",
+            "description": "ChromaDB 向量資料庫操作",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-6/02-vector-db/README"
+          },
+          {
+            "id": "03-chunking-comparison",
+            "title": "03-chunking-comparison",
+            "description": "文件分塊策略對比——固定 vs 語義",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-6/03-chunking-comparison/README"
+          },
+          {
+            "id": "04-full-rag-pipeline",
+            "title": "04-full-rag-pipeline",
+            "description": "完整 RAG 管道——端到端實現",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "highlight": true,
+            "path": "/docs/examples/stage-6/04-full-rag-pipeline/README"
+          },
+          {
+            "id": "05-long-term-memory",
+            "title": "05-long-term-memory",
+            "description": "Agent 長期記憶——跨會話記憶持久化",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-6/05-long-term-memory/README"
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "number": "7",
+        "title": "多 Agent + 生產級 — Production",
+        "subtitle": "Track B",
+        "duration": "2–4 周",
+        "track": "B",
+        "badge": "🛠 Track B 核心 · 5 個練習",
+        "learn": "多 Agent 編排模式、Agent 評估方法、可觀測性/監控、高階 SDK（Streaming + Caching）、FastAPI 部署。這是概念演進的頂層——Harness Engineering。",
+        "doc": "/docs/stages/07-multi-agent-production",
+        "exercises": [
+          {
+            "id": "01-multi-agent-debate",
+            "title": "01-multi-agent-debate",
+            "description": "多 Agent 辯論模式——觀點碰撞",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-7/01-multi-agent-debate/README"
+          },
+          {
+            "id": "02-eval",
+            "title": "02-eval",
+            "description": "Agent 評估——如何衡量 Agent 好壞",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-7/02-eval/README"
+          },
+          {
+            "id": "03-observability",
+            "title": "03-observability",
+            "description": "可觀測性/監控——看透 Agent 內部",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-7/03-observability/README"
+          },
+          {
+            "id": "04-sdk-advanced",
+            "title": "04-sdk-advanced",
+            "description": "Streaming + Caching 高階技巧",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-7/04-sdk-advanced/README"
+          },
+          {
+            "id": "05-deploy",
+            "title": "05-deploy",
+            "description": "FastAPI 部署（含 Dockerfile）",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-7/05-deploy/README"
+          }
+        ]
+      },
+      {
+        "id": "7.5",
+        "number": "7.5",
+        "title": "高階概念閱讀圖 — Advanced Concepts",
+        "subtitle": "A+B 共修",
+        "duration": "1 周",
+        "track": "shared",
+        "badge": "📖 純理論 · 無程式碼",
+        "learn": "12 個高階概念的閱讀地圖：PAR 迴圈（Plan-Act-Reflex）、Agent-as-Judge、Guardrail 模式、Reflexion 持久記憶迴圈等。沒有程式碼，純粹的概念理解。",
+        "do": "這是 Stage 7 到 Stage 8 之間的「橋樑」——用一週時間消化高階概念，為最後的 Agent 介面學習做準備。",
+        "doc": "/docs/stages/07.5-advanced-agentic-concepts"
+      },
+      {
+        "id": "8",
+        "number": "8",
+        "title": "Agent 介面 — Interfaces",
+        "subtitle": "A+B 共修",
+        "duration": "2–3 周",
+        "track": "shared",
+        "badge": "🔗 兩條 Track 共享 · 內嵌練習",
+        "learn": "Computer Use（螢幕操控）、Browser Use（網頁瀏覽）、Code Sandbox（程式碼沙箱）。讓 Agent 不僅能對話，還能「看見」和「操作」真實世界。",
+        "do": "練習形式：練習內嵌在 stage 文件中，因為涉及特殊環境（瀏覽器、螢幕錄製等）。",
+        "doc": "/docs/stages/08-agent-interfaces",
+        "resources": [
+          {
+            "title": "08-agent-interfaces.md",
+            "description": "Stage 文件 + 內嵌練習",
+            "path": "/docs/stages/08-agent-interfaces"
+          }
+        ]
+      }
+    ],
+    "steps": [
+      {
+        "n": "1",
+        "title": "讀 README",
+        "body": "選擇語言版本，理解練習目標和預期成果。"
+      },
+      {
+        "n": "2",
+        "title": "安裝依賴",
+        "body": "讀 requirements.txt，執行 pip install -r requirements.txt。注意同時包含 openai 和 anthropic SDK。"
+      },
+      {
+        "n": "3",
+        "title": "自己先嚐試",
+        "body": "關鍵：starter.py 是完整解答，不是 TODO 骨架。先自己嘗試寫，哪怕寫不出來也沒關係。"
+      },
+      {
+        "n": "4",
+        "title": "對照學習",
+        "body": "讀 starter.py（Path A: Ollama），理解差距。執行它，觀察輸出。看末尾的自我驗證塊。"
+      },
+      {
+        "n": "5",
+        "title": "跑測試驗證",
+        "body": "執行 pytest test.py 驗證理解。測試使用 mock，不需要真實 API 呼叫。"
+      },
+      {
+        "n": "6",
+        "title": "（可選）雲端對比",
+        "body": "讀 starter_anthropic.py（Path B: Anthropic），對比本地 vs 雲端的實現差異。"
+      },
+      {
+        "n": "7",
+        "title": "深度路由",
+        "body": "看 README 的深度 callout，路由到 Datawhale hello-agents、Anthropic Cookbook 等教程繼續學習。"
+      }
+    ],
+    "resources": [
+      {
+        "icon": "📚",
+        "title": "術語表 Glossary",
+        "description": "30+ 術語，每個 30-80 詞，帶階段交叉引用。",
+        "meta": "全程適用",
+        "path": "/docs/resources/glossary"
+      },
+      {
+        "icon": "🧠",
+        "title": "Agent 正規化",
+        "description": "5 種心智模型：ReAct、Plan-and-Execute、Reflection、Multi-Agent、Tool-Use。",
+        "meta": "Stage 3+",
+        "path": "/docs/resources/agent-paradigms"
+      },
+      {
+        "icon": "📐",
+        "title": "Schema 速查表",
+        "description": "5 條黃金法則 + 5 個反模式。Function Calling Schema 設計指南。",
+        "meta": "Stage 3",
+        "path": "/docs/resources/schema-design-cheatsheet"
+      },
+      {
+        "icon": "🔌",
+        "title": "MCP / Skills 目錄",
+        "description": "77 個 MCP Server / Skills，分 6 類，帶 GitHub 星數和評分。",
+        "meta": "Stage 5",
+        "path": "/docs/resources/mcp-skills-catalog"
+      },
+      {
+        "icon": "🤖",
+        "title": "子 Agent 菜譜",
+        "description": "15 個即用子 Agent 排程模板，可直接複製使用。",
+        "meta": "Stage 5",
+        "path": "/docs/resources/subagent-cookbook"
+      },
+      {
+        "icon": "🔬",
+        "title": "子 Agent 進階",
+        "description": "Description Bug、組合模式、除錯技巧。",
+        "meta": "Stage 5+",
+        "path": "/docs/resources/subagent-advanced"
+      },
+      {
+        "icon": "🍳",
+        "title": "實操菜譜",
+        "description": "6 個 30-50 分鐘 step-by-step：Skills、MCP、Office 整合。",
+        "meta": "Stage 5",
+        "path": "/docs/resources/cookbook"
+      },
+      {
+        "icon": "🎓",
+        "title": "線上課程",
+        "description": "10 個有證書的可信 AI Agent 線上課程，附評價和適合人群。",
+        "meta": "全程適用",
+        "path": "/docs/resources/courses"
+      },
+      {
+        "icon": "⌨️",
+        "title": "CLI Agent 指南",
+        "description": "7 個 CLI Agent 對比 + 決策矩陣。",
+        "meta": "Track A",
+        "path": "/docs/resources/cli-agents-guide"
+      },
+      {
+        "icon": "🚀",
+        "title": "環境搭建",
+        "description": "30-45 分鐘從零到 Hello World。API Key、Python、Ollama。",
+        "meta": "Stage 0",
+        "path": "/docs/resources/setup-guide"
+      },
+      {
+        "icon": "🗺",
+        "title": "7 步構建第一個 Agent",
+        "description": "端到端 walkthrough：Paper Summary Bot，約 350 行真實程式碼。",
+        "meta": "Track B",
+        "path": "/docs/walkthroughs/build-first-agent-in-7-steps"
+      },
+      {
+        "icon": "🏆",
+        "title": "Capstone 專案",
+        "description": "Track A + Track B 各一個畢業專案，附 4 級評分標準。",
+        "meta": "最終檢驗",
+        "path": "/docs/CAPSTONE"
+      },
+      {
+        "icon": "✏️",
+        "title": "內容風格指南",
+        "description": "寫作規範：術語、語氣、結構、程式碼範例風格。",
+        "meta": "貢獻者",
+        "path": "/docs/resources/style-guide"
+      },
+      {
+        "icon": "📂",
+        "title": "Resources 索引",
+        "description": "resources/ 目錄完整索引——找不到時來這裡。",
+        "meta": "全程適用",
+        "path": "/docs/resources/README"
+      }
+    ],
+    "budget": [
+      {
+        "plan": "全本地 Ollama",
+        "detail": "所有練習用本地 LLM，零 API 費用",
+        "cost": "$0"
+      },
+      {
+        "plan": "混合推薦 ⭐",
+        "detail": "本地練習（Path A）+ 雲端對比（Path B，用 Haiku）",
+        "cost": "$2–5",
+        "highlight": true
+      },
+      {
+        "plan": "全 Sonnet",
+        "detail": "所有練習用 Claude Sonnet，最高質量",
+        "cost": "$20–50"
+      }
+    ]
+  },
+  "en": {
+    "tracks": [
+      {
+        "id": "A",
+        "icon": "⌨️",
+        "name": "Track A — CLI Power User",
+        "duration": "8–10 weeks",
+        "description": "Master existing CLI Agent tools (Claude Code, Codex, Gemini CLI). Best for PMs, knowledge workers, and anyone who wants quick leverage.",
+        "tags": [
+          "CLAUDE.md",
+          "Slash commands",
+          "MCP",
+          "GitHub Actions",
+          "Cost tracking"
+        ],
+        "steps": [
+          {
+            "code": "A1",
+            "title": "CLI Agent intro",
+            "description": "Install, first chat, CLAUDE.md basics",
+            "path": "/docs/tracks/cli/A1-cli-intro"
+          },
+          {
+            "code": "A2",
+            "title": "CLI workflows",
+            "description": "Slash commands, subagents, MCP",
+            "path": "/docs/tracks/cli/A2-cli-workflow"
+          },
+          {
+            "code": "A3",
+            "title": "CLI in production",
+            "description": "GitHub Actions, cost tracking, team workflows",
+            "path": "/docs/tracks/cli/A3-cli-production"
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "icon": "🛠",
+        "name": "Track B — Agent Builder",
+        "duration": "16–22 weeks (~5–7 months)",
+        "description": "Build your own Agent stack from scratch: tool use, frameworks, RAG, multi-agent systems, and deployment. For developers and researchers.",
+        "tags": [
+          "Function Calling",
+          "LangGraph",
+          "CrewAI",
+          "RAG",
+          "FastAPI",
+          "Docker"
+        ],
+        "cta": {
+          "label": "Build your first agent in 7 steps",
+          "path": "/docs/walkthroughs/build-first-agent-in-7-steps"
+        }
+      }
+    ],
+    "roles": [
+      {
+        "icon": "💻",
+        "title": "For developers",
+        "description": "You can code and want production Agent systems. Focus: tool use, frameworks, deploy, observability.",
+        "path": "Track B primary",
+        "doc": "/docs/branches/for-developer"
+      },
+      {
+        "icon": "🔬",
+        "title": "For researchers",
+        "description": "Academic or industry research focus on eval and frontiers. Focus: eval methods, papers, reproducible experiments.",
+        "path": "Track B + 7.5",
+        "doc": "/docs/branches/for-researcher"
+      },
+      {
+        "icon": "📊",
+        "title": "For knowledge workers",
+        "description": "PMs, analysts, operators. Focus: CLI leverage, MCP + Office, daily automation.",
+        "path": "Track A primary",
+        "doc": "/docs/branches/for-knowledge-worker"
+      },
+      {
+        "icon": "🎓",
+        "title": "For teachers",
+        "description": "Educators bringing AI into class. Focus: Skills design, materials, feedback analysis.",
+        "path": "Track A + Stage 5",
+        "doc": "/docs/branches/for-teacher"
+      },
+      {
+        "icon": "👥",
+        "title": "For everyone",
+        "description": "No coding background — learn to use AI tools well. Focus: prompts, CLI basics, pitfalls.",
+        "path": "Stages 0–2 + Track A",
+        "doc": "/docs/branches/for-everyday-users"
+      }
+    ],
+    "layers": [
+      {
+        "name": "Harness Engineering",
+        "stage": "Stage 7",
+        "kind": "Solid · official",
+        "solid": true,
+        "description": "Make agents reliable: eval, observability, deploy, and guardrails. The harness itself is programmable."
+      },
+      {
+        "name": "Graph Engineering",
+        "stage": "Stage 4, 7",
+        "kind": "Dashed · community",
+        "solid": false,
+        "description": "Orchestrate branches, loops, and human approval (HITL) with graph state machines."
+      },
+      {
+        "name": "Loop Engineering",
+        "stage": "Stage 5+",
+        "kind": "Dashed · community",
+        "solid": false,
+        "description": "Goal-driven autonomous loops: plan, act, reflect, and improve."
+      },
+      {
+        "name": "Context Engineering",
+        "stage": "Stage 3+",
+        "kind": "Solid · official",
+        "solid": true,
+        "description": "Dynamically manage context, tool results, and memory so multi-step work stays coherent."
+      },
+      {
+        "name": "Prompt Engineering",
+        "stage": "Stage 2",
+        "kind": "Solid · official",
+        "solid": true,
+        "description": "Design prompts for accurate single-turn answers: system prompts, few-shot, chain-of-thought, and more."
+      }
+    ],
+    "stages": [
+      {
+        "id": "0",
+        "number": "0",
+        "title": "Foundations — Environment setup",
+        "subtitle": "Shared A+B",
+        "duration": "1–2 weeks",
+        "track": "shared",
+        "badge": "🔧 Shared by both tracks",
+        "learn": "Python basics, CLI, Git, APIs, and JSON. Get your environment ready — this is the starting line.",
+        "do": "Install Ollama → pull gemma4:e4b (~7.5GB) → run your first local LLM chat.",
+        "doc": "/docs/stages/00-foundations",
+        "resources": [
+          {
+            "title": "setup-guide.md",
+            "description": "Zero to Hello World in 30–45 minutes",
+            "path": "/docs/resources/setup-guide"
+          },
+          {
+            "title": "00-foundations.md",
+            "description": "Stage guide",
+            "path": "/docs/stages/00-foundations"
+          }
+        ]
+      },
+      {
+        "id": "1",
+        "number": "1",
+        "title": "LLM Basics",
+        "subtitle": "Shared A+B",
+        "duration": "1 week",
+        "track": "shared",
+        "badge": "🔧 Shared · 2 exercises",
+        "learn": "Tokens, API calls, provider trade-offs, and local vs cloud LLMs. An LLM is a probabilistic text generator.",
+        "doc": "/docs/stages/01-llm-basics",
+        "exercises": [
+          {
+            "id": "04-cross-provider",
+            "title": "04-cross-provider",
+            "description": "Send the same request to multiple providers",
+            "tags": [
+              "Ollama",
+              "Anthropic",
+              "$0"
+            ],
+            "path": "/docs/examples/stage-1/04-cross-provider/README"
+          },
+          {
+            "id": "05-error-handling",
+            "title": "05-error-handling",
+            "description": "OpenAI SDK exceptions + retry wrapper",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-1/05-error-handling/README"
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "number": "2",
+        "title": "Prompt Engineering",
+        "subtitle": "Shared A+B",
+        "duration": "1–2 weeks",
+        "track": "shared",
+        "badge": "🔧 Shared · inline exercises",
+        "learn": "System prompts, few-shot examples, chain-of-thought, and an intro to context engineering — the first concept layer.",
+        "do": "Exercises live in foldable blocks inside the stage doc (about 8–15 lines each).",
+        "doc": "/docs/stages/02-prompt-engineering",
+        "resources": [
+          {
+            "title": "02-prompt-engineering.md",
+            "description": "Stage guide + inline exercises",
+            "path": "/docs/stages/02-prompt-engineering"
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "number": "3",
+        "title": "Tool Use + first Agent",
+        "subtitle": "Track B",
+        "duration": "2–3 weeks",
+        "track": "B",
+        "badge": "🛠 Track B core · 5 exercises",
+        "learn": "Function calling, ReAct loops, tool selection, and schema design. The pivot from user to builder — you write your first agent loop.",
+        "doc": "/docs/stages/03-tool-use-and-hello-agent",
+        "exercises": [
+          {
+            "id": "02-multi-tool-selection",
+            "title": "02-multi-tool-selection",
+            "description": "How an agent chooses among tools",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-3/02-multi-tool-selection/README"
+          },
+          {
+            "id": "03-react-from-scratch",
+            "title": "03-react-from-scratch",
+            "description": "Hand-written ReAct loop — the key exercise",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "highlight": true,
+            "path": "/docs/examples/stage-3/03-react-from-scratch/README"
+          },
+          {
+            "id": "04-multi-step-reasoning",
+            "title": "04-multi-step-reasoning",
+            "description": "Multi-step reasoning and task decomposition",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-3/04-multi-step-reasoning/README"
+          },
+          {
+            "id": "05-error-handling",
+            "title": "05-error-handling",
+            "description": "Error handling inside agent context",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-3/05-error-handling/README"
+          },
+          {
+            "id": "06-schema-design",
+            "title": "06-schema-design",
+            "description": "Good vs bad schema design",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-3/06-schema-design/README"
+          }
+        ],
+        "resources": [
+          {
+            "title": "schema-design-cheatsheet.md",
+            "description": "5 golden rules + 5 anti-patterns",
+            "path": "/docs/resources/schema-design-cheatsheet"
+          },
+          {
+            "title": "glossary.md",
+            "description": "30+ terms",
+            "path": "/docs/resources/glossary"
+          }
+        ]
+      },
+      {
+        "id": "4",
+        "number": "4",
+        "title": "Agent Frameworks",
+        "subtitle": "Track B",
+        "duration": "2–3 weeks",
+        "track": "B",
+        "badge": "🛠 Track B core · 5 exercises",
+        "learn": "Compare LangGraph, CrewAI, Smolagents, and Pydantic AI — graph FSMs vs roles vs CodeAct vs typed outputs.",
+        "doc": "/docs/stages/04-agent-frameworks",
+        "exercises": [
+          {
+            "id": "01-same-agent-two-frameworks",
+            "title": "01-same-agent-two-frameworks",
+            "description": "Same agent in LangGraph vs CrewAI",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-4/01-same-agent-two-frameworks/README"
+          },
+          {
+            "id": "02-multi-agent-roles",
+            "title": "02-multi-agent-roles",
+            "description": "CrewAI multi-role specialists",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-4/02-multi-agent-roles/README"
+          },
+          {
+            "id": "03-graph-workflow",
+            "title": "03-graph-workflow",
+            "description": "LangGraph branches + human approval (HITL)",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-4/03-graph-workflow/README"
+          },
+          {
+            "id": "04-codeact-vs-json-tool",
+            "title": "04-codeact-vs-json-tool",
+            "description": "Smolagents CodeAct vs JSON tools",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-4/04-codeact-vs-json-tool/README"
+          },
+          {
+            "id": "05-typed-agent",
+            "title": "05-typed-agent",
+            "description": "Pydantic AI typed structured outputs",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-4/05-typed-agent/README"
+          }
+        ],
+        "resources": [
+          {
+            "title": "agent-paradigms.md",
+            "description": "Five agent paradigm mental models",
+            "path": "/docs/resources/agent-paradigms"
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "number": "5",
+        "title": "Claude Code ecosystem",
+        "subtitle": "Shared A+B",
+        "duration": "3–4 weeks Track B / 1–2 weeks Track A",
+        "track": "shared",
+        "badge": "🔗 Shared by both tracks",
+        "learn": "MCP servers, Skills, Plugins, and Subagents — the Claude ecosystem from protocols to orchestration.",
+        "do": "Meta example: tool-calling-tutor — an installable Claude Code Skill for diagnosing tool-calling issues.",
+        "doc": "/docs/stages/05-claude-code-ecosystem",
+        "exercises": [
+          {
+            "id": "tool-calling-tutor",
+            "title": "tool-calling-tutor",
+            "description": "Installable Claude Code Skill (meta example)",
+            "tags": [
+              "Skill",
+              "$0"
+            ],
+            "highlight": true,
+            "path": "/docs/examples/stage-5/tool-calling-tutor/README"
+          }
+        ],
+        "resources": [
+          {
+            "title": "mcp-skills-catalog.md",
+            "description": "77 MCP servers / skills in 6 categories",
+            "path": "/docs/resources/mcp-skills-catalog"
+          },
+          {
+            "title": "subagent-cookbook.md",
+            "description": "15 ready subagent templates",
+            "path": "/docs/resources/subagent-cookbook"
+          },
+          {
+            "title": "subagent-advanced.md",
+            "description": "Advanced subagent debugging + composition",
+            "path": "/docs/resources/subagent-advanced"
+          },
+          {
+            "title": "cookbook.md",
+            "description": "Six 30–50 minute cookbooks",
+            "path": "/docs/resources/cookbook"
+          },
+          {
+            "title": "cli-agents-guide.md",
+            "description": "7 CLI agents compared + decision matrix",
+            "path": "/docs/resources/cli-agents-guide"
+          }
+        ]
+      },
+      {
+        "id": "6",
+        "number": "6",
+        "title": "Memory + RAG",
+        "subtitle": "Track B",
+        "duration": "2 weeks",
+        "track": "B",
+        "badge": "🛠 Track B core · 5 exercises",
+        "learn": "Vector DBs, embeddings, chunking, full RAG pipelines, and long-term agent memory.",
+        "doc": "/docs/stages/06-memory-rag",
+        "exercises": [
+          {
+            "id": "01-embeddings",
+            "title": "01-embeddings",
+            "description": "Text embeddings and semantic vectors",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-6/01-embeddings/README"
+          },
+          {
+            "id": "02-vector-db",
+            "title": "02-vector-db",
+            "description": "ChromaDB vector operations",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-6/02-vector-db/README"
+          },
+          {
+            "id": "03-chunking-comparison",
+            "title": "03-chunking-comparison",
+            "description": "Fixed vs semantic chunking",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-6/03-chunking-comparison/README"
+          },
+          {
+            "id": "04-full-rag-pipeline",
+            "title": "04-full-rag-pipeline",
+            "description": "End-to-end RAG pipeline",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "highlight": true,
+            "path": "/docs/examples/stage-6/04-full-rag-pipeline/README"
+          },
+          {
+            "id": "05-long-term-memory",
+            "title": "05-long-term-memory",
+            "description": "Cross-session long-term memory",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-6/05-long-term-memory/README"
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "number": "7",
+        "title": "Multi-agent + production",
+        "subtitle": "Track B",
+        "duration": "2–4 weeks",
+        "track": "B",
+        "badge": "🛠 Track B core · 5 exercises",
+        "learn": "Multi-agent patterns, eval, observability, streaming/caching SDKs, and FastAPI deploy — Harness Engineering.",
+        "doc": "/docs/stages/07-multi-agent-production",
+        "exercises": [
+          {
+            "id": "01-multi-agent-debate",
+            "title": "01-multi-agent-debate",
+            "description": "Multi-agent debate patterns",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-7/01-multi-agent-debate/README"
+          },
+          {
+            "id": "02-eval",
+            "title": "02-eval",
+            "description": "How to measure agent quality",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-7/02-eval/README"
+          },
+          {
+            "id": "03-observability",
+            "title": "03-observability",
+            "description": "Observability inside the agent loop",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-7/03-observability/README"
+          },
+          {
+            "id": "04-sdk-advanced",
+            "title": "04-sdk-advanced",
+            "description": "Streaming + caching techniques",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-7/04-sdk-advanced/README"
+          },
+          {
+            "id": "05-deploy",
+            "title": "05-deploy",
+            "description": "FastAPI deploy with Dockerfile",
+            "tags": [
+              "Ollama",
+              "Anthropic"
+            ],
+            "path": "/docs/examples/stage-7/05-deploy/README"
+          }
+        ]
+      },
+      {
+        "id": "7.5",
+        "number": "7.5",
+        "title": "Advanced concepts reading map",
+        "subtitle": "Shared A+B",
+        "duration": "1 week",
+        "track": "shared",
+        "badge": "📖 Theory only · no code",
+        "learn": "Twelve advanced ideas: PAR loops, Agent-as-Judge, guardrails, Reflexion memory loops, and more.",
+        "do": "A bridge week between Stage 7 and Stage 8 to digest concepts before agent interfaces.",
+        "doc": "/docs/stages/07.5-advanced-agentic-concepts"
+      },
+      {
+        "id": "8",
+        "number": "8",
+        "title": "Agent interfaces",
+        "subtitle": "Shared A+B",
+        "duration": "2–3 weeks",
+        "track": "shared",
+        "badge": "🔗 Shared · inline exercises",
+        "learn": "Computer Use, Browser Use, and Code Sandbox — agents that see and act in the real world.",
+        "do": "Exercises are inline because they need special environments (browser, screen capture, etc.).",
+        "doc": "/docs/stages/08-agent-interfaces",
+        "resources": [
+          {
+            "title": "08-agent-interfaces.md",
+            "description": "Stage guide + inline exercises",
+            "path": "/docs/stages/08-agent-interfaces"
+          }
+        ]
+      }
+    ],
+    "steps": [
+      {
+        "n": "1",
+        "title": "Read the README",
+        "body": "Pick your language edition and understand the goals and expected outcomes."
+      },
+      {
+        "n": "2",
+        "title": "Install deps",
+        "body": "Read requirements.txt and run pip install -r requirements.txt (openai + anthropic SDKs)."
+      },
+      {
+        "n": "3",
+        "title": "Try first",
+        "body": "Important: starter.py is a full solution, not a TODO skeleton. Attempt it yourself first."
+      },
+      {
+        "n": "4",
+        "title": "Compare",
+        "body": "Read starter.py (Path A: Ollama), run it, and check the self-verification block."
+      },
+      {
+        "n": "5",
+        "title": "Run tests",
+        "body": "Run pytest test.py. Tests are mocked — no live API calls required."
+      },
+      {
+        "n": "6",
+        "title": "(Optional) Cloud compare",
+        "body": "Read starter_anthropic.py (Path B) and compare local vs cloud implementations."
+      },
+      {
+        "n": "7",
+        "title": "Go deeper",
+        "body": "Follow README callouts to hello-agents, Anthropic Cookbook, and other deep dives."
+      }
+    ],
+    "resources": [
+      {
+        "icon": "📚",
+        "title": "Glossary",
+        "description": "30+ terms with stage cross-links.",
+        "meta": "All stages",
+        "path": "/docs/resources/glossary"
+      },
+      {
+        "icon": "🧠",
+        "title": "Agent paradigms",
+        "description": "Five mental models: ReAct, Plan-and-Execute, Reflection, Multi-Agent, Tool-Use.",
+        "meta": "Stage 3+",
+        "path": "/docs/resources/agent-paradigms"
+      },
+      {
+        "icon": "📐",
+        "title": "Schema cheatsheet",
+        "description": "5 golden rules + 5 anti-patterns for function calling schemas.",
+        "meta": "Stage 3",
+        "path": "/docs/resources/schema-design-cheatsheet"
+      },
+      {
+        "icon": "🔌",
+        "title": "MCP / Skills catalog",
+        "description": "77 MCP servers / skills in 6 categories with stars and ratings.",
+        "meta": "Stage 5",
+        "path": "/docs/resources/mcp-skills-catalog"
+      },
+      {
+        "icon": "🤖",
+        "title": "Subagent cookbook",
+        "description": "15 ready-to-use subagent dispatch templates.",
+        "meta": "Stage 5",
+        "path": "/docs/resources/subagent-cookbook"
+      },
+      {
+        "icon": "🔬",
+        "title": "Advanced subagents",
+        "description": "Description bugs, composition patterns, debugging tips.",
+        "meta": "Stage 5+",
+        "path": "/docs/resources/subagent-advanced"
+      },
+      {
+        "icon": "🍳",
+        "title": "Cookbooks",
+        "description": "Six 30–50 minute guides: Skills, MCP, Office integrations.",
+        "meta": "Stage 5",
+        "path": "/docs/resources/cookbook"
+      },
+      {
+        "icon": "🎓",
+        "title": "Online courses",
+        "description": "10 reputable AI Agent courses with certificates and audience notes.",
+        "meta": "All stages",
+        "path": "/docs/resources/courses"
+      },
+      {
+        "icon": "⌨️",
+        "title": "CLI Agent guide",
+        "description": "Seven CLI agents compared + decision matrix.",
+        "meta": "Track A",
+        "path": "/docs/resources/cli-agents-guide"
+      },
+      {
+        "icon": "🚀",
+        "title": "Setup guide",
+        "description": "Zero to Hello World in 30–45 minutes.",
+        "meta": "Stage 0",
+        "path": "/docs/resources/setup-guide"
+      },
+      {
+        "icon": "🗺",
+        "title": "First agent in 7 steps",
+        "description": "End-to-end Paper Summary Bot walkthrough (~350 lines).",
+        "meta": "Track B",
+        "path": "/docs/walkthroughs/build-first-agent-in-7-steps"
+      },
+      {
+        "icon": "🏆",
+        "title": "Capstone",
+        "description": "One graduation project per track with a 4-level rubric.",
+        "meta": "Final check",
+        "path": "/docs/CAPSTONE"
+      },
+      {
+        "icon": "✏️",
+        "title": "Style guide",
+        "description": "Writing conventions for terms, tone, structure, and code samples.",
+        "meta": "Contributors",
+        "path": "/docs/resources/style-guide"
+      },
+      {
+        "icon": "📂",
+        "title": "Resources index",
+        "description": "Full index of the resources/ directory.",
+        "meta": "All stages",
+        "path": "/docs/resources/README"
+      }
+    ],
+    "budget": [
+      {
+        "plan": "All-local Ollama",
+        "detail": "Every exercise on local LLMs — $0 API spend",
+        "cost": "$0"
+      },
+      {
+        "plan": "Hybrid ⭐",
+        "detail": "Local Path A + cloud Path B with Haiku",
+        "cost": "$2–5",
+        "highlight": true
+      },
+      {
+        "plan": "All Sonnet",
+        "detail": "Claude Sonnet for every exercise — highest quality",
+        "cost": "$20–50"
+      }
+    ]
+  }
+}

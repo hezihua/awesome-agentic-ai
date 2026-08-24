@@ -1,0 +1,338 @@
+{
+  "zh-Hans": {
+    "site": {
+      "name": "Agent Atlas",
+      "tagline": "AI Agent 系统学习指南",
+      "description": "一张精心策划的学习地图：9 个阶段、23 个动手练习、240+ 精选资源。从 Prompt Engineering 到 Harness Engineering，从零到生产级 Agent。",
+      "version": "v2026.08.14",
+      "upstream": "https://github.com/WenyuChiou/awesome-agentic-ai-zh",
+      "license": "MIT"
+    },
+    "ui": {
+      "startLearning": "开始学习",
+      "chooseTrack": "选择路线",
+      "openSource": "GitHub",
+      "backToMap": "返回路线图",
+      "simplifiedDoc": "简体中文",
+      "readingMin": "约 {n} 分钟阅读",
+      "prev": "上一篇",
+      "next": "下一篇",
+      "toc": "本页目录",
+      "viewDoc": "查看完整文档 →",
+      "learnLabel": "学什么：",
+      "doLabel": "动手做：",
+      "filterAll": "全部路线",
+      "filterA": "Track A · CLI",
+      "filterB": "Track B · 构建者",
+      "layerHint": "查看 Stage 7 五层模型解读 →",
+      "footerNote": "开源内容（{license}）的学习站",
+      "basedOn": "基于",
+      "progress": "进度追踪",
+      "roadmap": "路线图",
+      "upstreamDocs": "上游文档站",
+      "footerLegal": "MIT License · 原作者 @WenyuChiou · 本站收录多语言镜像内容",
+      "tracksEyebrow": "选择你的路线",
+      "tracksTitle": "两条学习路径",
+      "tracksLead": "共享 Stage 0-2 基础之后，根据你的目标选择 CLI 能力者之路或 Agent 构建者之路。",
+      "rolesEyebrow": "按角色选择",
+      "rolesTitle": "五种角色的专属路线",
+      "rolesLead": "不同职业对 AI Agent 的需求不同——这里为 5 种典型角色设计了对应的学习路径与重点。",
+      "layersEyebrow": "核心知识框架",
+      "layersTitle": "概念五层演进",
+      "layersLead": "从写好提示词、动态管理上下文、目标自主循环、图工作流到 Harness 框架本身可编程。",
+      "stagesEyebrow": "完整学习路径",
+      "stagesTitle": "Stage 0 → 8 全览",
+      "stagesLead": "点击每个阶段展开查看练习、资源和学习目标。点击练习或文档可进入完整内容。",
+      "trackABlurb": "Track A · CLI 能力者之路（8–10 周）",
+      "trackADesc": "Stage 0-2 共修基础 → 跳过 Stage 3/4/6/7 → 学 Stage 5 + 7.5 + 8，并同步 tracks/cli 专属文档。",
+      "trackBBlurb": "Track B · Agent 构建者之路（16–22 周）",
+      "trackBDesc": "从 Stage 0 一路打到 Stage 8。Stage 3-4 是构建转折点，Stage 6 是记忆/RAG，Stage 7 是生产级 + 可观测性。",
+      "workflowEyebrow": "标准操作流程",
+      "workflowTitle": "每练习的七步法",
+      "workflowLead": "每个练习文件夹遵循统一结构。按以下顺序操作，最大化学习效果。",
+      "resourcesEyebrow": "知识地图",
+      "resourcesTitle": "资源层速查",
+      "resourcesLead": "需要深入某个主题时，查阅 resources/ 下的专项指南。",
+      "budgetEyebrow": "成本规划",
+      "budgetTitle": "学习预算",
+      "budgetLead": "三种预算方案，从完全免费到全云端。推荐混合方案——本地练习 + 云端对比。",
+      "budgetColPlan": "方案",
+      "budgetColDetail": "说明",
+      "budgetColCost": "预算",
+      "budgetHint": "模型建议：Stage 1-2 用 gemma4:e4b；Stage 3+ 用 qwen2.5:3b；云端对比用 claude-haiku-4-5。",
+      "heroBadge": "2026 · 开源学习地图 · {version}"
+    },
+    "nav": [
+      {
+        "href": "#tracks",
+        "label": "路线"
+      },
+      {
+        "href": "#roles",
+        "label": "角色"
+      },
+      {
+        "href": "#layers",
+        "label": "概念"
+      },
+      {
+        "href": "#stages",
+        "label": "阶段"
+      },
+      {
+        "href": "#workflow",
+        "label": "流程"
+      },
+      {
+        "href": "#resources",
+        "label": "资源"
+      },
+      {
+        "href": "#budget",
+        "label": "预算"
+      }
+    ],
+    "stats": [
+      {
+        "label": "学习阶段",
+        "value": "9"
+      },
+      {
+        "label": "动手练习",
+        "value": "23"
+      },
+      {
+        "label": "精选资源",
+        "value": "240+"
+      },
+      {
+        "label": "MCP / Skills",
+        "value": "77+"
+      }
+    ]
+  },
+  "zh-TW": {
+    "site": {
+      "name": "Agent Atlas",
+      "tagline": "AI Agent 系統學習指南",
+      "description": "一張精心策劃的學習地圖：9 個階段、23 個動手練習、240+ 精選資源。從 Prompt Engineering 到 Harness Engineering，從零到生產級 Agent。",
+      "version": "v2026.08.14",
+      "upstream": "https://github.com/WenyuChiou/awesome-agentic-ai-zh",
+      "license": "MIT"
+    },
+    "ui": {
+      "startLearning": "開始學習",
+      "chooseTrack": "選擇路線",
+      "openSource": "GitHub",
+      "backToMap": "返回路線圖",
+      "simplifiedDoc": "繁體中文",
+      "readingMin": "約 {n} 分鐘閱讀",
+      "prev": "上一篇",
+      "next": "下一篇",
+      "toc": "本頁目錄",
+      "viewDoc": "檢視完整文件 →",
+      "learnLabel": "學什麼：",
+      "doLabel": "動手做：",
+      "filterAll": "全部路線",
+      "filterA": "Track A · CLI",
+      "filterB": "Track B · 建構者",
+      "layerHint": "檢視 Stage 7 五層模型解讀 →",
+      "footerNote": "開源內容（{license}）的學習站",
+      "basedOn": "基於",
+      "progress": "進度追蹤",
+      "roadmap": "路線圖",
+      "upstreamDocs": "上游文件站",
+      "footerLegal": "MIT License · 原作者 @WenyuChiou · 本站收錄多語言映象內容",
+      "tracksEyebrow": "選擇你的路線",
+      "tracksTitle": "兩條學習路徑",
+      "tracksLead": "共享 Stage 0-2 基礎之後，根據你的目標選擇 CLI 能力者之路或 Agent 構建者之路。",
+      "rolesEyebrow": "按角色選擇",
+      "rolesTitle": "五種角色的專屬路線",
+      "rolesLead": "不同職業對 AI Agent 的需求不同——這裡為 5 種典型角色設計了對應的學習路徑與重點。",
+      "layersEyebrow": "核心知識框架",
+      "layersTitle": "概念五層演進",
+      "layersLead": "從寫好提示詞、動態管理上下文、目標自主迴圈、圖工作流到 Harness 框架本身可程式設計。",
+      "stagesEyebrow": "完整學習路徑",
+      "stagesTitle": "Stage 0 → 8 全覽",
+      "stagesLead": "點選每個階段展開檢視練習、資源和學習目標。點選練習或文件可進入完整內容。",
+      "trackABlurb": "Track A · CLI 能力者之路（8–10 周）",
+      "trackADesc": "Stage 0-2 共修基礎 → 跳過 Stage 3/4/6/7 → 學 Stage 5 + 7.5 + 8，並同步 tracks/cli 專屬文件。",
+      "trackBBlurb": "Track B · Agent 構建者之路（16–22 周）",
+      "trackBDesc": "從 Stage 0 一路打到 Stage 8。Stage 3-4 是構建轉折點，Stage 6 是記憶/RAG，Stage 7 是生產級 + 可觀測性。",
+      "workflowEyebrow": "標準操作流程",
+      "workflowTitle": "每練習的七步法",
+      "workflowLead": "每個練習資料夾遵循統一結構。按以下順序操作，最大化學習效果。",
+      "resourcesEyebrow": "知識地圖",
+      "resourcesTitle": "資源層速查",
+      "resourcesLead": "需要深入某個主題時，查閱 resources/ 下的專項指南。",
+      "budgetEyebrow": "成本規劃",
+      "budgetTitle": "學習預算",
+      "budgetLead": "三種預算方案，從完全免費到全雲端。推薦混合方案——本地練習 + 雲端對比。",
+      "budgetColPlan": "方案",
+      "budgetColDetail": "說明",
+      "budgetColCost": "預算",
+      "budgetHint": "模型建議：Stage 1-2 用 gemma4:e4b；Stage 3+ 用 qwen2.5:3b；雲端對比用 claude-haiku-4-5。",
+      "heroBadge": "2026 · 開源學習地圖 · {version}"
+    },
+    "nav": [
+      {
+        "href": "#tracks",
+        "label": "路線"
+      },
+      {
+        "href": "#roles",
+        "label": "角色"
+      },
+      {
+        "href": "#layers",
+        "label": "概念"
+      },
+      {
+        "href": "#stages",
+        "label": "階段"
+      },
+      {
+        "href": "#workflow",
+        "label": "流程"
+      },
+      {
+        "href": "#resources",
+        "label": "資源"
+      },
+      {
+        "href": "#budget",
+        "label": "預算"
+      }
+    ],
+    "stats": [
+      {
+        "label": "學習階段",
+        "value": "9"
+      },
+      {
+        "label": "動手練習",
+        "value": "23"
+      },
+      {
+        "label": "精選資源",
+        "value": "240+"
+      },
+      {
+        "label": "MCP / Skills",
+        "value": "77+"
+      }
+    ]
+  },
+  "en": {
+    "site": {
+      "name": "Agent Atlas",
+      "tagline": "A Structured Guide to AI Agents",
+      "description": "A curated learning map: 9 stages, 23 hands-on exercises, 240+ resources. From Prompt Engineering to Harness Engineering — zero to production-ready agents.",
+      "version": "v2026.08.14",
+      "upstream": "https://github.com/WenyuChiou/awesome-agentic-ai-zh",
+      "license": "MIT"
+    },
+    "ui": {
+      "startLearning": "Start learning",
+      "chooseTrack": "Choose a track",
+      "openSource": "GitHub",
+      "backToMap": "Back to roadmap",
+      "simplifiedDoc": "English",
+      "readingMin": "About {n} min read",
+      "prev": "Previous",
+      "next": "Next",
+      "toc": "On this page",
+      "viewDoc": "View full doc →",
+      "learnLabel": "Learn: ",
+      "doLabel": "Do: ",
+      "filterAll": "All tracks",
+      "filterA": "Track A · CLI",
+      "filterB": "Track B · Builder",
+      "layerHint": "Read the Stage 7 five-layer model →",
+      "footerNote": "learning site based on open-source content ({license})",
+      "basedOn": "Based on",
+      "progress": "Progress",
+      "roadmap": "Roadmap",
+      "upstreamDocs": "Upstream docs",
+      "footerLegal": "MIT License · Maintained upstream by @WenyuChiou · Multilingual mirror",
+      "tracksEyebrow": "Pick your path",
+      "tracksTitle": "Two learning tracks",
+      "tracksLead": "After shared Stages 0–2, choose the CLI Power User track or the Agent Builder track.",
+      "rolesEyebrow": "By role",
+      "rolesTitle": "Five role-based paths",
+      "rolesLead": "Different careers need different Agent skills — here are focused paths for five typical roles.",
+      "layersEyebrow": "Core framework",
+      "layersTitle": "Five layers of concepts",
+      "layersLead": "From writing prompts, managing context, autonomous loops, and graph workflows to programmable harnesses.",
+      "stagesEyebrow": "Full curriculum",
+      "stagesTitle": "Stages 0 → 8",
+      "stagesLead": "Expand each stage for exercises, resources, and goals. Open any card to read the full guide.",
+      "trackABlurb": "Track A · CLI Power User (8–10 weeks)",
+      "trackADesc": "Shared Stages 0–2 → skip 3/4/6/7 → study Stage 5 + 7.5 + 8, plus the tracks/cli docs.",
+      "trackBBlurb": "Track B · Agent Builder (16–22 weeks)",
+      "trackBDesc": "Go from Stage 0 through Stage 8. Stages 3–4 are the builder pivot; 6 is memory/RAG; 7 is production + observability.",
+      "workflowEyebrow": "Standard workflow",
+      "workflowTitle": "Seven steps per exercise",
+      "workflowLead": "Every exercise folder follows the same structure. Work in this order for the best results.",
+      "resourcesEyebrow": "Knowledge map",
+      "resourcesTitle": "Resource quick index",
+      "resourcesLead": "When you need depth on a topic, use the guides under resources/.",
+      "budgetEyebrow": "Cost planning",
+      "budgetTitle": "Learning budget",
+      "budgetLead": "Three budget options from free to full cloud. Hybrid is recommended — local practice + cloud comparison.",
+      "budgetColPlan": "Plan",
+      "budgetColDetail": "Details",
+      "budgetColCost": "Budget",
+      "budgetHint": "Model tip: Stages 1–2 → gemma4:e4b; Stage 3+ → qwen2.5:3b; cloud compare → claude-haiku-4-5.",
+      "heroBadge": "2026 · Open learning map · {version}"
+    },
+    "nav": [
+      {
+        "href": "#tracks",
+        "label": "Tracks"
+      },
+      {
+        "href": "#roles",
+        "label": "Roles"
+      },
+      {
+        "href": "#layers",
+        "label": "Concepts"
+      },
+      {
+        "href": "#stages",
+        "label": "Stages"
+      },
+      {
+        "href": "#workflow",
+        "label": "Workflow"
+      },
+      {
+        "href": "#resources",
+        "label": "Resources"
+      },
+      {
+        "href": "#budget",
+        "label": "Budget"
+      }
+    ],
+    "stats": [
+      {
+        "label": "Stages",
+        "value": "9"
+      },
+      {
+        "label": "Exercises",
+        "value": "23"
+      },
+      {
+        "label": "Resources",
+        "value": "240+"
+      },
+      {
+        "label": "MCP / Skills",
+        "value": "77+"
+      }
+    ]
+  }
+}
