@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { AuthButton } from "@/components/AuthButton";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { ThemeToggle } from "@/components/ThemeProvider";
 import { getAtlas } from "@/lib/atlas";
@@ -54,6 +55,10 @@ export function SiteHeader({ locale }: { locale: Locale }) {
         <div className="flex items-center gap-2">
           <LanguageSwitcher locale={locale} />
           <ThemeToggle />
+          <AuthButton
+            locale={locale}
+            labels={{ login: ui.login, logout: ui.logout }}
+          />
           <a
             href={site.upstream}
             target="_blank"

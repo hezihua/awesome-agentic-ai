@@ -26,6 +26,15 @@ pnpm dev
 
 顶栏可切换语言；文档路径形如 `/[locale]/docs/...`。
 
+## Supabase 登录
+
+1. 在 [Supabase](https://supabase.com) 创建项目，开启 Email / GitHub 登录
+2. Authentication → URL Configuration：Site URL 填本地 `http://localhost:3000`，Redirect URLs 加 `http://localhost:3000/auth/callback`（生产域名同理）
+3. 复制 `.env.local.example` 为 `.env.local`，填入 `NEXT_PUBLIC_SUPABASE_URL` 与 `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+4. `pnpm dev`，打开 `/zh-Hans/login`
+
+支持：邮箱密码、魔法链接、GitHub OAuth。未配置环境变量时顶栏不显示登录入口。
+
 ## 内容来源
 
 `content/` 下为上游仓库多语言 Markdown 快照：
