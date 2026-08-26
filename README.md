@@ -35,6 +35,8 @@ pnpm dev
 
 支持：邮箱密码、魔法链接、GitHub OAuth。未配置环境变量时顶栏不显示登录入口。
 
+当前：**登录即可阅读全部内容**。Stripe 结账与 `/pricing` 仍保留；以后若要重新收费，在环境变量设置 `PAYMENT_REQUIRED=true` 并 Redeploy。
+
 ## 内容来源
 
 `content/` 下为上游仓库多语言 Markdown 快照：

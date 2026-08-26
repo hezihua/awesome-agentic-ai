@@ -31,3 +31,8 @@ export function hasPaidAccess(user: {
 } | null): boolean {
   return user?.app_metadata?.paid === true;
 }
+
+/** Set PAYMENT_REQUIRED=true to gate docs behind Stripe again. */
+export function isPaymentRequired() {
+  return process.env.PAYMENT_REQUIRED === "true";
+}

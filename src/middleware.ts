@@ -1,9 +1,13 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { DEFAULT_LOCALE, isLocale } from "@/lib/i18n";
-import { hasPaidAccess, isStripeConfigured } from "@/lib/stripe";
+import {
+  hasPaidAccess,
+  isPaymentRequired,
+  isStripeConfigured,
+} from "@/lib/stripe";
 import { updateSession } from "@/lib/supabase/middleware";
 
-/** Public: locale home + login. Pricing needs login but not payment. */
+/** Public: locale home + login (+ pricing). */
 function isPublicPath(pathname: string): boolean {
   const parts = pathname.split("/").filter(Boolean);
   if (parts.length === 0) return true;
@@ -16,10 +20,10 @@ function isPublicPath(pathname: string): boolean {
 }
 
 function needsPaidAccess(pathname: string): boolean {
-  if (!isStripeConfigured()) return false;
+  // Paywall off by default; enable with PAYMENT_REQUIRED=true
+  if (!isPaymentRequired() || !isStripeConfigured()) return false;
   const parts = pathname.split("/").filter(Boolean);
   if (parts.length < 2 || !isLocale(parts[0])) return false;
-  // Docs and other non-public pages require paid after login
   return !isPublicPath(pathname);
 }
 
@@ -63,7 +67,6 @@ export async function middleware(request: NextRequest) {
 
   const locale = first;
 
-  // pricing: must be logged in
   if (pathname === `/${locale}/pricing` && !user) {
     const url = request.nextUrl.clone();
     url.pathname = `/${locale}/login`;
