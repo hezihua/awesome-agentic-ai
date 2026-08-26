@@ -45,8 +45,12 @@ export function LoginForm({
   const [loading, setLoading] = useState(false);
 
   const afterLogin = next || localePath(locale);
-  const callbackUrl = () =>
-    `${window.location.origin}/auth/callback?next=${encodeURIComponent(afterLogin)}`;
+  const callbackUrl = () => {
+    const origin =
+      process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
+      window.location.origin;
+    return `${origin}/auth/callback?next=${encodeURIComponent(afterLogin)}`;
+  };
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();

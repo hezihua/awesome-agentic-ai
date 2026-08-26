@@ -45,6 +45,14 @@ export async function middleware(request: NextRequest) {
 
   const { response, user } = await updateSession(request);
 
+  // Supabase 有时把 OAuth code 打到 Site URL（如 / 或 /zh-Hans），需转到 callback 换 session
+  const authCode = request.nextUrl.searchParams.get("code");
+  if (authCode) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/auth/callback";
+    return copyCookies(response, NextResponse.redirect(url));
+  }
+
   const first = pathname.split("/").filter(Boolean)[0];
   if (!(first && isLocale(first))) {
     const url = request.nextUrl.clone();
