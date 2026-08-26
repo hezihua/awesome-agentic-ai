@@ -1,8 +1,5 @@
 import Stripe from "stripe";
 
-/** Live Price ID — Stripe IDs are case-sensitive. */
-export const STRIPE_PRICE_ID = "price_1U8ZxDRuaZoRz8GbaJBTXtbT";
-
 export function getStripe() {
   const key = process.env.STRIPE_SECRET_KEY;
   if (!key) {
@@ -13,11 +10,19 @@ export function getStripe() {
   });
 }
 
+export function getStripePriceId() {
+  const id = process.env.STRIPE_PRICE_ID?.trim();
+  if (!id) {
+    throw new Error("缺少 STRIPE_PRICE_ID");
+  }
+  return id;
+}
+
 export function isStripeConfigured() {
   return Boolean(
     process.env.STRIPE_SECRET_KEY &&
       process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY &&
-      STRIPE_PRICE_ID
+      process.env.STRIPE_PRICE_ID?.trim()
   );
 }
 
