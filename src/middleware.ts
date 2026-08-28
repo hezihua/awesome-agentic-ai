@@ -7,6 +7,11 @@ import {
 } from "@/lib/stripe";
 import { updateSession } from "@/lib/supabase/middleware";
 
+/** Local `next dev` — no login / paywall. Production still requires auth. */
+function isDevOpenAccess() {
+  return process.env.NODE_ENV === "development";
+}
+
 /** Public: locale home + login (+ pricing). */
 function isPublicPath(pathname: string): boolean {
   const parts = pathname.split("/").filter(Boolean);
@@ -20,6 +25,7 @@ function isPublicPath(pathname: string): boolean {
 }
 
 function needsPaidAccess(pathname: string): boolean {
+  if (isDevOpenAccess()) return false;
   // Paywall off by default; enable with PAYMENT_REQUIRED=true
   if (!isPaymentRequired() || !isStripeConfigured()) return false;
   const parts = pathname.split("/").filter(Boolean);
@@ -66,6 +72,11 @@ export async function middleware(request: NextRequest) {
   }
 
   const locale = first;
+
+  // Dev: open all content without login
+  if (isDevOpenAccess()) {
+    return response;
+  }
 
   if (pathname === `/${locale}/pricing` && !user) {
     const url = request.nextUrl.clone();

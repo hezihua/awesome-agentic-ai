@@ -1,16 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import ReactMarkdown from "react-markdown";
-import rehypeHighlight from "rehype-highlight";
-import rehypeRaw from "rehype-raw";
-import remarkGfm from "remark-gfm";
-import { ExerciseCodePanel } from "@/components/ExerciseCodePanel";
+import { DocMarkdown } from "@/components/DocMarkdown";
 import TableOfContents from "@/components/TableOfContents";
 import { getUi } from "@/lib/atlas";
 import { getAllDocs, getDoc, getDocNav } from "@/lib/content";
 import { getExerciseFiles } from "@/lib/exercise-files";
 import { LOCALES, isLocale, localePath, type Locale } from "@/lib/i18n";
-import { rehypeSlugify } from "@/lib/rehype-slugify";
 import { extractToc } from "@/lib/toc";
 
 export function generateStaticParams() {
@@ -52,7 +47,7 @@ export default async function DocPage({
   const ui = getUi(locale);
   const { prev, next } = getDocNav(slug, locale);
   const toc = extractToc(doc.content);
-  const exerciseFiles = await getExerciseFiles(doc.filePath);
+  const exerciseFiles = await getExerciseFiles(doc.filePath, doc.content);
 
   return (
     <div className="min-h-screen pt-14">
@@ -85,19 +80,10 @@ export default async function DocPage({
               <p className="mt-3 text-xs text-[var(--faint)]">{doc.filePath}</p>
             </header>
 
-            <article className="prose-portal">
-              <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
-                rehypePlugins={[rehypeRaw, rehypeSlugify, rehypeHighlight]}
-              >
-                {doc.content}
-              </ReactMarkdown>
-            </article>
-
-            <ExerciseCodePanel
-              locale={locale}
-              docRelFile={doc.filePath}
+            <DocMarkdown
+              content={doc.content}
               files={exerciseFiles}
+              locale={locale}
             />
 
             <nav className="mt-16 grid grid-cols-1 gap-3 border-t border-[var(--line)] pt-8 sm:grid-cols-2">
