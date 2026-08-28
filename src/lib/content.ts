@@ -151,6 +151,31 @@ export function stripLocaleSwitcher(markdown: string): string {
     .replace(/\n{3,}/g, "\n\n");
 }
 
+const UPSTREAM_REPO =
+  "https://github.com/WenyuChiou/awesome-agentic-ai-zh";
+const UPSTREAM_BLOB = `${UPSTREAM_REPO}/blob/main/`;
+const UPSTREAM_TREE = `${UPSTREAM_REPO}/tree/main/`;
+
+function contentHasMarkdown(resolvedMd: string): boolean {
+  const abs = path.join(CONTENT_DIR, resolvedMd);
+  if (fs.existsSync(abs)) return true;
+  const dir = path.dirname(abs);
+  if (!fs.existsSync(dir)) return false;
+  const stem = path
+    .basename(resolvedMd)
+    .replace(/\.zh-Hans\.md$/i, "")
+    .replace(/\.en\.md$/i, "")
+    .replace(/\.md$/i, "");
+  return fs.readdirSync(dir).some((name) => {
+    if (!name.endsWith(".md")) return false;
+    const n = name
+      .replace(/\.zh-Hans\.md$/i, "")
+      .replace(/\.en\.md$/i, "")
+      .replace(/\.md$/i, "");
+    return n === stem;
+  });
+}
+
 export function rewriteDocLinks(
   markdown: string,
   currentRelFile: string,
@@ -201,19 +226,42 @@ export function rewriteDocLinks(
       ) {
         // Keep sibling locale switchers pointing upstream
         if (/\.en\.md$/i.test(rawPath) || (locale === "en" && /\.zh-Hans\.md$/i.test(rawPath))) {
-          const upstream = `https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/${resolved}`;
+          const upstream = `${UPSTREAM_BLOB}${resolved}`;
           return `[${text}](${upstream}${hash ? `#${hash}` : ""})`;
         }
       }
 
       if (/\.md$/i.test(resolved)) {
-        const slug = fileToSlug(resolved).join("/");
-        return `[${text}](${localePath(locale, `/docs/${slug}`)}${hash ? `#${hash}` : ""})`;
+        if (contentHasMarkdown(resolved)) {
+          const slug = fileToSlug(resolved).join("/");
+          return `[${text}](${localePath(locale, `/docs/${slug}`)}${hash ? `#${hash}` : ""})`;
+        }
+        // Not in local content snapshot → upstream
+        return `[${text}](${UPSTREAM_BLOB}${resolved}${hash ? `#${hash}` : ""})`;
+      }
+
+      // Directory links (e.g. ../03-react-from-scratch/) → README doc page
+      const asDir = resolved.replace(/\/$/, "");
+      const baseName = path.posix.basename(asDir);
+      if (asDir && !/\.[a-z0-9]+$/i.test(baseName)) {
+        const absDir = path.join(CONTENT_DIR, asDir);
+        if (fs.existsSync(absDir) && fs.statSync(absDir).isDirectory()) {
+          if (contentHasMarkdown(`${asDir}/README.md`)) {
+            const slug = fileToSlug(`${asDir}/README.md`).join("/");
+            return `[${text}](${localePath(locale, `/docs/${slug}`)}${hash ? `#${hash}` : ""})`;
+          }
+          return `[${text}](${UPSTREAM_TREE}${asDir}${hash ? `#${hash}` : ""})`;
+        }
       }
 
       if (/\.(png|jpe?g|gif|svg|webp)$/i.test(resolved)) {
         const cdn = `https://cdn.jsdelivr.net/gh/WenyuChiou/awesome-agentic-ai-zh@main/${resolved}`;
         return `[${text}](${cdn})`;
+      }
+
+      // Code / other files not shipped in content/ → upstream GitHub
+      if (/\.[a-z0-9]+$/i.test(path.posix.basename(resolved))) {
+        return `[${text}](${UPSTREAM_BLOB}${resolved}${hash ? `#${hash}` : ""})`;
       }
 
       return full;
