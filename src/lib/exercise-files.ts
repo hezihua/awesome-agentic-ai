@@ -1,5 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
+import type { ExerciseFile } from "@/lib/exercise-file-refs";
+
+export type { ExerciseFile } from "@/lib/exercise-file-refs";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 const UPSTREAM_API =
@@ -21,14 +24,6 @@ const CODE_EXT = new Set([
   ".txt",
   ".ipynb",
 ]);
-
-export type ExerciseFile = {
-  name: string;
-  /** Path relative to content root / upstream repo */
-  path: string;
-  content: string;
-  language: string;
-};
 
 function langOf(name: string): string {
   const ext = path.extname(name).toLowerCase();
