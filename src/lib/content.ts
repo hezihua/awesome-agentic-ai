@@ -141,11 +141,15 @@ function parseMarkdownFile(
   };
 }
 
-/** Remove upstream in-doc language switcher blockquotes; use the site header instead. */
+/** Remove upstream in-doc language switchers (blockquote + HTML); use the site header instead. */
 export function stripLocaleSwitcher(markdown: string): string {
   return markdown
     .replace(
       /^>\s*(?=.*繁體中文)(?=.*(?:简体中文|簡體中文))(?=.*English).+\n?/gm,
+      ""
+    )
+    .replace(
+      /<div\b[^>]*\balign=["']right["'][^>]*>[\s\S]*?繁體中文[\s\S]*?(?:简体中文|簡體中文)[\s\S]*?English[\s\S]*?<\/div>\s*/gi,
       ""
     )
     .replace(/\n{3,}/g, "\n\n");
