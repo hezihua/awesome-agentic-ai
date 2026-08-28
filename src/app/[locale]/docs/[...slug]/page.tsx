@@ -4,9 +4,11 @@ import ReactMarkdown from "react-markdown";
 import rehypeHighlight from "rehype-highlight";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
+import { ExerciseCodePanel } from "@/components/ExerciseCodePanel";
 import TableOfContents from "@/components/TableOfContents";
 import { getUi } from "@/lib/atlas";
 import { getAllDocs, getDoc, getDocNav } from "@/lib/content";
+import { getExerciseFiles } from "@/lib/exercise-files";
 import { LOCALES, isLocale, localePath, type Locale } from "@/lib/i18n";
 import { rehypeSlugify } from "@/lib/rehype-slugify";
 import { extractToc } from "@/lib/toc";
@@ -50,6 +52,7 @@ export default async function DocPage({
   const ui = getUi(locale);
   const { prev, next } = getDocNav(slug, locale);
   const toc = extractToc(doc.content);
+  const exerciseFiles = await getExerciseFiles(doc.filePath);
 
   return (
     <div className="min-h-screen pt-14">
@@ -90,6 +93,12 @@ export default async function DocPage({
                 {doc.content}
               </ReactMarkdown>
             </article>
+
+            <ExerciseCodePanel
+              locale={locale}
+              docRelFile={doc.filePath}
+              files={exerciseFiles}
+            />
 
             <nav className="mt-16 grid grid-cols-1 gap-3 border-t border-[var(--line)] pt-8 sm:grid-cols-2">
               {prev ? (
