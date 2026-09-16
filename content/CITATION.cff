@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+title: "awesome-agentic-ai-zh: A trilingual (English / 繁中 / 简中) learning roadmap for agentic AI"
+message: "If you use this learning roadmap, please cite it using the metadata below."
+type: software
+authors:
+  - family-names: Chiou
+    given-names: Wenyu
+    alias: WenyuChiou
+  - name: "awesome-agentic-ai-zh contributors"
+repository-code: "https://github.com/WenyuChiou/awesome-agentic-ai-zh"
+url: "https://github.com/WenyuChiou/awesome-agentic-ai-zh"
+abstract: >-
+  A community-curated, trilingual (Traditional Chinese / Simplified
+  Chinese / English) learning roadmap for agentic AI — covering LLM
+  basics, prompt design, tool use, agent frameworks, the Claude Code
+  ecosystem, memory/RAG, and multi-agent production, organized as
+  staged tracks and audience-specific branches.
+license: MIT
+version: "2026.09.10"
+date-released: "2026-09-10"
+keywords:
+  - agentic-ai
+  - ai-agents
+  - llm-agents
+  - claude-code
+  - claude-skills
+  - mcp
+  - model-context-protocol
+  - learning-roadmap
+  - trilingual
+  - tutorial

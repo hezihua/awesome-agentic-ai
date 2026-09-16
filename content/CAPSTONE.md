@@ -17,7 +17,7 @@
 
 ## Track A Capstone — CLI Power User
 
-**進入條件**:Stage 0–2 + A1 + A2 + Stage 5 + A3 都過了各自的自我檢查(Stage 8 是兩軌共用 hub,建議完成、但不擋 capstone 入場——Track A capstone 聚焦 CLI 工作流)。
+**進入條件**：Stage 0–2 + A1 + A2 + Stage 5 的 Track A 核心 5.1–5.4 + A3 都通過自我檢查。Stage 5 的 5.5–5.8 不擋入場。建議接著完成 Stage 8，但它也不擋 Capstone 入場；Track A Capstone 聚焦 CLI 工作流。
 
 **題目**:組一條**你會重複用**的 CLI-agent 工作流,把一件你現在手動做的事自動化。
 
@@ -58,11 +58,11 @@
 
 - 有 tool use
 - 有一個對外 interface(CLI / API / chat 任一,對應 Stage 8)
-- **有明確 evaluation**:自己定 ≥ 5 個測試案例 + 量出通過率 / 質性評估(這條不可省——這套課最容易跳過的就是「驗證」)
+- **有明確 evaluation**：準備一份有版本的 Eval suite，至少 5 個 development cases + 3 個 frozen holdout cases；寫清楚成功條件、grader、trial 次數與 baseline，再量通過率／質性結果（這條不可省——這套課最容易跳過的就是「驗證」）
 - **失敗模式分析**:寫清楚它在什麼情況會壞、你怎麼知道
 - 架構草圖(一張圖或一段文字說明元件與資料流)
 
-**交付物**:程式 repo + 架構說明 + evaluation 結果(哪怕只是 N 案例 / 通過率表)+ `README` + 200 字內反思(架構哪裡判斷錯、重來會怎麼改)。
+**交付物**：程式 repo + 架構說明 + Eval 報告（dataset version、development／holdout、每題結果、trial 次數、baseline 與 regression）+ `README` + 200 字內反思（架構哪裡判斷錯、重來會怎麼改）。
 
 **時間**:8–20 小時(不含學 stage 的時間)。
 
@@ -73,7 +73,7 @@
 | 問題定義 | 模糊 | 有目標 | 範圍清楚、可驗收 | 清楚且說明為何值得做 |
 | 架構 | 無設計 | 能跑就好 | multi-agent / RAG 選型有理由 | 設計權衡寫得出來 |
 | 實作正確性 | 跑不動 | 主流程能跑 | 邊界情況也處理 | 穩定且程式可讀 |
-| **評測嚴謹度** | 沒測 | 手動試幾次 | ≥5 案例 + 通過率 | 有 baseline 對照 / 回歸可重跑 |
+| **評測嚴謹度** | 沒測 | 手動試幾次 | 有版本化 development／holdout cases、成功條件與 grader | 多次 trials、baseline 對照、回歸可重跑且 holdout 沒被拿來調參 |
 | 韌性與失敗分析 | 無 | 提到風險 | 具體失敗模式 | 失敗有偵測 + 緩解 |
 | 介面與文件 | 無 | 能跑 | interface + README 清楚 | 別人能直接用 |
 | 反思 | 無 | 一句話 | 具體(指得出架構或元件選擇的具體問題) | 指得出架構級的下一步 |

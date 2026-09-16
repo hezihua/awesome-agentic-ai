@@ -1,0 +1,39 @@
+[book]
+title = "awesome-agentic-ai-zh"
+description = "AI Agent 學習地圖 — 從第一行 LLM API 到自己打造多 agent 系統"
+authors = ["Wenyu Chiou"]
+language = "zh-TW"
+multilingual = false
+src = "book/src"
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "navy"
+git-repository-url = "https://github.com/WenyuChiou/awesome-agentic-ai-zh"
+edit-url-template = "https://github.com/WenyuChiou/awesome-agentic-ai-zh/edit/main/{path}"
+site-url = "/awesome-agentic-ai-zh/"
+
+[output.html.search]
+enable = true
+limit-results = 30
+use-boolean-and = true
+boost-title = 2
+boost-hierarchy = 2
+boost-paragraph = 1
+expand = true
+
+[output.html.fold]
+enable = true
+level = 1
+
+# Note: mdbook-mermaid preprocessor was removed. The repo no longer
+# uses ```mermaid``` code blocks (replaced with PNG images + ASCII
+# diagrams) and the v0.17.0 preprocessor was failing with "Unable to
+# parse the input" on stale runs. To re-enable: install mdbook-mermaid,
+# run `mdbook-mermaid install .`, and add back:
+#   additional-js = ["mermaid.min.js", "mermaid-init.js"]
+#   [preprocessor.mermaid]
+#   command = "mdbook-mermaid"
+
+[build]
+build-dir = "book/dist"
