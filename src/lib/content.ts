@@ -141,18 +141,33 @@ function parseMarkdownFile(
   };
 }
 
-/** Remove upstream in-doc language switchers (blockquote + HTML); use the site header instead. */
+/** Remove upstream in-doc language switchers; use the site header instead. */
 export function stripLocaleSwitcher(markdown: string): string {
-  return markdown
-    .replace(
-      /^>\s*(?=.*繁體中文)(?=.*(?:简体中文|簡體中文))(?=.*English).+\n?/gm,
-      ""
-    )
-    .replace(
-      /<div\b[^>]*\balign=["']right["'][^>]*>[\s\S]*?繁體中文[\s\S]*?(?:简体中文|簡體中文)[\s\S]*?English[\s\S]*?<\/div>\s*/gi,
-      ""
-    )
-    .replace(/\n{3,}/g, "\n\n");
+  const hasAllLocales = (s: string) =>
+    /繁體中文/.test(s) &&
+    /(?:简体中文|簡體中文)/.test(s) &&
+    /English/.test(s) &&
+    /\|/.test(s);
+
+  return (
+    markdown
+      // <div align="right">…繁體…|…简体…|…English…</div>
+      .replace(
+        /<div\b[^>]*\balign=["']right["'][^>]*>[\s\S]*?繁體中文[\s\S]*?(?:简体中文|簡體中文)[\s\S]*?English[\s\S]*?<\/div>\s*/gi,
+        ""
+      )
+      // > **繁體中文** | [简体中文](...) | [English](...)
+      .replace(/^>\s*.+\n?/gm, (line) => (hasAllLocales(line) ? "" : line))
+      // [繁體中文](...) | [English](...) | [简体中文](...)  (plain line after H1)
+      .replace(/^(?!>\s).+\n?/gm, (line) => {
+        const trimmed = line.trim();
+        if (!hasAllLocales(trimmed)) return line;
+        // Only strip short switcher rows, not body paragraphs
+        if (trimmed.length > 220) return line;
+        return "";
+      })
+      .replace(/\n{3,}/g, "\n\n")
+  );
 }
 
 const UPSTREAM_REPO =
