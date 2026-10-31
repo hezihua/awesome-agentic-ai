@@ -8,7 +8,7 @@
 
 ## 先分清楚：agent 不等於模型或 API
 
-<table>
+<table align="center">
 <thead>
 <tr><th scope="col">種類</th><th scope="col">它負責什麼</th><th scope="col">例子</th><th scope="col">不要混淆</th></tr>
 </thead>
@@ -23,7 +23,7 @@
 
 ## 用情境找入口
 
-<table>
+<table align="center">
 <thead>
 <tr><th scope="col">你的條件</th><th scope="col">先查哪一類</th><th scope="col">要記錄的差異</th></tr>
 </thead>
@@ -37,29 +37,34 @@
 
 ## 9 個 CLI 工具
 
-完整表預設收合；展開後請把「查核日」與你的安裝版本一起記下。官方資料查核日：**2026-08-30 UTC**。
+以下工具資料直接展開。請把「查核日」與你的安裝版本一起記下。官方資料查核日：**2026-08-30 UTC**。
 
-<details markdown="1">
-<summary>展開 9 個 CLI 的安裝、認證、provider 與安全事實</summary>
+> **穩定通道與局部查核（2026-10-11 UTC）：** 新手基準優先選官方 stable release。只有驗證特定功能時，才在隔離 demo repo 試用 alpha、preview 或 nightly；
+> 先讀 release notes、固定 exact version，並保留回退方式。官方發布頁將 [Codex CLI `0.163.0-alpha.5`](https://github.com/openai/codex/releases/tag/rust-v0.163.0-alpha.5)
+> 與 [Gemini CLI `0.65.0-nightly.20261010.g9b6e0265d`](https://github.com/google-gemini/gemini-cli/releases/tag/v0.65.0-nightly.20261010.g9b6e0265d) 標記為 pre-release，
+> 兩者都不作為穩定的新手入門基準。此處僅局部查核發布通道；整張表最後一次完整查核仍為 2026-08-30 UTC。
 
-<table>
-<thead>
-<tr><th scope="col">類型</th><th scope="col">工具</th><th scope="col">現在適合誰</th><th scope="col">模型／provider 選擇</th><th scope="col">登入方式</th><th scope="col">安全起手式</th><th scope="col">狀態</th><th scope="col">官方來源</th></tr>
-</thead>
+<div class="reader-resource-catalog" role="region" tabindex="0" aria-label="CLI 工具與學習資源">
+<table align="center">
+<thead><tr><th scope="col">分類</th><th scope="col">專案／文件</th><th scope="col">評分</th><th scope="col">用途</th><th scope="col">限制</th></tr></thead>
 <tbody>
-<tr><th scope="rowgroup" rowspan="4">官方模型生態</th><td>Claude Code</td><td>要在終端機使用 Anthropic 生態的人</td><td>Claude；Anthropic API</td><td>Claude 帳號或 Anthropic API key</td><td>用 demo repo；保留 permission prompt</td><td>Anthropic 官方 terminal、desktop、IDE 與 cloud 介面之一</td><td><a href="https://code.claude.com/docs/en/overview">文件</a> · <a href="https://github.com/anthropics/claude-code">repo</a></td></tr>
-<tr><td>Codex CLI</td><td>要在終端機使用 OpenAI／ChatGPT 登入的人</td><td>GPT 系列；OpenAI API</td><td>ChatGPT 登入或 OpenAI API key</td><td>使用預設 approval 與 workspace sandbox；先看 diff</td><td>OpenAI 開源 terminal coding agent</td><td><a href="https://learn.chatgpt.com/docs/codex/cli">文件</a> · <a href="https://github.com/openai/codex">repo</a></td></tr>
-<tr><td>Gemini CLI</td><td>已有 Google 認證，想在 terminal 使用 Gemini 的人</td><td>Gemini；Google AI API 或 Vertex AI</td><td>Google 登入、Gemini API key 或 Vertex AI</td><td>使用 approval 模式；需要時明確開啟 <code>--sandbox</code></td><td>Google 開源 terminal agent</td><td><a href="https://google-gemini.github.io/gemini-cli/">文件</a> · <a href="https://github.com/google-gemini/gemini-cli">repo</a></td></tr>
-<tr><td>Grok Build</td><td>要試用 xAI Grok terminal TUI 的人</td><td>Grok；xAI 登入或 API key</td><td>首次互動瀏覽器登入；CI 可用 <code>XAI_API_KEY</code></td><td>先用 demo repo；不要複製 <code>~/.grok/auth.json</code></td><td>xAI 官方開源 TUI coding agent</td><td><a href="https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/02-authentication.md">認證</a> · <a href="https://github.com/xai-org/grok-build">repo</a></td></tr>
+<tr><th scope="rowgroup" rowspan="4" align="center" valign="middle" width="80">官方模型生態</th><td><div data-field="entry"><strong>Claude Code</strong></div></td><td align="center" valign="middle">—</td><td><div data-field="audience"><strong>現在適合誰：</strong> 要在終端機使用 Anthropic 生態的人</div><div data-field="models"><strong>模型／provider 選擇：</strong> Claude；Anthropic API</div></td><td><div data-field="auth"><strong>登入方式：</strong> Claude 帳號或 Anthropic API key</div><div data-field="safety"><strong>安全起手式：</strong> 用 demo repo；保留 permission prompt</div><div data-field="status"><strong>狀態：</strong> Anthropic 官方 terminal、desktop、IDE 與 cloud 介面之一</div><div data-field="sources"><strong>官方來源：</strong> <a href="https://code.claude.com/docs/en/overview">文件</a> · <a href="https://github.com/anthropics/claude-code">repo</a></div></td></tr>
+<tr><td><div data-field="entry"><strong>Codex CLI</strong></div></td><td align="center" valign="middle">—</td><td><div data-field="audience"><strong>現在適合誰：</strong> 要在終端機使用 OpenAI／ChatGPT 登入的人</div><div data-field="models"><strong>模型／provider 選擇：</strong> GPT 系列；OpenAI API</div></td><td><div data-field="auth"><strong>登入方式：</strong> ChatGPT 登入或 OpenAI API key</div><div data-field="safety"><strong>安全起手式：</strong> 使用預設 approval 與 workspace sandbox；先看 diff</div><div data-field="status"><strong>狀態：</strong> OpenAI 開源 terminal coding agent</div><div data-field="sources"><strong>官方來源：</strong> <a href="https://learn.chatgpt.com/docs/codex/cli">文件</a> · <a href="https://github.com/openai/codex">repo</a></div></td></tr>
+<tr><td><div data-field="entry"><strong>Gemini CLI</strong></div></td><td align="center" valign="middle">—</td><td><div data-field="audience"><strong>現在適合誰：</strong> 已有 Google 認證，想在 terminal 使用 Gemini 的人</div><div data-field="models"><strong>模型／provider 選擇：</strong> Gemini；Google AI API 或 Vertex AI</div></td><td><div data-field="auth"><strong>登入方式：</strong> Google 登入、Gemini API key 或 Vertex AI</div><div data-field="safety"><strong>安全起手式：</strong> 使用 approval 模式；需要時明確開啟 <code>--sandbox</code></div><div data-field="status"><strong>狀態：</strong> Google 開源 terminal agent</div><div data-field="sources"><strong>官方來源：</strong> <a href="https://google-gemini.github.io/gemini-cli/">文件</a> · <a href="https://github.com/google-gemini/gemini-cli">repo</a></div></td></tr>
+<tr><td><div data-field="entry"><strong>Grok Build</strong></div></td><td align="center" valign="middle">—</td><td><div data-field="audience"><strong>現在適合誰：</strong> 要試用 xAI Grok terminal TUI 的人</div><div data-field="models"><strong>模型／provider 選擇：</strong> Grok；xAI 登入或 API key</div></td><td><div data-field="auth"><strong>登入方式：</strong> 首次互動瀏覽器登入；CI 可用 <code>XAI_API_KEY</code></div><div data-field="safety"><strong>安全起手式：</strong> 先用 demo repo；不要複製 <code>~/.grok/auth.json</code></div><div data-field="status"><strong>狀態：</strong> xAI 官方開源 TUI coding agent</div><div data-field="sources"><strong>官方來源：</strong> <a href="https://github.com/xai-org/grok-build/blob/main/crates/codegen/xai-grok-pager/docs/user-guide/02-authentication.md">認證</a> · <a href="https://github.com/xai-org/grok-build">repo</a></div></td></tr>
 </tbody>
 <tbody>
-<tr><th scope="rowgroup" rowspan="5">可換 provider</th><td>OpenCode</td><td>需要在多個 provider 間切換的人</td><td>多 provider；可接 OpenRouter 或相容 endpoint</td><td>依 provider 設定 API key、OAuth 或環境變數</td><td>先檢查 permission 設定；只在 demo repo 試外部目錄</td><td>開源 terminal coding agent；<code>AGENTS.md</code> 優先，沒有時才用 <code>CLAUDE.md</code> 相容 fallback</td><td><a href="https://opencode.ai/docs/providers/">provider</a> · <a href="https://github.com/anomalyco/opencode">repo</a></td></tr>
-<tr><td>goose</td><td>需要 CLI、desktop 或 API，並想接工具與資料來源的人</td><td>15+ provider，包含 Anthropic、OpenAI、Google、Ollama、OpenRouter</td><td>provider API key，或部分既有訂閱的 ACP 登入</td><td>先用低權限 extension 與 sandbox；不連 production 資料</td><td>AAIF 的開源本機 agent，提供 CLI、desktop、API</td><td><a href="https://block.github.io/goose/">文件</a> · <a href="https://github.com/aaif-goose/goose">repo</a></td></tr>
-<tr><td>Aider</td><td>希望以 git diff／commit 管理程式修改的人</td><td>多家 cloud API、OpenRouter、OpenAI-compatible endpoint 與本機模型</td><td>provider API key、設定檔或環境變數</td><td>先用乾淨 demo repo；留意 Aider 的 git auto-commit 行為</td><td>開源 terminal pair-programming 工具，官方文件明列 git 整合</td><td><a href="https://aider.chat/docs/">文件</a> · <a href="https://github.com/Aider-AI/aider">repo</a></td></tr>
-<tr><td>Pi</td><td>想從小核心開始，用 extensions、skills 或 RPC 擴充的人</td><td>訂閱 provider、API key provider、自訂 provider；可接本機 endpoint</td><td><code>/login</code> 或 provider API key</td><td>Pi 沒有內建 sandbox；用 disposable repo 或容器，並人工審查命令</td><td>可擴充的 minimal terminal coding harness</td><td><a href="https://pi.dev/docs/latest/providers">provider</a> · <a href="https://github.com/earendil-works/pi">repo</a></td></tr>
-<tr><td>Hermes Agent</td><td>要在 terminal、desktop 或聊天平台使用同一 agent 的人</td><td>Nous Portal、OpenRouter、Anthropic、Google 與其他 provider</td><td><code>hermes model</code> 設定 API key 或 OAuth；Nous Portal 可用 OAuth</td><td>先在低風險 repo；把 skills、MCP 與 provider 權限逐項開啟</td><td>Nous Research 的開源 agent，文件提供 CLI 與多介面整合</td><td><a href="https://hermes-agent.nousresearch.com/docs/integrations/providers/">provider</a> · <a href="https://github.com/NousResearch/hermes-agent">repo</a></td></tr>
+<tr><th scope="rowgroup" rowspan="5" align="center" valign="middle" width="80">可換 provider</th><td><div data-field="entry"><strong>OpenCode</strong></div></td><td align="center" valign="middle">—</td><td><div data-field="audience"><strong>現在適合誰：</strong> 需要在多個 provider 間切換的人</div><div data-field="models"><strong>模型／provider 選擇：</strong> 多 provider；可接 OpenRouter 或相容 endpoint</div></td><td><div data-field="auth"><strong>登入方式：</strong> 依 provider 設定 API key、OAuth 或環境變數</div><div data-field="safety"><strong>安全起手式：</strong> 先檢查 permission 設定；只在 demo repo 試外部目錄</div><div data-field="status"><strong>狀態：</strong> 開源 terminal coding agent；<code>AGENTS.md</code> 優先，沒有時才用 <code>CLAUDE.md</code> 相容 fallback</div><div data-field="sources"><strong>官方來源：</strong> <a href="https://opencode.ai/docs/providers/">provider</a> · <a href="https://github.com/anomalyco/opencode">repo</a></div></td></tr>
+<tr><td><div data-field="entry"><strong>goose</strong></div></td><td align="center" valign="middle">—</td><td><div data-field="audience"><strong>現在適合誰：</strong> 需要 CLI、desktop 或 API，並想接工具與資料來源的人</div><div data-field="models"><strong>模型／provider 選擇：</strong> 15+ provider，包含 Anthropic、OpenAI、Google、Ollama、OpenRouter</div></td><td><div data-field="auth"><strong>登入方式：</strong> provider API key，或部分既有訂閱的 ACP 登入</div><div data-field="safety"><strong>安全起手式：</strong> 先用低權限 extension 與 sandbox；不連 production 資料</div><div data-field="status"><strong>狀態：</strong> AAIF 的開源本機 agent，提供 CLI、desktop、API</div><div data-field="sources"><strong>官方來源：</strong> <a href="https://block.github.io/goose/">文件</a> · <a href="https://github.com/aaif-goose/goose">repo</a></div></td></tr>
+<tr><td><div data-field="entry"><strong>Aider</strong></div></td><td align="center" valign="middle">—</td><td><div data-field="audience"><strong>現在適合誰：</strong> 希望以 git diff／commit 管理程式修改的人</div><div data-field="models"><strong>模型／provider 選擇：</strong> 多家 cloud API、OpenRouter、OpenAI-compatible endpoint 與本機模型</div></td><td><div data-field="auth"><strong>登入方式：</strong> provider API key、設定檔或環境變數</div><div data-field="safety"><strong>安全起手式：</strong> 先用乾淨 demo repo；留意 Aider 的 git auto-commit 行為</div><div data-field="status"><strong>狀態：</strong> 開源 terminal pair-programming 工具，官方文件明列 git 整合</div><div data-field="sources"><strong>官方來源：</strong> <a href="https://aider.chat/docs/">文件</a> · <a href="https://github.com/Aider-AI/aider">repo</a></div></td></tr>
+<tr><td><div data-field="entry"><strong>Pi</strong></div></td><td align="center" valign="middle">—</td><td><div data-field="audience"><strong>現在適合誰：</strong> 想從小核心開始，用 extensions、skills 或 RPC 擴充的人</div><div data-field="models"><strong>模型／provider 選擇：</strong> 訂閱 provider、API key provider、自訂 provider；可接本機 endpoint</div></td><td><div data-field="auth"><strong>登入方式：</strong> <code>/login</code> 或 provider API key</div><div data-field="safety"><strong>安全起手式：</strong> Pi 沒有內建 sandbox；用 disposable repo 或容器，並人工審查命令</div><div data-field="status"><strong>狀態：</strong> 可擴充的 minimal terminal coding harness</div><div data-field="sources"><strong>官方來源：</strong> <a href="https://pi.dev/docs/latest/providers">provider</a> · <a href="https://github.com/earendil-works/pi">repo</a></div></td></tr>
+<tr><td><div data-field="entry"><strong>Hermes Agent</strong></div></td><td align="center" valign="middle">—</td><td><div data-field="audience"><strong>現在適合誰：</strong> 要在 terminal、desktop 或聊天平台使用同一 agent 的人</div><div data-field="models"><strong>模型／provider 選擇：</strong> Nous Portal、OpenRouter、Anthropic、Google 與其他 provider</div></td><td><div data-field="auth"><strong>登入方式：</strong> <code>hermes model</code> 設定 API key 或 OAuth；Nous Portal 可用 OAuth</div><div data-field="safety"><strong>安全起手式：</strong> 先在低風險 repo；把 skills、MCP 與 provider 權限逐項開啟</div><div data-field="status"><strong>狀態：</strong> Nous Research 的開源 agent，文件提供 CLI 與多介面整合</div><div data-field="sources"><strong>官方來源：</strong> <a href="https://hermes-agent.nousresearch.com/docs/integrations/providers/">provider</a> · <a href="https://github.com/NousResearch/hermes-agent">repo</a></div></td></tr>
 </tbody>
 </table>
+</div>
+
+<details markdown="1">
+<summary>OpenRouter 與 Ollama 的補充說明</summary>
 
 ### OpenRouter 與 Ollama 放在哪裡？
 

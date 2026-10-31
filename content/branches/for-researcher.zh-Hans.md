@@ -45,11 +45,38 @@
 
 <a id="层级建议"></a>
 ## 📚 先选一个入口
-| 你想做什么 | 先用什么 | 为什么 | 推荐度 |
-|---|---|---|---|
-| 用浏览器问一篇 paper | [Gemini Notebook（原 NotebookLM）](https://notebooklm.google.com/) | 上传来源后可从 citation 回到原文 | ⭐⭐⭐⭐⭐ |
-| 整理自己的文献库 | [Zotero](https://www.zotero.org/) | 先整理 PDF、作者、年份和笔记 | ⭐⭐⭐⭐⭐ |
-| 用 Python 做可重跑的文献 RAG | [PaperQA2](https://github.com/Future-House/paper-qa) | 以科学文件和引用为中心 | ⭐⭐⭐⭐⭐ |
+<div class="reader-route-table" role="region" tabindex="0" aria-label="研究入口比较">
+<table align="center">
+<thead>
+<tr>
+<th scope="col" align="left">你想做什么</th>
+<th scope="col" align="left" width="340">先用什么</th>
+<th scope="col" align="left">为什么</th>
+<th scope="col" align="left">推荐度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">用浏览器问一篇 paper</td>
+<td align="left"><a href="https://notebooklm.google.com/">Gemini Notebook</a>（原 NotebookLM）</td>
+<td align="left">上传来源后可从 citation 回到原文</td>
+<td align="left">⭐⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td align="left">整理自己的文献库</td>
+<td align="left"><a href="https://www.zotero.org/">Zotero</a></td>
+<td align="left">先整理 PDF、作者、年份和笔记</td>
+<td align="left">⭐⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td align="left">用 Python 做可重跑的文献 RAG</td>
+<td align="left"><a href="https://github.com/Future-House/paper-qa">PaperQA2</a></td>
+<td align="left">以科学文件和引用为中心</td>
+<td align="left">⭐⭐⭐⭐⭐</td>
+</tr>
+</tbody>
+</table>
+</div>
 
 Gemini Notebook 是 Google 于 2026-07-16 为 NotebookLM 使用的现行名称；旧名称仅用于辨识。citation 是查证入口，不保证答案正确。
 
@@ -67,12 +94,14 @@ Gemini Notebook 是 Google 于 2026-07-16 为 NotebookLM 使用的现行名称�
 ## ⭐ 精选研究工具与项目
 <small>工具名称、授权与 repository 状态于 2026-08-29 UTC 依据官方页面与 GitHub API 核查。推荐度是本学习地图的编辑评分，不是 GitHub stars 或排行榜。</small>
 
-<table><thead><tr><th scope="col">分类</th><th scope="col">官方工具／项目</th><th scope="col">适合做什么</th><th scope="col">状态／授权</th><th scope="col">先知道的限制</th><th scope="col">推荐度</th></tr></thead>
-<tbody><tr><th scope="rowgroup" rowspan="3">开始与整理</th><td><a href="https://notebooklm.google.com/">Gemini Notebook（原 NotebookLM）</a></td><td>用来源问答并回到 citation</td><td>正式可用；云服务</td><td>引用仍要逐条核对；私人数据先看政策</td><td>⭐⭐⭐⭐⭐</td></tr><tr><td><a href="https://www.zotero.org/">Zotero</a></td><td>管理 PDF、metadata、笔记与引用</td><td>正式可用；桌面／Web</td><td>解决来源管理，不替你判断研究质量</td><td>⭐⭐⭐⭐⭐</td></tr><tr><td><a href="https://github.com/Future-House/paper-qa">Future-House/paper-qa</a></td><td>用 Python 建立 citation-grounded literature RAG</td><td>活跃；Apache-2.0</td><td>需设置模型与文献来源，质量仍要自行评测</td><td>⭐⭐⭐⭐⭐</td></tr></tbody>
-<tbody><tr><th scope="rowgroup" rowspan="4">探索与写作</th><td><a href="https://github.com/assafelovic/gpt-researcher">assafelovic/gpt-researcher</a></td><td>多来源搜索与 research brief</td><td>活跃；Apache-2.0</td><td>适合找候选来源，不是引用正确性的最后裁判</td><td>⭐⭐⭐⭐</td></tr><tr><td><a href="https://github.com/stanford-oval/storm">stanford-oval/storm</a></td><td>整理多种观点，再写大纲与长文</td><td>可用；MIT；更新较慢</td><td>使用前确认依赖与数据来源仍兼容</td><td>⭐⭐⭐⭐</td></tr><tr><td><a href="https://github.com/kaixindelele/ChatPaper">kaixindelele/ChatPaper</a></td><td>中文 paper 摘要、翻译与写作辅助</td><td>可用；CC BY-NC-ND 4.0</td><td>禁止商业使用与改作，不是一般开源程序授权</td><td>⭐⭐⭐⭐⭐</td></tr><tr><td><a href="https://github.com/MuiseDestiny/zotero-gpt">MuiseDestiny/zotero-gpt</a></td><td>在 Zotero 中与文献互动</td><td>可用；AGPL-3.0</td><td>插件与模型设置要另外维护</td><td>⭐⭐⭐⭐</td></tr></tbody>
-<tbody><tr><th scope="rowgroup" rowspan="5">可重复与证据</th><td><a href="https://github.com/asreview/asreview">asreview/asreview</a></td><td>用 active learning 辅助系统性回顾筛选文献</td><td>活跃；Apache-2.0</td><td>排序能省时间；纳入／排除理由仍需人工筛选并记录</td><td>⭐⭐⭐⭐</td></tr><tr><td><a href="https://github.com/treeverse/dvc">treeverse/dvc</a></td><td>保存数据版本、模型和可重跑 pipeline</td><td>活跃；Apache-2.0</td><td>需要 Git 与数据存储位置；版本不证明结论正确</td><td>⭐⭐⭐⭐⭐</td></tr><tr><td><a href="https://github.com/mlflow/mlflow">mlflow/mlflow</a></td><td>记录每次 run 的参数、指标、数据和产物</td><td>活跃；Apache-2.0</td><td>有记录不等于实验有效；不要把密钥或受试者数据写入 tracking</td><td>⭐⭐⭐⭐⭐</td></tr><tr><td><a href="https://zenodo.org/">Zenodo</a></td><td>保存并发布数据、代码和研究材料，取得 DOI</td><td>正式可用；云服务</td><td>metadata 会公开；私人资料按机构规则去标识或使用核准环境</td><td>⭐⭐⭐⭐⭐</td></tr><tr><td><a href="https://github.com/jupyterhub/repo2docker">jupyterhub/repo2docker</a></td><td>从 repository 设置重建可运行研究环境</td><td>活跃；BSD-3-Clause</td><td>container 能保存环境；仍需另存数据、硬件需求与外部服务</td><td>⭐⭐⭐⭐</td></tr></tbody>
-<tbody><tr><th scope="rowgroup" rowspan="2">研究自动化</th><td><a href="https://github.com/flonat/flonat-research">flonat/flonat-research</a></td><td>参考研究 skills、agents、hooks 与 LaTeX 流程</td><td>活跃；MIT</td><td>基础设施示例，不适用于所有领域</td><td>⭐⭐⭐</td></tr><tr><td><a href="https://github.com/SakanaAI/AI-Scientist-v2">SakanaAI/AI-Scientist-v2</a></td><td>研究端到端 multi-agent 实验架构</td><td>研究参考；custom source-code license</td><td>授权要求披露机器生成的科学稿件；作者仍要人工审查并负责</td><td>⭐⭐⭐⭐</td></tr></tbody>
-<tbody><tr><th scope="rowgroup" rowspan="1">历史</th><td><a href="https://github.com/langchain-ai/open_deep_research">langchain-ai/open_deep_research</a></td><td>阅读早期 deep-research agent 架构</td><td>已封存；MIT</td><td>只作历史参考，不是新项目的现行默认</td><td>⭐⭐⭐</td></tr></tbody></table>
+<div class="reader-resource-catalog" role="region" tabindex="0" aria-label="资源表（分类、用途与限制）">
+<table align="center"><thead><tr><th scope="col">分类</th><th scope="col">项目／文档</th><th scope="col">评分</th><th scope="col">用途</th><th scope="col">限制</th></tr></thead>
+<tbody><tr><th scope="rowgroup" rowspan="3" align="center" valign="middle" width="80">开始与整理</th><td><div data-field="entry"><strong><a href="https://notebooklm.google.com/">Gemini Notebook（原 NotebookLM）</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="use">用来源问答并回到 citation</div></td><td><div data-field="status">正式可用；云服务</div><div data-field="limits">引用仍要逐条核对；私人数据先看政策</div></td></tr><tr><td><div data-field="entry"><strong><a href="https://www.zotero.org/">Zotero</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="use">管理 PDF、metadata、笔记与引用</div></td><td><div data-field="status">正式可用；桌面／Web</div><div data-field="limits">解决来源管理，不替你判断研究质量</div></td></tr><tr><td><div data-field="entry"><strong><a href="https://github.com/Future-House/paper-qa">paper-qa</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="use">用 Python 建立 citation-grounded literature RAG</div></td><td><div data-field="status">活跃；Apache-2.0</div><div data-field="limits">需设置模型与文献来源，质量仍要自行评测</div></td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="4" align="center" valign="middle" width="80">探索与写作</th><td><div data-field="entry"><strong><a href="https://github.com/assafelovic/gpt-researcher">gpt-researcher</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="use">多来源搜索与 research brief</div></td><td><div data-field="status">活跃；Apache-2.0</div><div data-field="limits">适合找候选来源，不是引用正确性的最后裁判</div></td></tr><tr><td><div data-field="entry"><strong><a href="https://github.com/stanford-oval/storm">storm</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="use">整理多种观点，再写大纲与长文</div></td><td><div data-field="status">可用；MIT；更新较慢</div><div data-field="limits">使用前确认依赖与数据来源仍兼容</div></td></tr><tr><td><div data-field="entry"><strong><a href="https://github.com/kaixindelele/ChatPaper">ChatPaper</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="use">中文 paper 摘要、翻译与写作辅助</div></td><td><div data-field="status">可用；CC BY-NC-ND 4.0</div><div data-field="limits">禁止商业使用与改作，不是一般开源程序授权</div></td></tr><tr><td><div data-field="entry"><strong><a href="https://github.com/MuiseDestiny/zotero-gpt">zotero-gpt</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="use">在 Zotero 中与文献互动</div></td><td><div data-field="status">可用；AGPL-3.0</div><div data-field="limits">插件与模型设置要另外维护</div></td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="5" align="center" valign="middle" width="80">可重复与证据</th><td><div data-field="entry"><strong><a href="https://github.com/asreview/asreview">asreview</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="use">用 active learning 辅助系统性回顾筛选文献</div></td><td><div data-field="status">活跃；Apache-2.0</div><div data-field="limits">排序能省时间；纳入／排除理由仍需人工筛选并记录</div></td></tr><tr><td><div data-field="entry"><strong><a href="https://github.com/treeverse/dvc">dvc</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="use">保存数据版本、模型和可重跑 pipeline</div></td><td><div data-field="status">活跃；Apache-2.0</div><div data-field="limits">需要 Git 与数据存储位置；版本不证明结论正确</div></td></tr><tr><td><div data-field="entry"><strong><a href="https://github.com/mlflow/mlflow">mlflow</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="use">记录每次 run 的参数、指标、数据和产物</div></td><td><div data-field="status">活跃；Apache-2.0</div><div data-field="limits">有记录不等于实验有效；不要把密钥或受试者数据写入 tracking</div></td></tr><tr><td><div data-field="entry"><strong><a href="https://zenodo.org/">Zenodo</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="use">保存并发布数据、代码和研究材料，取得 DOI</div></td><td><div data-field="status">正式可用；云服务</div><div data-field="limits">metadata 会公开；私人资料按机构规则去标识或使用核准环境</div></td></tr><tr><td><div data-field="entry"><strong><a href="https://github.com/jupyterhub/repo2docker">repo2docker</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="use">从 repository 设置重建可运行研究环境</div></td><td><div data-field="status">活跃；BSD-3-Clause</div><div data-field="limits">container 能保存环境；仍需另存数据、硬件需求与外部服务</div></td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="2" align="center" valign="middle" width="80">研究自动化</th><td><div data-field="entry"><strong><a href="https://github.com/flonat/flonat-research">flonat-research</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐</span></td><td><div data-field="use">参考研究 skills、agents、hooks 与 LaTeX 流程</div></td><td><div data-field="status">活跃；MIT</div><div data-field="limits">基础设施示例，不适用于所有领域</div></td></tr><tr><td><div data-field="entry"><strong><a href="https://github.com/SakanaAI/AI-Scientist-v2">AI-Scientist-v2</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="use">研究端到端 multi-agent 实验架构</div></td><td><div data-field="status">研究参考；custom source-code license</div><div data-field="limits">授权要求披露机器生成的科学稿件；作者仍要人工审查并负责</div></td></tr></tbody>
+<tbody><tr><th scope="rowgroup" rowspan="1" align="center" valign="middle" width="80">历史</th><td><div data-field="entry"><strong><a href="https://github.com/langchain-ai/open_deep_research">open_deep_research</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐</span></td><td><div data-field="use">阅读早期 deep-research agent 架构</div></td><td><div data-field="status">已封存；MIT</div><div data-field="limits">只作历史参考，不是新项目的现行默认</div></td></tr></tbody></table>
+</div>
 
 ## ✅ 完成检查与下一站
 - [ ] 我核对了三个答案，不只看 citation 编号。

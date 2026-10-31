@@ -1,0 +1,38 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Local
+.env
+.cache/
+
+# Generated
+_build/
+node_modules/
+.ai/
+__pycache__/
+
+# Phase 5 build artifacts (mdBook + PDF)
+book/dist/
+book/src/
+dist/
+mermaid.min.js
+mermaid-init.js
+
+
+# Content Health and local catalog diagnostic logs must not be committed.
+star-refresh.log
+link-report.txt
+
+# Agent-created git worktrees. Each is a FULL second copy of the tree, so any gate
+# that walks the filesystem with Path.rglob (which descends into dot-directories,
+# unlike glob.glob) scans it too. In 2026-08 a stray worktree doubled the corpus for
+# three gates and silently defeated zh-hans-localize.py's PROTECT allowlist, whose
+# repo-relative paths never match a worktree copy. Previously only in this machine's
+# .git/info/exclude; tracked here so every contributor gets the same protection.
+.claude/worktrees/

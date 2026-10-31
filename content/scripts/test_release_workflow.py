@@ -23,10 +23,43 @@ def test_release_can_only_be_started_manually() -> None:
 
 def test_only_environment_guarded_publish_job_can_write() -> None:
     jobs = load_workflow()["jobs"]
-    assert "permissions" not in jobs["prepare"]
+    assert jobs["prepare"]["permissions"] == {"contents": "read", "actions": "read"}
     assert jobs["publish"]["environment"] == "release"
     assert jobs["publish"]["permissions"] == {"contents": "write"}
     assert jobs["publish"]["needs"] == "prepare"
+
+
+def test_releases_publish_notes_only_without_pdf_controls() -> None:
+    workflow = load_workflow()
+    assert set(workflow["on"]["workflow_dispatch"]["inputs"]) == {"version"}
+    text = WORKFLOW.read_text(encoding="utf-8")
+    for removed in ("include_pdf", "INCLUDE_PDF", "build-pdf.sh", "validate-pdfs",
+                    "weasyprint", "gh release upload", "pdf-validation.json"):
+        assert removed not in text
+    for name in ("Run blocking repository gates", "Run the full release content-health scan",
+                 "Render one trilingual Release body"):
+        step = next(step for step in workflow["jobs"]["prepare"]["steps"] if step["name"] == name)
+        assert "if" not in step
+
+
+def test_notes_only_candidate_and_exact_empty_asset_inventory() -> None:
+    workflow = load_workflow()
+    collect = next(step["run"] for step in workflow["jobs"]["prepare"]["steps"]
+                   if step["name"] == "Collect release candidates and evidence")
+    assert "release-candidate/evidence" in collect
+    assert "release-body.md" in collect
+    assert "dist" not in collect
+    publish = workflow["jobs"]["publish"]
+    assert "env" not in publish
+    steps = {step["name"]: step for step in publish["steps"]}
+    assert "test -s candidate/release-body.md" in steps["Recheck main and release body before writing"]["run"]
+    verify = steps["Verify the Draft Release before publishing"]["run"]
+    # Expected inventory stays empty; any asset, including a PDF, blocks publish.
+    assert ': > /tmp/expected-assets.txt' in verify
+    assert verify.count("/tmp/expected-assets.txt") == 2
+    assert "jq -r '.assets[].name'" in verify
+    assert 'diff -u /tmp/expected-assets.txt /tmp/actual-assets.txt' in verify
+    assert "test \"$(jq '.assets | length' /tmp/published-release.json)\" -eq 0" in steps["Publish and verify the Release"]["run"]
 
 
 def test_prepare_locks_main_and_builds_all_locales() -> None:
@@ -35,11 +68,23 @@ def test_prepare_locks_main_and_builds_all_locales() -> None:
     assert "test \"$DISPATCH_REF\" = refs/heads/main" in text
     assert "https://api.github.com/" in text
     assert "environments/release" in text
+    assert 'environment_json="$(gh api "repos/$REPOSITORY/environments/release")"' in text
     assert "required_reviewers" in text
     assert "test \"$sha\" = \"$remote_main\"" in text
-    assert "for locale in zh-TW zh-Hans en" in text
-    assert "validate-pdfs" in text
+    assert "python -m mkdocs build" in text
     assert "--mode release" in text
+
+
+def test_release_date_request_uses_existing_authenticated_read_token() -> None:
+    workflow = load_workflow()
+    step = next(step for step in workflow["jobs"]["prepare"]["steps"]
+                if step["name"] == "Lock the release version and source commit")
+    assert step["env"]["GH_TOKEN"] == "${{ github.token }}"
+    request = next(line for line in step["run"].splitlines() if 'api_date="$(curl' in line)
+    assert '-H "Authorization: Bearer $GH_TOKEN"' in request
+    assert "curl -fsSI --retry 3" in request
+    assert "https://api.github.com/" in request
+    assert 'test -n "$api_date"' in step["run"]
 
 
 def test_publish_rechecks_sha_and_verifies_draft_before_publish() -> None:
@@ -70,8 +115,8 @@ def test_publish_rechecks_sha_and_verifies_draft_before_publish() -> None:
         publish,
     )
     assert publish_command < tag_fetch
-    for locale in ("zh-TW", "zh-Hans", "en"):
-        assert f'awesome-agentic-ai-zh-$RELEASE_VERSION-{locale}.pdf' in text
+    for heading in ("## 繁體中文", "## 简体中文", "## English"):
+        assert heading in text
 
 
 def test_pdf_builder_reads_manifest_instead_of_hardcoding_pages() -> None:

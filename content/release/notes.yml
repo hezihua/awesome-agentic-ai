@@ -1,36 +1,30 @@
 schema_version: 1
-release_version: v2026.09.14
-
-# One ordered list produces all three language sections in the GitHub Release.
-# Links are shared so the three summaries cannot silently point to different pages.
+release_version: v2026.10.29-3
 changes:
-  - id: simplify-readme-banner-entry
-    category: reader-ux
-    zh-TW: 三語 README 移除動畫 banner 下方重複的靜態圖與文件站捷徑，讓首頁入口更乾淨。動畫停止時仍保留完整構圖；文件站的減少動態、無 JavaScript 靜態 PNG 與三語 PDF fallback 都繼續保留。
-    zh-Hans: 三语 README 移除动画 banner 下方重复的静态图与文档站快捷入口，让首页入口更干净。动画停止时仍保留完整构图；文档站的减少动态、无 JavaScript 静态 PNG 与三语 PDF fallback 都继续保留。
-    en: The three READMEs remove the duplicate static-image and documentation-site shortcuts below the animated banner for a cleaner entry point. The complete composition remains visible when animation stops, while reduced-motion, no-JavaScript PNG, and trilingual PDF fallbacks remain available.
-    links:
-      - https://github.com/WenyuChiou/awesome-agentic-ai-zh/pull/265
-      - https://github.com/WenyuChiou/awesome-agentic-ai-zh/pull/266
-  - id: fix-rendered-markdown-emphasis
-    category: maintenance
-    zh-TW: 修正 Stage 6 五組範例的三語收合區塊，以及 CLI 工具表與 Stage 3 摘要中的行內程式碼：粗體、清單、行內程式碼與連結現在會由 MkDocs 正確解析，不再把 `**Context**` 或反引號這類 Markdown 記號直接顯示給讀者。新增 post-build gate，會檢查實際 HTML，而不是只看 `.md` 原始碼；程式碼範例中的記號仍被允許。
-    zh-Hans: 修正 Stage 6 五组示例的三语折叠区块，以及 CLI 工具表和 Stage 3 摘要中的行内代码：粗体、列表、行内代码与链接现在会由 MkDocs 正确解析，不再把 `**Context**` 或反引号这类 Markdown 标记直接显示给读者。新增 post-build gate，会检查实际 HTML，而不是只看 `.md` 源码；代码示例中的标记仍被允许。
-    en: Fixed the trilingual collapsible sections in five Stage 6 examples, plus inline code in the CLI tool table and Stage 3 summaries. MkDocs now renders emphasis, lists, inline code, and links instead of showing Markdown markers such as `**Context**` or backticks to readers. A new post-build gate checks the actual HTML rather than source `.md` alone, while still allowing markers inside code examples.
-    links:
-      - https://wenyuchiou.github.io/awesome-agentic-ai-zh/examples/stage-6/01-embeddings/
-  - id: stage7-production-foundations
-    category: learning-content
-    zh-TW: Stage 7 改為「Agent 上線工程：可測、可看、可停、可恢復」。同一個查資料案例依序解釋 Harness、Loop、Graph、Eval、Observability、Approval、Checkpoint、Resume 與 Recovery；完整 Eval Case 明確包含 input、初始狀態、成功條件、禁止行為、選用參考答案、評分方法與案例資訊，避免把 Golden Set 誤解成只有輸入。
-    zh-Hans: Stage 7 改为“Agent 上线工程：可测、可看、可停、可恢复”。同一个资料查询案例依次解释 Harness、Loop、Graph、Eval、Observability、Approval、Checkpoint、Resume 与 Recovery；完整 Eval Case 明确包含 input、初始状态、成功条件、禁止行为、可选参考答案、评分方法与案例信息，避免把 Golden Set 误解为只有输入。
-    en: >-
-      Stage 7 is now “Production Engineering for Agents: Testable, Observable, Stoppable, and Recoverable.” One research-assistant example progressively explains Harness, Loop, Graph, Eval, Observability, Approval, Checkpoint, Resume, and Recovery. A complete Eval Case explicitly includes input, initial state, success criteria, forbidden actions, an optional reference answer, grading method, and case metadata, so a Golden Set is not mistaken for inputs alone.
-    links:
-      - https://github.com/WenyuChiou/awesome-agentic-ai-zh/pull/267
-  - id: stage75-evidence-led-advanced-choices
-    category: learning-content
-    zh-TW: Stage 7.5 改成「有證據才增加複雜度」的進階選讀，不再重教 Stage 7 基礎。可見核心詞表先用白話說明 Evaluator–Optimizer／Agent-as-Judge、Failure Injection／Chaos Eval、Autonomy Gradients／Trust Layers 與 Model–Harness Fit，再用兩組三語亮色圖協助讀者依失敗證據選擇最小做法。
-    zh-Hans: Stage 7.5 改成“有证据才增加复杂度”的进阶选读，不再重复讲解 Stage 7 基础。可见核心词表先用白话说明 Evaluator–Optimizer／Agent-as-Judge、Failure Injection／Chaos Eval、Autonomy Gradients／Trust Layers 与 Model–Harness Fit，再用两组三语亮色图帮助读者根据失败证据选择最小做法。
-    en: Stage 7.5 is now an advanced reading map that adds complexity only when evidence justifies it, without reteaching Stage 7 foundations. Its visible core-term table explains Evaluator–Optimizer/Agent-as-Judge, Failure Injection/Chaos Eval, Autonomy Gradients/Trust Layers, and Model–Harness Fit in plain language, followed by two matching trilingual diagrams that help readers choose the smallest response to observed failures.
-    links:
-      - https://github.com/WenyuChiou/awesome-agentic-ai-zh/pull/268
+- id: rag-search-terms-and-comparisons
+  category: reader-experience
+  zh-TW: 進階 RAG 先解釋 BM25、向量搜尋與候選資料，再依症狀選方法。用同一批題目比較基線、混合搜尋與加重新排序，記錄 Recall@5、命中率、延遲與成本。保留 13 項方法、6 筆必讀及 12 筆評分資源，並修正手機核心詞排版與 GitHub 粗體。
+  zh-Hans: 进阶 RAG 先解释 BM25、向量搜索与候选资料，再按症状选方法。用同一批题目比较基线、混合搜索与加重新排序，记录 Recall@5、命中率、延迟与成本。保留 13 项方法、6 条必读及 12 条评分资源，并修正手机核心术语排版与 GitHub 粗体。
+  en: Advanced RAG explains BM25, vector search and candidates before choosing a method by symptom. Compare baseline, hybrid search and added
+    reranking on the same questions, recording Recall@5, hit rate, latency and cost. All 13 methods, six required readings and 12 rated resources
+    remain visible; mobile core-term layout and GitHub bold rendering are corrected.
+  links:
+  - https://github.com/WenyuChiou/awesome-agentic-ai-zh/pull/356
+- id: execution-and-isolation-boundaries
+  category: learning-safety
+  zh-TW: Stage 5 將 MCP 限制限定於該 server，Stage 8 說明沙箱範圍取決於設定。Stage 6 每題先回專案根目錄，再進入本題資料夾安裝套件與跑本機 Path A；練習 4、5 先準備 Ollama。Path B 為選用，先確認是否使用雲端、供應商、金鑰與費用。
+  zh-Hans: Stage 5 将 MCP 限制限定于该 server，Stage 8 说明沙箱范围取决于设置。Stage 6 每题先回项目根目录，再进入本题文件夹安装软件包与跑本机 Path A；练习 4、5 先准备 Ollama。Path B 为选用，先确认是否使用云端、供应商、密钥与费用。
+  en: Stage 5 scopes MCP limits to that server; Stage 8 explains that sandbox boundaries depend on configuration. For each Stage 6 exercise, return
+    to the repository root, then enter its folder to install packages and run local Path A. Prepare Ollama first for exercises 4 and 5. Path B is optional; check whether it uses cloud services, its provider,
+    key setup and costs first.
+  links:
+  - https://github.com/WenyuChiou/awesome-agentic-ai-zh/pull/357
+- id: model-terms-and-token-price-units
+  category: learning-content
+  zh-TW: Stage 1 在流程與圖示前解釋 Base Model、Instruct Model、模型權重及 Agent 零件，保留訓練方法並標明進階選修。A3 明定輸入與輸出單價皆按每百萬 token 計，兩項 token 數各除以一百萬，並提醒另查其他收費。
+  zh-Hans: Stage 1 在流程与图示前解释 Base Model、Instruct Model、模型权重及 Agent 组件，保留训练方法并标明进阶选修。A3 明定输入与输出单价均按每百万 token 计，两项 token 数各除以一百万，并提醒另查其他收费。
+  en: Stage 1 explains Base Model, Instruct Model, model weights and Agent components before the flow and diagram, retaining training methods
+    and marking advanced electives. A3 declares both input and output rates per million tokens, divides each token count by one million, and notes
+    that other charges must be checked separately.
+  links:
+  - https://github.com/WenyuChiou/awesome-agentic-ai-zh/pull/358

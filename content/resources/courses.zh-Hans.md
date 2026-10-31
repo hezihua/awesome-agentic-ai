@@ -10,57 +10,73 @@
 
 ## 🧩 先分清五个容易混在一起的词
 
+<div align="center" markdown="1">
+
 | 核心词 | 五岁也能懂的说法 | 正确意思 |
-|---|---|---|
+|:---|:---|:---|
 | **Course（课程）** | 老师排好了一条学习路线。 | 一组按顺序安排的视频、文章、练习或项目。 |
 | **Certificate of Completion（完成证书）** | 证明你走完了这门课。 | 证明你完成了指定内容；不等于学位，也不能单独证明你已经能做 production 系统。 |
 | **Skill Badge（技能徽章）** | 一张小贴纸，表示你做过某项任务。 | 平台针对短模块或特定技能发放的数字徽章。 |
 | **Professional Certificate（专业课程证书）** | 好几门课程装成一个更大的学习包。 | 由公司或学校设计的系列课程证书；通常仍不是学位或执照。 |
 | **Certification Exam（认证考试）** | 不只是上课，还要另外参加考试。 | 由供应商或考试机构验证特定产品知识的考试；可能需要付费、验证身份或定期更新。 |
 
+</div>
+
 **最重要的规则：证书证明你完成了一条路；作品才让别人看到你会做什么。**
 
 ## ⚡ 先选一条，不要全部一起读
 
+<div class="reader-course-picker" markdown="1">
+
+<div align="center" markdown="1">
+
 | 你现在想做什么 | 先选这个 | 为什么 |
-|---|---|---|
+|:---|:---|:---|
 | 完全不知道从哪里开始 | [Hugging Face AI Agents Course](https://huggingface.co/learn/agents-course) | 免费，先教 Agent、工具和基本框架，再做挑战。 |
 | 想看大量可执行代码 | [Microsoft AI Agents for Beginners](https://github.com/microsoft/ai-agents-for-beginners) | 每课都有文字、视频和代码；但示例偏向 Microsoft Agent Framework。 |
 | 想读完整的中文教材 | [Datawhale Hello-Agents](https://github.com/datawhalechina/hello-agents) | 从原理一路讲到 RAG、Multi-Agent、MCP 和部署。 |
-| 想先学不绑定框架的设计方法 | [DeepLearning.AI Agentic AI](https://www.deeplearning.ai/courses/agentic-ai/) | 从零实践 reflection、tool use、planning、eval 和 multi-agent。 |
-| 想补上观测和评估 | [W&B AI Engineering: Agents](https://wandb.ai/site/courses/agents/) | 把 accuracy、latency 和 cost 一起放进可重复运行的 Eval。 |
+| 想先学不绑定框架的设计方法 | [DeepLearning.AI Agentic AI](https://www.deeplearning.ai/courses/agentic-ai) | 从零实践 reflection、tool use、planning、eval 和 multi-agent。 |
 | 已经决定使用 Claude／LangGraph | [Claude Academy](https://academy.claude.com/)／[LangChain Academy](https://academy.langchain.com/courses/intro-to-langgraph) | 直接学习供应商的现行工具；记得把通用概念和产品按钮分开。 |
+| 想整理编程 Agent 拿到的规则与工具 | [Hugging Face Context Course](https://huggingface.co/learn/context-course/unit0/introduction) | 用**上下文工程（context engineering）** 整理知识，让 Agent 在需要时找到正确内容。 |
+| 已经掌握 Agent 基础，想练更深入的任务拆分 | [LangChain Project: Deep Agents](https://academy.langchain.com/courses/deep-agents-with-langgraph) | 用工作清单、文件和**子 Agent（Subagents）** 完成一个更完整的 Agent。 |
 | 主要目标是系列证书 | [IBM](https://www.coursera.org/professional-certificates/ibm-rag-and-agentic-ai)／[Vanderbilt](https://www.coursera.org/specializations/ai-agents) | 这是较长的付费系列课程；先确认费用、语言和项目是否符合需要。 |
+
+</div>
+
+</div>
 
 ## 🎯 精选课程与学习路线
 
 星等是本项目的**编辑推荐度**，不是证书排名：⭐⭐⭐⭐⭐ 适合当主线；⭐⭐⭐⭐ 很值得学习，但更偏向特定工具或目的；⭐⭐⭐ 适合已经确定使用该供应商的人。
 
-<table>
-  <thead>
-    <tr><th scope="col">学习目的</th><th scope="col">课程／教材</th><th scope="col">语言与费用</th><th scope="col">你会做出什么</th><th scope="col">证书／限制</th><th scope="col">推荐度</th></tr>
-  </thead>
+<small>新增课程核查：2026-10-15 UTC；范围只包括 Hugging Face Context Course 和 LangChain Project: Deep Agents。</small>
+
+<div class="reader-resource-catalog" role="region" tabindex="0" aria-label="课程与学习资源">
+<table align="center">
+  <thead><tr><th scope="col">分类</th><th scope="col">项目／文档</th><th scope="col">评分</th><th scope="col">用途</th><th scope="col">限制</th></tr></thead>
   <tbody>
-    <tr><th scope="rowgroup" rowspan="3">免费打基础</th><td><a href="https://huggingface.co/learn/agents-course">Hugging Face — AI Agents Course</a></td><td>以英文为主；免费</td><td>认识 Agent Loop，实践 smolagents、LlamaIndex、LangGraph、Agentic RAG 和 Eval。</td><td>Unit 1 测验达到 80% 可取得基础完成证书；完整路线还包括作业和最终挑战。</td><td>⭐⭐⭐⭐⭐</td></tr>
-    <tr><td><a href="https://github.com/microsoft/ai-agents-for-beginners">Microsoft — AI Agents for Beginners</a></td><td>多语言；免费开源</td><td>用文字、视频和 Python／.NET 示例来做工具、记忆、规划、RAG、Multi-Agent 和部署。</td><td>没有 Certificate of Completion；现行示例偏向 Microsoft Agent Framework 和 Foundry。</td><td>⭐⭐⭐⭐⭐</td></tr>
-    <tr><td><a href="https://github.com/datawhalechina/hello-agents">Datawhale — Hello-Agents</a></td><td>简体中文；免费开源</td><td>从 Agent 原理和经典 pattern，一路做到 RAG、记忆、Multi-Agent、MCP 和完整项目。</td><td>没有 Certificate of Completion；章节很多，请按自己的问题选读，不必一次读完。</td><td>⭐⭐⭐⭐⭐</td></tr>
+    <tr><th scope="rowgroup" rowspan="3" align="center" valign="middle" width="80">免费打基础</th><td><div data-field="entry"><strong><a href="https://huggingface.co/learn/agents-course">Hugging Face — AI Agents Course</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="cost"><strong>语言与费用：</strong> 以英文为主；免费</div><div data-field="outcome"><strong>学习或实践：</strong> 认识 Agent Loop，实践 smolagents、LlamaIndex、LangGraph、Agentic RAG 和 Eval。</div></td><td><div data-field="limits"><strong>证书／限制：</strong> Unit 1 测验达到 80% 可取得基础完成证书；完整路线还包括作业和最终挑战。</div></td></tr>
+    <tr><td><div data-field="entry"><strong><a href="https://github.com/microsoft/ai-agents-for-beginners">Microsoft — AI Agents for Beginners</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="cost"><strong>语言与费用：</strong> 多语言；免费开源</div><div data-field="outcome"><strong>学习或实践：</strong> 用文字、视频和 Python／.NET 示例来做工具、记忆、规划、RAG、Multi-Agent 和部署。</div></td><td><div data-field="limits"><strong>证书／限制：</strong> 没有 Certificate of Completion；现行示例偏向 Microsoft Agent Framework 和 Foundry。</div></td></tr>
+    <tr><td><div data-field="entry"><strong><a href="https://github.com/datawhalechina/hello-agents">Datawhale — Hello-Agents</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="cost"><strong>语言与费用：</strong> 简体中文；免费开源</div><div data-field="outcome"><strong>学习或实践：</strong> 从 Agent 原理和经典 pattern，一路做到 RAG、记忆、Multi-Agent、MCP 和完整项目。</div></td><td><div data-field="limits"><strong>证书／限制：</strong> 没有 Certificate of Completion；章节很多，请按自己的问题选读，不必一次读完。</div></td></tr>
   </tbody>
   <tbody>
-    <tr><th scope="rowgroup" rowspan="5">构建与上线</th><td><a href="https://www.deeplearning.ai/courses/agentic-ai/">DeepLearning.AI — Agentic AI</a></td><td>英文；视频可免费旁听</td><td>从零实践 reflection、tool use、planning、Multi-Agent、错误分析和 component Eval。</td><td>测验、graded assignments 和证书需要 Pro；免费旁听不包含证书。</td><td>⭐⭐⭐⭐⭐</td></tr>
-    <tr><td><a href="https://wandb.ai/site/courses/agents/">Weights &amp; Biases — AI Engineering: Agents</a></td><td>英文；免费</td><td>制作 deterministic workflow、单 Agent、记忆、Multi-Agent 和 accuracy／latency／cost Eval。</td><td>约两小时；当前公开页面没有明确说明证书条件，注册前不要先假定一定会发证。</td><td>⭐⭐⭐⭐</td></tr>
-    <tr><td><a href="https://academy.claude.com/">Claude Academy</a></td><td>英文；免费</td><td>按需要学习 Claude API、Claude Code、MCP、Agent Skills 和 Subagents。</td><td>通过课程 quiz 可以取得免费完成徽章；这是 Claude 产品路线，不取代通用 Agent 基础。</td><td>⭐⭐⭐⭐</td></tr>
-    <tr><td><a href="https://academy.langchain.com/courses/intro-to-langgraph">LangChain Academy — Introduction to LangGraph</a></td><td>英文；免费</td><td>实践 graph、state、memory、HITL、subgraph、deployment 和 long-term memory。</td><td>偏向 LangGraph／LangSmith；当前公开课程页面没有清楚列出证书门槛。</td><td>⭐⭐⭐⭐</td></tr>
-    <tr><td><a href="https://www.kaggle.com/learn-guide/5-day-agents">Google × Kaggle — 5-Day AI Agents Intensive</a></td><td>英文；免费自学</td><td>通过模型、工具、orchestration、memory 和 Eval 理解 Agent，然后完成 capstone。</td><td>原本是限时 intensive，现在作为自学 guide 使用；不要把 cohort 活动资格当成永久证书。</td><td>⭐⭐⭐⭐</td></tr>
+    <tr><th scope="rowgroup" rowspan="6" align="center" valign="middle" width="80">构建与上线</th><td><div data-field="entry"><strong><a href="https://www.deeplearning.ai/courses/agentic-ai">DeepLearning.AI — Agentic AI</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="cost"><strong>语言与费用：</strong> 英文；视频可免费旁听</div><div data-field="outcome"><strong>学习或实践：</strong> 从零实践 reflection、tool use、planning、Multi-Agent、错误分析和 component Eval。</div></td><td><div data-field="limits"><strong>证书／限制：</strong> 测验、graded assignments 和证书需要 Pro；免费旁听不包含证书。</div></td></tr>
+    <tr><td><div data-field="entry"><strong><a href="https://academy.claude.com/">Claude Academy</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="cost"><strong>语言与费用：</strong> 英文；免费</div><div data-field="outcome"><strong>学习或实践：</strong> 按需要学习 Claude API、Claude Code、MCP、Agent Skills 和 Subagents。</div></td><td><div data-field="limits"><strong>证书／限制：</strong> 通过课程 quiz 可以取得免费完成徽章；这是 Claude 产品路线，不取代通用 Agent 基础。</div></td></tr>
+    <tr><td><div data-field="entry"><strong><a href="https://huggingface.co/learn/context-course/unit0/introduction">Hugging Face — Context Course</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="cost"><strong>语言与费用：</strong> 英文；课程材料免费，外部 API 或 Agent 订阅可能收费</div><div data-field="outcome"><strong>学习或实践：</strong> 把可复用的指引做成 <strong>Skill（规则包）</strong>，并用 <strong>MCP（工具连接协议）</strong>连接工具。再把 <strong>Plugin（工具包）</strong>和 <strong>Subagent（分工 Agent）</strong>加入流程。用 <strong>Hook（事件触发动作）</strong>守住流程，再看 <strong>Nano Harness（迷你执行架构）</strong>如何运行。</div></td><td><div data-field="limits"><strong>证书／限制：</strong> 官方页面列出两级证书，但高级证书需要尚待直播公布的 capstone；不要视为现在已经可以完成。</div></td></tr>
+    <tr><td><div data-field="entry"><strong><a href="https://academy.langchain.com/courses/intro-to-langgraph">LangChain Academy — Introduction to LangGraph</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="cost"><strong>语言与费用：</strong> 英文；免费</div><div data-field="outcome"><strong>学习或实践：</strong> 把步骤连成图（graph），保存任务数据（state），使用记忆（memory）；加入<strong>让人检查或决定（Human-in-the-Loop，HITL）</strong>与<strong>可复用的小流程（subgraph）</strong>，再练习部署（deployment）与长期记忆（long-term memory）。</div></td><td><div data-field="limits"><strong>证书／限制：</strong> 偏向 LangGraph／LangSmith；当前公开课程页面没有清楚列出证书门槛。</div></td></tr>
+    <tr><td><div data-field="entry"><strong><a href="https://academy.langchain.com/courses/deep-agents-with-langgraph">LangChain Project: Deep Agents</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="cost"><strong>语言与费用：</strong> 英文；课程免费，模型／API 用量可能收费；30 课，约 2 小时视频</div><div data-field="outcome"><strong>学习或实践：</strong> 用 <strong>Todo list（工作清单）</strong>拆解规划，再加入文件和 Subagents，组成完整 Agent。</div></td><td><div data-field="limits"><strong>证书／限制：</strong> 适合已经掌握 Agent 基础的人；偏向 LangGraph／Deep Agents，公开页面未列出证书门槛。</div></td></tr>
+    <tr><td><div data-field="entry"><strong><a href="https://www.kaggle.com/learn-guide/5-day-agents">Google × Kaggle — 5-Day AI Agents Intensive</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="cost"><strong>语言与费用：</strong> 英文；免费自学</div><div data-field="outcome"><strong>学习或实践：</strong> 通过模型、工具、orchestration、memory 和 Eval 理解 Agent，然后完成 capstone。</div></td><td><div data-field="limits"><strong>证书／限制：</strong> 原本是限时 intensive，现在作为自学 guide 使用；不要把 cohort 活动资格当成永久证书。</div></td></tr>
   </tbody>
   <tbody>
-    <tr><th scope="rowgroup" rowspan="2">较长的系列课程</th><td><a href="https://www.coursera.org/professional-certificates/ibm-rag-and-agentic-ai">IBM — RAG and Agentic AI Professional Certificate</a></td><td>英文；付费订阅，可查看助学选项</td><td>通过多门课程完成 RAG、Agentic AI、工具、向量数据库和实践项目。</td><td>IBM／Coursera 系列证书；不是学位，费用和可用的助学支持因地区和账号而异。</td><td>⭐⭐⭐⭐</td></tr>
-    <tr><td><a href="https://www.coursera.org/specializations/ai-agents">Vanderbilt — AI Agent Developer Specialization</a></td><td>英文；付费订阅，平台提供多语言字幕</td><td>使用 Python、工具、记忆和 Agent architecture 完成一组应用项目。</td><td>Vanderbilt／Coursera Specialization 证书；部分内容偏向 OpenAI 工具。</td><td>⭐⭐⭐⭐</td></tr>
+    <tr><th scope="rowgroup" rowspan="2" align="center" valign="middle" width="80">较长的系列课程</th><td><div data-field="entry"><strong><a href="https://www.coursera.org/professional-certificates/ibm-rag-and-agentic-ai">IBM — RAG and Agentic AI Professional Certificate</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="cost"><strong>语言与费用：</strong> 英文；付费订阅，可查看助学选项</div><div data-field="outcome"><strong>学习或实践：</strong> 通过多门课程完成 RAG、Agentic AI、工具、向量数据库和实践项目。</div></td><td><div data-field="limits"><strong>证书／限制：</strong> IBM／Coursera 系列证书；不是学位，费用和可用的助学支持因地区和账号而异。</div></td></tr>
+    <tr><td><div data-field="entry"><strong><a href="https://www.coursera.org/specializations/ai-agents">Vanderbilt — AI Agent Developer Specialization</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="cost"><strong>语言与费用：</strong> 英文；付费订阅，平台提供多语言字幕</div><div data-field="outcome"><strong>学习或实践：</strong> 使用 Python、工具、记忆和 Agent architecture 完成一组应用项目。</div></td><td><div data-field="limits"><strong>证书／限制：</strong> Vanderbilt／Coursera Specialization 证书；部分内容偏向 OpenAI 工具。</div></td></tr>
   </tbody>
   <tbody>
-    <tr><th scope="rowgroup" rowspan="2">中文供应商路线</th><td><a href="https://www.nvidia.cn/training/certification/generative-ai-llm-learning-path/">NVIDIA — 中文 Agentic AI 学习路径</a></td><td>简体中文；自学和讲师带领的课程大多收费</td><td>依次学习 RAG Agent、Agentic AI 应用、评估和 production deployment。</td><td>部分课程授予 DLI 培训证书；价格和排课以官方页面为准，内容偏向 NVIDIA stack。</td><td>⭐⭐⭐⭐</td></tr>
-    <tr><td><a href="https://edu.aliyun.com/certification/cldm02">阿里云 — 基于百炼平台构建智能体应用</a></td><td>简体中文；目前可以免费启用</td><td>制作低代码智能体、工作流和智能体编排，并连接网站、钉钉等场景。</td><td>完成学习和考试后领取 Clouder 证书；需符合官方网站列出的身份证明文件条件，并且绑定百炼平台。</td><td>⭐⭐⭐</td></tr>
+    <tr><th scope="rowgroup" rowspan="2" align="center" valign="middle" width="80">中文供应商路线</th><td><div data-field="entry"><strong><a href="https://www.nvidia.cn/training/certification/generative-ai-llm-learning-path/">NVIDIA — 中文 Agentic AI 学习路径</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="cost"><strong>语言与费用：</strong> 简体中文；自学和讲师带领的课程大多收费</div><div data-field="outcome"><strong>学习或实践：</strong> 依次学习 RAG Agent、Agentic AI 应用、评估和 production deployment。</div></td><td><div data-field="limits"><strong>证书／限制：</strong> 部分课程授予 DLI 培训证书；价格和排课以官方页面为准，内容偏向 NVIDIA stack。</div></td></tr>
+    <tr><td><div data-field="entry"><strong><a href="https://edu.aliyun.com/certification/cldm02">阿里云 — 基于百炼平台构建智能体应用</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐</span></td><td><div data-field="cost"><strong>语言与费用：</strong> 简体中文；目前可以免费启用</div><div data-field="outcome"><strong>学习或实践：</strong> 通过百炼平台设置 Agent 与工作流，练习智能体编排，再连接网站、钉钉等场景。</div></td><td><div data-field="limits"><strong>证书／限制：</strong> 完成学习和考试后领取 Clouder 证书；需符合官方网站列出的身份证明文件条件，并且绑定百炼平台。</div></td></tr>
   </tbody>
 </table>
+</div>
 
 想用中文伴读 DeepLearning.AI，可以接着看 [Datawhale 的开源整理](https://github.com/datawhalechina/agentic-ai)。
 
@@ -97,6 +113,8 @@ Agent 可以使用的工具：
 - 不列入只有营销页面、无法确认课程大纲，或把一般完成证书包装成执照的项目。
 - repository 的 stars 只用来发现社区关注度，不写进正文；维护状态要看是否封存、最近更新和现行文档。
 - 费用、证书或 cohort 发生变化时，三种语言和测试要一起更新。
+
+- 2026-10-02：W&B AI Engineering: Agents 暂时移出现行推荐。旧入口返回 404，新入口目前无法打开。这不代表永久停课；确认可用的官方课程入口后再评估。
 
 </details>
 

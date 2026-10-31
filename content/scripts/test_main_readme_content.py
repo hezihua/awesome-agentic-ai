@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+from html import unescape
 from pathlib import Path
 
 import pytest
@@ -180,6 +181,23 @@ def _section(text: str, start: str, end: str) -> str:
     return text[begin : text.index(end, begin + len(start))]
 
 
+def _route_table_budget_text(table: str) -> str:
+    """Exclude route layout markup while retaining every word and URL target."""
+    rows = []
+    for row in re.findall(r"<tr>(.*?)</tr>", table, flags=re.DOTALL):
+        cells = re.findall(r"<t[hd]\b[^>]*>(.*?)</t[hd]>", row, flags=re.DOTALL)
+        assert len(cells) == 3, "Route accounting must retain all three fields"
+        values = []
+        for cell in cells:
+            cell = re.sub(r'<a href="([^"]+)">(.*?)</a>', r'[\2](\1)', cell, flags=re.DOTALL)
+            cell = re.sub(r'<strong>(.*?)</strong>', r'**\1**', cell, flags=re.DOTALL)
+            cell = re.sub(r'<code>(.*?)</code>', r'`\1`', cell, flags=re.DOTALL)
+            values.append(unescape(re.sub(r'<[^>]+>', '', cell)).strip())
+        rows.append('| ' + ' | '.join(values) + ' |')
+    assert rows
+    return '\n'.join([rows[0], '|---|---|---|', *rows[1:]])
+
+
 def _normalized_internal_target(target: str) -> str:
     target = re.sub(r"\.(?:en|zh-Hans)(?=\.(?:md|png|svg)(?:#|$))", "", target)
     return target.removeprefix("./")
@@ -191,11 +209,60 @@ def _rated_resource_links(text: str, heading: str) -> list[tuple[str, str]]:
     if next_heading != -1:
         section = section[:next_heading]
     rows = re.findall(
-        r'<tr>.*?href="([^"]+)".*?<td>(⭐{4,5})</td>.*?</tr>',
+        r'<tr>.*?href="([^"]+)".*?<td align="center" valign="middle">(⭐{4,5})</td>.*?</tr>',
         section,
         flags=re.DOTALL,
     )
     return [(_normalized_internal_target(target), rating) for target, rating in rows]
+
+
+def _assert_clean_navigation_header(text: str, locale: str) -> None:
+    suffix = "" if locale == "zh-TW" else f".{locale}"
+    hero = text.split('<div align="center" markdown="1">', 1)[1].split("</div>", 1)[0]
+    banner = re.search(
+        rf"^!\[[^\n]+\]\(resources/diagrams/banner{re.escape(suffix)}\.svg\)$",
+        hero,
+        flags=re.MULTILINE,
+    )
+    assert banner is not None
+    assert not hero[:banner.start()].strip(), "The banner leads the README header"
+    assert hero[banner.end():].lstrip().startswith("# awesome-agentic-ai-zh\n")
+    for full_name in ("Command-Line Interface", "Model Context Protocol"):
+        assert full_name not in hero, "Definitions belong at the learning destination"
+
+
+@pytest.mark.parametrize("locale,page", PAGES.items())
+def test_navigation_header_starts_with_banner_and_keeps_definition_routes(
+    locale: str, page: Path
+) -> None:
+    text = _text(page)
+    _assert_clean_navigation_header(text, locale)
+    suffix = "" if locale == "zh-TW" else f".{locale}"
+    visible = _without_details(text)
+    targets = re.findall(r'(?:href=|\]\()["\']?([^"\') >]+)', visible)
+    for stem in ("tracks/cli/A1-cli-intro", "resources/glossary"):
+        assert f"{stem}{suffix}.md" in targets
+
+
+@pytest.mark.parametrize("locale,page", PAGES.items())
+@pytest.mark.parametrize("position", ("before_banner", "after_banner", "after_title"))
+@pytest.mark.parametrize("term,full_name", (
+    ("CLI", "Command-Line Interface"),
+    ("MCP", "Model Context Protocol"),
+))
+def test_navigation_header_rejects_restored_definition_paragraphs(
+    locale: str, page: Path, position: str, term: str, full_name: str
+) -> None:
+    text = _text(page)
+    if position == "before_banner":
+        index = text.index('<div align="center" markdown="1">') + len('<div align="center" markdown="1">')
+    elif position == "after_banner":
+        index = text.index("# awesome-agentic-ai-zh")
+    else:
+        index = text.index("# awesome-agentic-ai-zh") + len("# awesome-agentic-ai-zh")
+    mutated = text[:index] + f"\n\n**{term}** ({full_name}): definition.\n\n" + text[index:]
+    with pytest.raises(AssertionError):
+        _assert_clean_navigation_header(mutated, locale)
 
 
 @pytest.mark.parametrize("locale,page", PAGES.items())
@@ -205,11 +272,15 @@ def test_visible_mainline_keeps_reader_decisions_and_resources(locale: str, page
     positions = [visible.index(heading) for heading in HEADINGS[locale]]
     assert positions == sorted(positions)
     assert ENTRY_BOUNDARIES[locale] in visible
-    for term in ("**AI Agent**", "**Track A", "**Track B", "CAPSTONE", "PROGRESS"):
+    import markdown
+    rendered = markdown.markdown(visible, extensions=["extra"])
+    for term in ("AI Agent", "Track A", "Track B"):
+        assert re.search(r"<strong>" + re.escape(term) + r"[^<]*</strong>", rendered)
+    for term in ("CAPSTONE", "PROGRESS"):
         assert term in visible
     for target in (*ROLE_LINKS, "resources/glossary", "resources/cookbook", "examples/README"):
         assert target in visible
-    assert "<table>" in visible and "rowspan=" in visible
+    assert '<table align="center">' in visible and "rowspan=" in visible
 
 
 @pytest.mark.parametrize("locale,page", PAGES.items())
@@ -305,12 +376,50 @@ def test_homepage_is_shorter_without_deleting_key_terms(page: Path) -> None:
     # English naturally uses more characters than either CJK mirror. All three
     # stay well below their previous 16k–22k versions without rewarding terse,
     # under-explained translations.
-    # Keep the same content ceiling. Accessible banner alt text and its static/
-    # docs delivery links have their own contract, not a reason to cut a lesson.
-    content = text[text.index("# awesome-agentic-ai-zh"):]
-    assert len(text) - len(content) <= 550
-    assert len(content) <= 14_000
-    assert len(text.splitlines()) <= 230
+    # The English-only refresh equals its measured source length after the
+    # audited first-use names/meanings are added and compressed. Chinese limits
+    # stay unchanged; banner delivery has its own contract.
+    # Measure the original content budget without counting centering-only markup.
+    # Keep the table text, links and delimiter widths; the wrapper adds no prose.
+    measured = re.sub(
+        r'<div align="center" markdown="1">\n\n(?=[^\n]*\n[ \t|:\-]+\n)(.*?)\n</div>\n',
+        lambda match: match.group(1), text, flags=re.DOTALL,
+    )
+    measured = re.sub(r'(?m)^(\|(?::?-{3,}\|)+)$',
+                      lambda match: match.group(1).replace(":---", "---"), measured)
+    measured = re.sub(
+        r'<div class="reader-reference-table" role="region" tabindex="0" aria-label="[^"]+">\n(<table.*?</table>)\n</div>',
+        lambda match: match[1], measured, flags=re.DOTALL,
+    )
+    measured = re.sub(
+        r'<div class="reader-route-table" role="region" tabindex="0" aria-label="[^"]+">\n(<table.*?</table>)\n</div>',
+        lambda match: _route_table_budget_text(match[1]), measured, flags=re.DOTALL,
+    )
+    measured = measured.replace('<table align="center">', '<table>')
+    measured = measured.replace(' align="center" valign="middle"', '')
+    # Star History embeds add delivery URLs, not reading material. Keep their
+    # headings/alt text in the original prose budget and validate each exact URL;
+    # do not shorten teaching text merely to fit third-party image metadata.
+    for delivery_url in (
+        "https://api.star-history.com/svg?repos=WenyuChiou/awesome-agentic-ai-zh&type=Date",
+        "https://www.star-history.com/#WenyuChiou/awesome-agentic-ai-zh&Date",
+        "https://api.star-history.com/badge?repo=WenyuChiou/awesome-agentic-ai-zh&type=rank",
+        "https://www.star-history.com/wenyuchiou/awesome-agentic-ai-zh",
+    ):
+        assert measured.count(delivery_url) == 1
+        measured = measured.replace(delivery_url, "star-history-url")
+    # The requested Greptile badge adds image/attribution URLs, not teaching
+    # prose. Match both exact URLs once; retain the alt text and existing caps.
+    for delivery_url in (
+        "https://www.greptile.com/badge.svg",
+        "https://www.greptile.com/?utm_source=oss_badge&utm_medium=readme&utm_campaign=greptile_for_open_source",
+    ):
+        assert measured.count(delivery_url) == 1
+        measured = measured.replace(delivery_url, "greptile-url")
+    content = measured[measured.index("# awesome-agentic-ai-zh"):]
+    assert len(measured) - len(content) <= 550
+    assert len(content) <= (14_277 if page == PAGES["en"] else 14_000)
+    assert len(measured.splitlines()) <= 230
     for banned in ("240+", "81+", "Agent Workflow Audit", "mv starter.py"):
         assert banned not in text
     for required in (
@@ -328,3 +437,25 @@ def test_homepage_is_shorter_without_deleting_key_terms(page: Path) -> None:
         "agent-as-judge",
     ):
         assert required in text
+
+
+def test_route_layout_accounting_preserves_text_formatting_and_url_targets() -> None:
+    table = '<table><tr><th>Stage</th><th>Question</th><th>Outcome</th></tr><tr><td><strong>A2</strong> · <a href="tracks/cli/A2-cli-workflow.md">建立可重複流程</a></td><td>What next?</td><td>Save &amp; repeat</td></tr></table>'
+    measured = _route_table_budget_text(table)
+    assert measured == '| Stage | Question | Outcome |\n|---|---|---|\n| **A2** · [建立可重複流程](tracks/cli/A2-cli-workflow.md) | What next? | Save & repeat |'
+
+
+@pytest.mark.parametrize("page", PAGES.values())
+def test_homepage_route_tables_keep_names_and_complete_visible_fields(page: Path) -> None:
+    visible = _without_details(_text(page))
+    tables = re.findall(r'<div class="reader-route-table" role="region" tabindex="0" aria-label="[^"]+">\s*(<table.*?</table>)\s*</div>', visible, re.DOTALL)
+    assert len(tables) == 5
+    for index, (table, rows) in enumerate(zip(tables, (3, 3, 5, 7, 5), strict=True)):
+        assert len(re.findall(r'<th\b', table)) == 3
+        assert len(re.findall(r'<tbody>.*?<tr>', table, re.DOTALL)) == 1
+        assert len(re.findall(r'<tr>', table)) == rows + 1
+        assert len(re.findall(r'<td\b', table)) == rows * 3
+        if index in (1, 2):
+            assert 'width="260"' in table
+        if index == 3:
+            assert 'width="260"' not in table  # long formal titles retain auto width

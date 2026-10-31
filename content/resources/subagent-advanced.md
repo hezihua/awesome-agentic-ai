@@ -12,11 +12,15 @@
 
 3 個獨立的進階主題、按需要查：
 
+<div align="center" markdown="1">
+
 | 你的問題 | 看哪節 |
-|---|---|
+|:---|:---|
 | 寫了一個 subagent，但 Claude 從來不主動派它——為什麼？ | [§1 Description 怎麼寫才會被主 session 主動 spawn](#1-description-怎麼寫才會被主-session-主動-spawn) |
 | 想跑 2-3 個 subagent 串成 pipeline / parallel——怎麼設計？ | [§2 Composition pattern 怎麼設計](#2-composition-pattern-怎麼設計) |
 | Subagent 跑壞 / 報錯 / 行為跟設定的不一樣——怎麼 debug？ | [§3 自製 subagent 的 debug 工具](#3-自製-subagent-的-debug-工具) |
+
+</div>
 
 每節獨立、可跳讀。
 
@@ -116,7 +120,7 @@ description: Use PROACTIVELY before commits touching auth or payment code. Check
 - 4 個 file 都要做同樣的 audit（spawn 4 個 `general-purpose`）
 - 同時跑「code review」+「找相關 paper」+「寫 changelog」3 個獨立任務
 
-**怎麼跑**：在**一個 prompt 裡**列出 N 個獨立任務（譬如「請同時 audit 這 4 個檔案：A.md / B.md / C.md / D.md」）——Claude 在單一 turn 內多次呼叫 **Agent tool**、自動並行。**不是**連續輸入 N 個 prompt（那是 sequential、要等前一個結束）。要長時間獨立背景跑用 `/bg`。
+**怎麼跑**：在同一則 prompt 列出獨立任務，請 Claude 用不同 subagent 平行處理。再查看執行狀態，確認是否真的同時進行。連續送出多則訊息不保證平行；能同時跑多少個，依工具與設定而定。
 
 **成本**：低（不需 coordination）
 
@@ -156,11 +160,15 @@ description: Use PROACTIVELY before commits touching auth or payment code. Check
 
 ### 3 個 pattern 怎麼選
 
+<div align="center" markdown="1">
+
 | 你的情境 | 用哪個 |
-|---|---|
+|:---|:---|
 | 3 個獨立任務、結果各回主 session | **Pattern A** |
 | 多步驟協作、有 input → output 依賴 | **Pattern B** |
 | 想「自動生成 subagent」 | **不要做**（去想為什麼、通常 skill / template 更合適）|
+
+</div>
 
 **90% 的使用情境是 Pattern A**——上 Pattern B 之前先確認「真的需要 coordination」、別 over-engineer。
 
@@ -263,13 +271,17 @@ issues, error handling gaps. Per-issue: file:line + suggested fix.
 
 ### 5 切點 quick check
 
+<div align="center" markdown="1">
+
 | 症狀 | 切點 |
-|---|---|
+|:---|:---|
 | `/agents` 看不到 | 切點 1（檔案位置 / YAML 語法）|
 | Claude 不主動派 | 切點 2（description 寫法）|
 | Subagent 報「no access to X tool」 | 切點 3（tools 白名單）|
 | Token 帳單暴增 | 切點 4（model 沒指定）|
 | Subagent 跑亂、行為怪 | 切點 5（prompt 不 self-contained）|
+
+</div>
 
 ---
 

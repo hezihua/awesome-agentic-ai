@@ -1,0 +1,13 @@
+# Issue 入口設定 — 把「不是 bug / 不是新增 entry」的提問導去 Discussions,
+# 避免 issue tracker 被「我該怎麼開始」「stage X 卡住」這類問題灌爆。
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 提問 / 學習討論（Discussions Q&A）
+    url: https://github.com/WenyuChiou/awesome-agentic-ai-zh/discussions
+    about: 學習路線怎麼走、某個 stage / branch 卡住、想討論 agent 工具選型——這類「不是 bug、不是新增 project」的問題請開 Discussion，不要開 issue。
+  - name: 📐 新增 project 前先讀策展標準（style-guide）
+    url: https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/resources/style-guide.md
+    about: 新增 project entry 的 schema、license 標註慣例、品質門檻都在這裡。讀完再用「Project Suggestion」範本開 issue。
+  - name: 🔒 回報安全問題（Security）
+    url: https://github.com/WenyuChiou/awesome-agentic-ai-zh/blob/main/SECURITY.md
+    about: 惡意連結、範例程式碼供應鏈風險、外洩密鑰——請依 SECURITY.md 用私人管道回報，不要開公開 issue。

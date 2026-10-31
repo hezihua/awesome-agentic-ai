@@ -1,5 +1,7 @@
 # Stage 6 — RAG and Memory: find the source first, then remember what matters
 
+**RAG** (Retrieval-Augmented Generation): retrieve relevant material, then answer using it.
+
 > [繁體中文](./06-memory-rag.md) | [简体中文](./06-memory-rag.zh-Hans.md) | **English**
 
 <!-- freshness: canonical=stages/06-memory-rag.md; verified_on=2026-08-30; scope=rag,retrieval,embeddings,vector-stores,memory,evaluation,project-status; max_age_days=90 -->
@@ -30,8 +32,10 @@ By the end of this stage, you can:
 
 ## 🧩 Meet seven core terms first
 
+<div align="center" markdown="1">
+
 | Core term | Plain-language picture | Precise meaning |
-|---|---|---|
+|:---|:---|:---|
 | **Retrieval** | Find pages that may contain an answer | Find relevant content from external data after receiving a question. |
 | **RAG (Retrieval-Augmented Generation)** | Look in a book, then answer | Retrieve first, then give the found content to the model to generate an answer. |
 | **Embedding** | A coordinate card for a sentence’s meaning | A sequence of numbers that places semantically similar text near each other in vector space. |
@@ -40,16 +44,22 @@ By the end of this stage, you can:
 | **Reranking** | Reorder first-pass cards | Score candidates again so more useful chunks rank first. |
 | **Memory** | The assistant’s notebook | State needed across messages or sessions; it is not another name for chat history. |
 
+</div>
+
 ![RAG retrieves external evidence; Memory writes and reads back important state](../resources/diagrams/rag-memory-map.en.png)
 
 ### Choose the right method with one table
 
+<div align="center" markdown="1">
+
 | Problem | Consider first | Why |
-|---|---|---|
+|:---|:---|:---|
 | The data is short and needed only for this answer | **Long context** | Put it directly in this request for the shortest flow. |
 | There are many documents and you only know which passages matter after the question arrives | **RAG** | Retrieve relevant passages instead of sending every document every time. |
 | The assistant must remember preferences, task state, or results next time | **Memory** | Write reusable information to a storage layer that can be read again. |
 | You want to consistently change model behavior or a capability | [**Fine-tuning**](../resources/model-training-guide.en.md) | It adjusts model weights and behavior; it does not automatically provide current documents. |
+
+</div>
 
 No option is always best. Evaluate using your own data, questions, and success criteria.
 
@@ -80,7 +90,7 @@ No option is always best. Evaluate using your own data, questions, and success c
 <a id="-hands-on-exercises-illustrative-basics"></a>
 ## 🛠 Hands-on exercises
 
-Each exercise has a starter. Copy the commands and run them; you do not need to write an empty answer from scratch.
+Before each exercise, return to the repository root (the folder with README.md). The commands below enter the exercise folder, install its packages, then run local Path A. For exercises 4 and 5, first follow their guides to set up Ollama, download `qwen2.5:3b`, and start the service. Path B is optional; check whether it uses cloud services, its provider, key setup, and costs first.
 
 <a id="exercise-1-embeddings"></a>
 ### Exercise 1: Turn two sentences into embeddings
@@ -89,11 +99,11 @@ Each exercise has a starter. Copy the commands and run them; you do not need to 
 
 ```powershell
 cd examples/stage-6/01-embeddings
+python -m pip install -r requirements.txt
 python starter.py
-python starter_anthropic.py
 ```
 
-[Open the full instructions and checks](../examples/stage-6/01-embeddings/README.en.md). Start with only a few sentences to avoid unnecessary API costs.
+[Open setup, checks, and optional Path B](../examples/stage-6/01-embeddings/README.en.md). Start with only a few sentences to avoid unnecessary API costs.
 
 <a id="exercise-2-vector-db"></a>
 ### Exercise 2: Put embeddings in a vector database
@@ -102,11 +112,11 @@ python starter_anthropic.py
 
 ```powershell
 cd examples/stage-6/02-vector-db
+python -m pip install -r requirements.txt
 python starter.py
-python starter_anthropic.py
 ```
 
-[Open the full instructions and checks](../examples/stage-6/02-vector-db/README.en.md). Exercise data must not contain secrets or personal information.
+[Open setup, checks, and optional Path B](../examples/stage-6/02-vector-db/README.en.md). Exercise data must not contain secrets or personal information.
 
 <a id="exercise-3-chunking-comparison"></a>
 ### Exercise 3: Compare three chunking methods
@@ -115,11 +125,11 @@ python starter_anthropic.py
 
 ```powershell
 cd examples/stage-6/03-chunking-comparison
+python -m pip install -r requirements.txt
 python starter.py
-python starter_anthropic.py
 ```
 
-[Open the full instructions and checks](../examples/stage-6/03-chunking-comparison/README.en.md). Do not memorize a “standard size”; begin with document structure and test results.
+[Open setup, checks, and optional Path B](../examples/stage-6/03-chunking-comparison/README.en.md). Do not memorize a “standard size”; begin with document structure and test results.
 
 <a id="exercise-4-full-rag-pipeline"></a>
 ### Exercise 4: Connect a complete RAG pipeline
@@ -128,11 +138,11 @@ python starter_anthropic.py
 
 ```powershell
 cd examples/stage-6/04-full-rag-pipeline
+python -m pip install -r requirements.txt
 python starter.py
-python starter_anthropic.py
 ```
 
-[Open the full instructions and checks](../examples/stage-6/04-full-rag-pipeline/README.en.md). Start with a small dataset; “the program runs” does not mean the answer is correct.
+[Open setup, checks, and optional Path B](../examples/stage-6/04-full-rag-pipeline/README.en.md). Start with a small dataset; “the program runs” does not mean the answer is correct.
 
 <a id="exercise-5-long-term-memory"></a>
 ### Exercise 5: Remember a preference
@@ -141,11 +151,11 @@ python starter_anthropic.py
 
 ```powershell
 cd examples/stage-6/05-long-term-memory
+python -m pip install -r requirements.txt
 python starter.py
-python starter_anthropic.py
 ```
 
-[Open the full instructions and checks](../examples/stage-6/05-long-term-memory/README.en.md). Save only data needed to finish a task and provide ways to view, change, and delete it.
+[Open setup, checks, and optional Path B](../examples/stage-6/05-long-term-memory/README.en.md). Save only data needed to finish a task and provide ways to view, change, and delete it.
 
 ### Recommended mini-project: an assistant that retrieves and remembers
 
@@ -162,8 +172,10 @@ RAG has two paths: one prepares the data, and the other retrieves it when a ques
 
 Start with **2-step RAG**: every question retrieves first and answers second, so it is easiest to test. **Agentic RAG** lets the model decide whether to retrieve, rewrite a question, or search again. **Hybrid RAG** combines fixed steps with agent decisions. It differs from **Hybrid Search**, which only combines candidate sets during retrieval.
 
+<div align="center" markdown="1">
+
 | Stage | What it does | Plain-language picture |
-|---|---|---|
+|:---|:---|:---|
 | Load | Read PDFs, web pages, or database content | Bring books to the table |
 | Split | Divide into chunks | Cut books into cards |
 | Embed | Turn each card into a vector | Give meanings coordinates |
@@ -173,7 +185,9 @@ Start with **2-step RAG**: every question retrieves first and answers second, so
 | Generate | Give the model the question and evidence | Answer while looking at the cards |
 | Cite/Evaluate | Show sources and inspect results | Tell people where the answer came from |
 
-A **Retriever** returns related documents for a question. It need not use a vector database: BM25, SQL, web search, and hybrid search can also be retrievers.
+</div>
+
+A **Retriever** finds documents for a question. It need not use a vector database: **BM25 (keyword ranking method)** can find product IDs; **SQL (a language for querying databases)** can search tables. Web search and hybrid search are other options.
 **Citations** show which sources support the answer.
 
 </details>
@@ -208,7 +222,7 @@ These are advanced Stage 6 branches, not new prerequisites. Complete the basic e
 
 ### [Advanced RAG: find the broken step before adding new techniques](../resources/advanced-rag.en.md)
 
-For people who have built a minimal RAG system but face missed documents, bad ranking, or hard cross-document relationships. It explains **Hybrid Search**, **Reranking**, **HyDE**, **Multi-Query**, **RAG Fusion**, **Contextual Retrieval**, **GraphRAG**, **Self-RAG**, **CRAG**, **Adaptive RAG**, **Agentic RAG**, **RAPTOR**, and **DSPy**, with required reading and the rated resource table kept visible.
+Built a minimal RAG system, but documents are missing, ranked badly, or hard to connect across sources? Start with the symptom, then choose a method. The advanced page keeps the full technical terms, required reading, and rated resources.
 
 ### [Agent Memory: save only what is useful, permitted, and removable](../resources/agent-memory.en.md)
 
@@ -222,24 +236,26 @@ This table keeps only the tools needed for a Stage 6 baseline. Advanced techniqu
 
 <small>Verified: 2026-08-30 UTC</small>
 
-<table>
-  <thead><tr><th scope="col">Category</th><th scope="col">Project</th><th scope="col">Editorial rating</th><th scope="col">Best for</th><th scope="col">What you can learn</th><th scope="col">Status/limits</th></tr></thead>
+<div class="reader-resource-catalog" role="region" tabindex="0" aria-label="Selected projects and learning resources">
+<table align="center">
+  <thead><tr><th scope="col">Group</th><th scope="col">Project / document</th><th scope="col">Rating</th><th scope="col">Use</th><th scope="col">Limits</th></tr></thead>
   <tbody>
-    <tr><th scope="rowgroup" rowspan="3">RAG framework</th><td><a href="https://github.com/run-llama/llama_index">LlamaIndex</a></td><td>⭐⭐⭐⭐⭐</td><td>Beginners building document applications</td><td>indexes, retrievers, query engines</td><td>MIT; use the official starter first</td></tr>
-    <tr><td><a href="https://github.com/deepset-ai/haystack">Haystack</a></td><td>⭐⭐⭐⭐</td><td>People comparing modular pipelines</td><td>components, pipelines, routing</td><td>Apache-2.0; choose one framework to practice first</td></tr>
-    <tr><td><a href="https://github.com/infiniflow/ragflow">RAGFlow</a></td><td>⭐⭐⭐⭐</td><td>Teams studying a complete web product</td><td>document parsing, retrieval, UI</td><td>Apache-2.0; heavier than a teaching example</td></tr>
+    <tr><th scope="rowgroup" rowspan="3" align="center" valign="middle" width="80">RAG framework</th><td><div data-field="entry"><strong><a href="https://github.com/run-llama/llama_index">LlamaIndex</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="audience"><strong>Best for:</strong> Beginners building document applications</div><div data-field="learn"><strong>What you can learn:</strong> indexes, retrievers, query engines</div></td><td><div data-field="status"><strong>Status/limits:</strong> MIT; use the official starter first</div></td></tr>
+    <tr><td><div data-field="entry"><strong><a href="https://github.com/deepset-ai/haystack">Haystack</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="audience"><strong>Best for:</strong> People comparing modular pipelines</div><div data-field="learn"><strong>What you can learn:</strong> components, pipelines, routing</div></td><td><div data-field="status"><strong>Status/limits:</strong> Apache-2.0; choose one framework to practice first</div></td></tr>
+    <tr><td><div data-field="entry"><strong><a href="https://github.com/infiniflow/ragflow">RAGFlow</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="audience"><strong>Best for:</strong> Teams studying a complete web product</div><div data-field="learn"><strong>What you can learn:</strong> document parsing, retrieval, UI</div></td><td><div data-field="status"><strong>Status/limits:</strong> Apache-2.0; heavier than a teaching example</div></td></tr>
   </tbody>
   <tbody>
-    <tr><th scope="rowgroup" rowspan="4">Vector data</th><td><a href="https://github.com/chroma-core/chroma">Chroma</a></td><td>⭐⭐⭐⭐⭐</td><td>First local vector search</td><td>collections, add, query</td><td>Apache-2.0; practice and production settings differ</td></tr>
-    <tr><td><a href="https://github.com/qdrant/qdrant">Qdrant</a></td><td>⭐⭐⭐⭐⭐</td><td>Teams needing self-hosted or managed service</td><td>dense, sparse, hybrid queries</td><td>Apache-2.0; plan service operation and backups</td></tr>
-    <tr><td><a href="https://github.com/weaviate/weaviate">Weaviate</a></td><td>⭐⭐⭐⭐</td><td>Teams needing schema and hybrid search</td><td>BM25 + vector search</td><td>BSD-3-Clause; start with a small baseline</td></tr>
-    <tr><td><a href="https://github.com/pgvector/pgvector">pgvector</a></td><td>⭐⭐⭐⭐</td><td>Teams already using PostgreSQL</td><td>SQL and vectors in one database</td><td>PostgreSQL extension; still needs indexes and tuning</td></tr>
+    <tr><th scope="rowgroup" rowspan="4" align="center" valign="middle" width="80">Vector data</th><td><div data-field="entry"><strong><a href="https://github.com/chroma-core/chroma">Chroma</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="audience"><strong>Best for:</strong> First local vector search</div><div data-field="learn"><strong>What you can learn:</strong> collections, add, query</div></td><td><div data-field="status"><strong>Status/limits:</strong> Apache-2.0; practice and production settings differ</div></td></tr>
+    <tr><td><div data-field="entry"><strong><a href="https://github.com/qdrant/qdrant">Qdrant</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="audience"><strong>Best for:</strong> Teams needing self-hosted or managed service</div><div data-field="learn"><strong>What you can learn:</strong> dense, sparse, hybrid queries</div></td><td><div data-field="status"><strong>Status/limits:</strong> Apache-2.0; plan service operation and backups</div></td></tr>
+    <tr><td><div data-field="entry"><strong><a href="https://github.com/weaviate/weaviate">Weaviate</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="audience"><strong>Best for:</strong> Teams needing schema and hybrid search</div><div data-field="learn"><strong>What you can learn:</strong> BM25 + vector search</div></td><td><div data-field="status"><strong>Status/limits:</strong> BSD-3-Clause outside wl/; wl/ requires a separate enterprise license; start small</div></td></tr>
+    <tr><td><div data-field="entry"><strong><a href="https://github.com/pgvector/pgvector">pgvector</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="audience"><strong>Best for:</strong> Teams already using PostgreSQL</div><div data-field="learn"><strong>What you can learn:</strong> SQL and vectors in one database</div></td><td><div data-field="status"><strong>Status/limits:</strong> PostgreSQL extension; still needs indexes and tuning</div></td></tr>
   </tbody>
   <tbody>
-    <tr><th scope="rowgroup" rowspan="2">Evaluation and complete products</th><td><a href="https://github.com/vibrantlabsai/ragas">Ragas</a></td><td>⭐⭐⭐⭐⭐</td><td>Teams building rerunnable evaluations</td><td>datasets, metrics, experiments</td><td>Apache-2.0; metrics still need human calibration</td></tr>
-    <tr><td><a href="https://github.com/onyx-dot-app/onyx">Onyx</a></td><td>⭐⭐⭐⭐</td><td>People studying a complete AI assistant architecture</td><td>ingest, retrieval, chat, administration</td><td>Large product; use as an architecture reference, not a starter</td></tr>
+    <tr><th scope="rowgroup" rowspan="2" align="center" valign="middle" width="80">Evaluation and complete products</th><td><div data-field="entry"><strong><a href="https://github.com/vibrantlabsai/ragas">Ragas</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="audience"><strong>Best for:</strong> Teams building rerunnable evaluations</div><div data-field="learn"><strong>What you can learn:</strong> datasets, metrics, experiments</div></td><td><div data-field="status"><strong>Status/limits:</strong> Apache-2.0; metrics still need human calibration</div></td></tr>
+    <tr><td><div data-field="entry"><strong><a href="https://github.com/onyx-dot-app/onyx">Onyx</a></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="audience"><strong>Best for:</strong> People studying a complete AI assistant architecture</div><div data-field="learn"><strong>What you can learn:</strong> ingest, retrieval, chat, administration</div></td><td><div data-field="status"><strong>Status/limits:</strong> Large product; use as an architecture reference, not a starter</div></td></tr>
   </tbody>
 </table>
+</div>
 
 <a id="-self-check-before-entering-stage-7"></a>
 ## ✅ Self-check before Stage 7

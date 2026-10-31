@@ -44,13 +44,17 @@ README、PROGRESS、CAPSTONE、章節頁首、章末下一站與路線圖必須�
 
 **初版草稿（A1-A5）→ 合併後（A1-A3）**：
 
+<div align="center" markdown="1">
+
 | 草稿 | 草稿主題 | 最終歸屬 |
-|---|---|---|
+|:---|:---|:---|
 | A1 | CLI 入門 + 選擇 | → 最終 A1 |
 | A2 | Workflow（project instructions / Skill / 任務拆解 / portable prompt） | → 最終 A2 |
 | A3 | MCP 接 CLI | → 最終 A3 |
 | A4 | 多 CLI 並用 | → 移到最終 A1／A2 的工具比較與 portable prompt |
 | A5 | Production CLI workflow（CI / cost / observability / team sharing） | → 最終 A3 |
+
+</div>
 
 合併邏輯：
 
@@ -110,12 +114,16 @@ Stage 5（Claude Code 生態）兩條軌都會碰到：
 
 ### Track A 跟 Track B 的 entry curation 差別
 
+<div align="center" markdown="1">
+
 | | Track A（A1-A3） | Track B（Stage 3-8） |
-|---|---|---|
+|:---|:---|:---|
 | **entry 結構** | 大量 cross-link 到 Stage 5 / Stage 8 / cli-agents-guide | 完整獨立 entry（每個都有 schema 表格）|
 | **entry 數** | ~24 個（多為 cross-link） | ~80 個（多為獨立 entry） |
 | **新增 entry 標準** | 必須是 CLI agent 直接相關的工具 | framework / library / agent component |
 | **更新頻率** | 高（CLI 工具迭代快） | 中（framework 更新慢一些） |
+
+</div>
 
 **判準**：Track A entry 出現的條件是「對 CLI workflow 有直接幫助」；Track B entry 出現的條件是「教讀者一個 agent design pattern」。
 
@@ -171,6 +179,10 @@ stage 的價值 = 讀者學完後**能回答這個問題**。
 
 多數 stage 保留以下 section；**呈現順序採漸進式揭露**。Stage 1 是第一個完成遷移的 pilot，其他 stage 在各自內容更新時逐章遷移，不要求在同一個 PR 一次重寫：
 
+Stage 1 的完整模型規格是查詢資料，不是初學者的必讀清單。保留外層收合入口，再依 18 個家族分成預設關閉的選單。每家使用「欄位／內容」兩欄表。型號與多組價格分列，共用欄名以真正的 `rowspan` 合併；狀態、context、用途、限制與官方來源保留寬列，長限制也可分列合併欄名。價格要明示幣別、單位、服務層與快取保留時間。原本共用的規格不得臆測成個別型號的數字。不能再把多個型號、價格和限制塞進八欄窄表；可見的選模型主線、必讀與評分資源維持原位。
+
+局部模型更新只改該項查核日期，不重標整頁 marker。API 已開放、權重預告與權重已可下載是不同狀態；未來的公布日期必須明寫「預告」，不能寫成已完成。型號、價格、限制、來源與相同的 rowgroup 結構須三語同步。
+
 Stage 1 的模型生命週期固定保持可見：`資料 → Pre-training → Base Model → Post-training → Instruct Model → Inference → Agent 系統`。正文先粗體白話解釋 **Pre-training**、**Post-training**、**Fine-tuning** 與 **Inference**，再用三語同構亮色圖整理關係。圖與正文都要明說 Agent 是包住模型使用流程的系統，不是第七個模型 checkpoint；Prompt、RAG、Memory、Tools 與 Harness 通常不改模型權重。SFT、DPO 與 RLHF／RL 留在 Stage 1 可見主線；GRPO、PEFT／LoRA、Distillation 與 Quantization 由三語 `resources/model-training-guide*` 提供可見選修導覽。選修頁的名詞、必修閱讀、完整五星資源與完成檢查直接可見，只有實作前安全清單預設收合。Stage 6 提到 Fine-tuning 時必須連回同語言指南，避免把它誤當成 RAG 或保存最新資料的方法。
 
 Stage 2 的固定主線是「目標／資料／規則／輸出 → Zero-Shot／One-Shot／Few-Shot → Chain-of-Thought 的正確邊界 → 六筆固定案例 → 一次只改一件事 → 比較分數」。三語概念圖固定放在可見核心詞之後：先由正文定義，再用同構圖整理關係；圖片不能取代定義，也不能畫入正文已撤掉的固定數字。必修閱讀與 18 筆五星資源表保持可見；程式碼、模型比較與安全補充預設收合。CoT 必須先用白話解釋，但不當成要求模型公開完整內部推理的通用步驟。
@@ -201,7 +213,7 @@ Stage 6 的固定主線是「七個可見核心詞 → RAG／Memory 選擇 → �
 
 Stage 6 的可見亮色三語圖固定畫成三條同構路徑：文件進入知識庫的 ingest path、問題取回證據再回答的 query path，以及重要狀態的 Memory write／read loop。關閉的「RAG 基礎流水線」另放一張詳細三語圖，分成 index lane 與 query lane；Contextualization、query rewrite、fusion、reranking 必須標為可選，retrieve 連線只能落到候選檢索，不能跳到答案。圖與正文都要說清 vector database 不是唯一 retriever，並區分 Hybrid RAG（流程形狀）與 Hybrid Search（候選融合）。圖片只整理正文已定義的關係，不把 vendor benchmark、固定 chunk size、top-k、成本倍數或模型排名畫成通則。五題 heading、anchor、成果、第一個可複製 PowerShell 動作、資料／預算提醒、必修閱讀與 9 筆基線五星資源保持可見；時間、環境與完整流水線補充預設收合。
 
-`resources/advanced-rag*` 與 `resources/agent-memory*` 是 Stage 6 的三語獨立深讀頁，頁首與頁尾都要有回到同語言 Stage 6 的連結，Stage 6 也要在可見主線直接連入兩頁。進階 RAG 頁依「症狀 → 指標 → 最小方法」教 BM25／Hybrid Search、Reranking、Contextual Retrieval、HyDE、Multi-Query、RAG Fusion、Self-RAG、CRAG、Adaptive／Agentic RAG、GraphRAG、RAPTOR 與 DSPy；12 筆五星資源固定分成 `4／4／4`。Agent Memory 頁先分開 Chat History／Context／RAG／Memory，再教 short／long-term、episodic／semantic／procedural、寫入／搜尋／更新／刪除／忘記、隔離與 consent；11 筆五星資源固定分成 `4／3／4`。兩頁的必修閱讀、完整名詞、練習、精選專案與安全底線直接可見；只有成本／實作細節與排錯使用兩個預設關閉的 `<details>`。
+`resources/advanced-rag*` 與 `resources/agent-memory*` 是 Stage 6 的三語獨立深讀頁，頁首與頁尾都要有回到同語言 Stage 6 的連結，Stage 6 也要在可見主線直接連入兩頁。進階 RAG 頁依「症狀 → 指標 → 最小方法」教 BM25／Hybrid Search、Reranking、Contextual Retrieval、HyDE、Multi-Query、RAG Fusion、Self-RAG、CRAG、Adaptive／Agentic RAG、GraphRAG、RAPTOR 與 DSPy；12 筆五星資源固定分成 `4／4／4`。Agent Memory 頁先分開 Chat History／Context／RAG／Memory，再教 short／long-term、episodic／semantic／procedural、寫入／搜尋／更新／刪除／忘記、隔離與 consent；14 筆有編輯評分的資源固定分成 `7／3／4`。兩頁的必修閱讀、完整名詞、練習、精選專案與安全底線直接可見；只有成本／實作細節與排錯使用兩個預設關閉的 `<details>`。
 
 Stage 6 overview 的 9 筆基線資源固定分成 `3／4／2` 三組；三頁的每組都使用獨立 `<tbody>` 與真正 HTML `rowspan`。保留五星編輯評分，移除 GitHub stars 數字；官方文件、paper 與 canonical repo 負責證明事實，知名或活躍專案只負責提供動手入口。GraphRAG 維護狀態、Ragas canonical owner、Letta／Letta Code 的不同用途、Zep Community Edition 歷史狀態，以及 RAG／retrieval／embedding／vector store／memory／evaluation／project status 使用 90 天 freshness marker。
 
@@ -304,9 +316,9 @@ Banner 由 `scripts/build-banner.py` 在原版插圖上加動畫，不重畫文�
 
 ### 課程地圖固定結構
 
-`resources/courses*` 先幫讀者選一門課，不做證書排行榜。可見順序固定為「五個證書／課程核心詞 → 按需求選一條 → 12 筆精選課程與學習路線 → 可直接複製的五行作品證據卡 → Stage 3／4／7 返回路線」。證書限制與清單維護方法可以收合；精選課程、編輯評分與作品卡保持可見。
+`resources/courses*` 先幫讀者選一門課，不做證書排行榜。可見順序固定為「五個證書／課程核心詞 → 按需求選一條 → 13 筆精選課程與學習路線 → 可直接複製的五行作品證據卡 → Stage 3／4／7 返回路線」。證書限制與清單維護方法可以收合；精選課程、編輯評分與作品卡保持可見。
 
-12 筆主資源依 `3／5／2／2` 分成免費打底、建構與上線、較長系列課、中文供應商路線。每組使用獨立 `<tbody>`、`scope="rowgroup"` 與真正 `rowspan`；一列只放一個主課程 URL，中文伴讀等補充入口放在表格外。星等只表示教學價值、實作完整度、更新狀態與可轉移性，不表示證書排名，也不保存 GitHub stars。
+13 筆主資源依 `3／6／2／2` 分成免費打底、建構與上線、較長系列課、中文供應商路線。每組使用獨立 `<tbody>`、`scope="rowgroup"` 與真正 `rowspan`；一列只放一個主課程 URL，中文伴讀等補充入口放在表格外。星等只表示教學價值、實作完整度、更新狀態與可轉移性，不表示證書排名，也不保存 GitHub stars。
 
 **Certificate of Completion**、**Skill Badge**、**Professional Certificate** 與 **Certification Exam** 必須分開定義。沒有官方證書條件就寫未明示，不自行補成「免費證書」；費用、cohort、證書、評量與 repository status 使用三語一致的 90 天 freshness marker。官方頁證明課程與證書事實，canonical repo 證明開源教材狀態，第三方文章只能當線索。
 
@@ -356,12 +368,12 @@ Banner 由 `scripts/build-banner.py` 在原版插圖上加動畫，不重畫文�
 
 **已知例外**：
 
-- **Stage 0**：prerequisite gateway，使用可見的跳過判斷、單一整合練習、18 筆五星學習資源與短版完成檢查；時間、環境、補充練習與名詞預設收合（見「Stage 0 為什麼可以 skip」）
+- **Stage 0**：prerequisite gateway，學習目標後先放可見核心名詞、概念圖與真實 Commit 範例，再做單一整合練習、短版完成檢查與 18 筆評分學習資源；只有時間、環境與補充練習預設收合（見「Stage 0 為什麼可以 skip」）
 - **Stage 5**：分 7 個核心 sub-stage（5.1-5.7）+ 5.8 SDK（選修、包成產品或服務才需要），每個 sub-stage 各有自己的 學習目標 / 必修閱讀 / 動手練習 / 精選 Projects
 - **Stage 6**：直接跳過進入條件 section（前面 stage 已隱含 prerequisite）；Stage 7 仍保留可見進入條件，讓讀者先確認 Stage 4／5／6 的必要基礎。
 - **Stage 7 Eval**：先教 **Outcome**，再教完整 **Eval Case**、**Eval Suite** 與 **Reviewed Eval Set**；最後才補充 Golden／Reference Set 等外部常見名稱。Eval Case 至少交代 input、initial state、success criteria、forbidden actions、optional reference answer、grader 與 case metadata。Golden Set 不只是 input，也不等於訓練資料或 Few-shot；Development cases 用來調整，frozen holdout 只在 release candidate／最後驗證使用。報告保留 dataset version、split、trials、grader、Outcome、Trajectory 與 baseline；不能把 20–50 cases 說成所有專案的硬性最低數，也不能因單次隨機失敗直接判定 regression。
 - **Stage 7.5**：reading-map（進階概念 + reading path），沒有 動手練習、只有輕量 self-check——是 production 之後的 frontier 概念地圖，不寫 code
-- **Stage 8**：兩軌共用的 interface 選擇 hub。可見主線先定義 8 個粗體核心詞，再用平行選擇圖分清 Search／Fetch、Browser Use、Computer Use、Sandbox，接著保留四道安全檢查、兩題第一步、五筆精選入口、21 筆完整五星資源與短版 self-check。Computer Use／benchmark、Browser Use、Sandbox、兩軌進階做法、安全案例與未來介面放進 9 個預設關閉選單；完整資源表固定用 `5／5／4／5／2` 五個真正合併的 rowgroup 並保持可見。四張介面卡不是固定升級順序，舊 heading 以空 anchor 保留深連結。
+- **Stage 8**：兩軌共用的 interface 選擇 hub。可見主線先定義 8 個粗體核心詞，再用平行選擇圖分清 Search／Fetch、Browser Use、Computer Use、Sandbox，接著保留四道安全檢查、兩題第一步、五筆精選入口、22 筆完整五星資源與短版 self-check。Computer Use／benchmark、Browser Use、Sandbox、兩軌進階做法、安全案例與未來介面放進 9 個預設關閉選單；完整資源表固定用 `5／6／4／5／2` 五個真正合併的 rowgroup 並保持可見。四張介面卡不是固定升級順序，舊 heading 以空 anchor 保留深連結。
 
 每個 section 的功能：
 
@@ -525,7 +537,7 @@ Stage 0 不是 stage——它是 prerequisite gateway。
 - Python / git / CLI / JSON 已經會的人 → 直接 Stage 1
 - 不會的人 → 用一個不需帳號或 token 的小工具，同時練 Python、API、JSON、CLI 與 Git
 
-Stage 0 的可見主線固定為「skip 條件 → 4 個學習目標 → 1 個整合練習 → 18 筆五星學習資源 → 短版完成檢查」。時間、環境、分項補充與名詞放進預設收合的 `<details>`。它存在是為了**讓真的初學者不會在後面 stage 卡住**，但不把這個 repo 變成完整的 Python 或 Git 教科書。
+Stage 0 的可見主線固定為「skip 條件 → 4 個學習目標 → 核心名詞 → Git／GitHub 概念圖與真實 Commit 範例 → 1 個整合練習 → 短版完成檢查 → 18 筆評分學習資源」。時間、環境與分項補充放進預設收合的 `<details>`。核心名詞依程式與執行、資料與介面、平台與專案、認識專案、修改與協作分成 `4／4／3／3／5` 組；先區分 Python、Terminal、CLI、Shell，再解釋 API、資料格式及 GitHub 協作。圖前須定義 History／Diff。Commit 保存本機版本，Push 上傳工作線，PR 提出檢查，Merge 合併；作者、時間、說明與識別碼可供追查，但作者標籤不等於身分驗證。公開不代表開源，使用前要查看 License。瀏覽器觀察不要求帳號或建立公開 Issue／PR。它存在是為了**讓真的初學者不會在後面 stage 卡住**，但不把這個 repo 變成完整的 Python 或 Git 教科書。
 
 ---
 
@@ -535,3 +547,21 @@ Stage 0 的可見主線固定為「skip 條件 → 4 個學習目標 → 1 個�
 - **branch 設計理由**：見 [`../branches/DESIGN.md`](../branches/DESIGN.md)
 - **entry schema / 用詞規範**：見 [`../resources/style-guide.md`](../resources/style-guide.md)
 - **跨 stage 範例**：見 [`../walkthroughs/build-first-agent-in-7-steps.md`](../walkthroughs/build-first-agent-in-7-steps.md)
+
+
+### GitHub 原生表格與網站排版
+
+學習資源表同時服務 GitHub Markdown 與文件站。原生 Markdown 表格用置中的 `markdown="1"` 外框，說明欄明確靠左；HTML 表格置中，合併分類與短評分置中。資源欄改用沒有段落預設留白的 `div[data-field]`，保留所有資料、URL、星等與分組。GitHub 會移除 class／data 屬性，所以原生版須靠可接受的 HTML 排版，不能用手機文件站的 CSS 通過來代替驗收。reader UX 量測不把表格對齊冒號算成新增敘述，也不能為了計數而插入改變原始 HTML 巢狀關係的容器。
+
+桌面資源比較優先五欄：分類、專案／文件、推薦度、用途、限制；資料不足不硬湊五欄，也不新增星等。GitHub Markdown 保留多欄比較；文件站在手機／平板可將同一份資料直向排滿寬。說明文字靠左，分類與星等可置中；置中的是整張表，不是所有敘述。
+
+路線與選路表需另做名稱換行驗收：完整章名與入口不能因欄寬留下孤字。依實測選擇名稱欄寬，長名較多的路線保留自動欄寬；手機文件站將同一份資料滿寬直向排列。這不是新增教學內容，也不縮短正式名稱來配合欄位。
+
+
+### Stage 0：從改文件到 GitHub 的截圖導讀
+
+- 用讀者自己的練習儲存庫串起 Branch → 編輯／存檔／檢查 → Staging Area → Commit → Push → PR／Review → Merge → Pull。本機與 GitHub 分開說明；先定義 Clone、origin、暫存區、Fork 等新詞，不假設新手已懂。
+- 重要操作順序、三張截圖的逐號文字說明都直接可見；原有 Python／API 主練習、名詞表與 18 筆五星資源保留。新增內容需經新手冷讀後才重新設定 Stage 0 的可見字數上限，其他頁面不放寬。
+- Commit、PR／Merge、Issue 使用本專案的真實公開頁面。以紅色框與編號直接指認欄位，再對照同號說明。三語共用取景與編號，各自使用對應語言的標註；原始 GitHub 介面不翻造。
+- 作者與提交者、Commit 時間與 Push 時間分清楚。Merged 表示已合併；Closed 只表示結束追蹤。自己的儲存庫可自行檢查，合作專案的批准要求依實際規則；不能把 Checks 數量當成通過證明。
+- 手機提供完整可見的逐號說明與原圖放大入口。教學紅框不是 Diff 的刪除標記；截圖若只圈新增行，必須明說其他差異到原頁查看。

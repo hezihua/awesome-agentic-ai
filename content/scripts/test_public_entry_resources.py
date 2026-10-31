@@ -188,7 +188,7 @@ def _without_details(text: str) -> str:
 
 
 def _resource_table(text: str) -> str:
-    marker = '<table class="resource-table">'
+    marker = '<table align="center">'
     start = text.index(marker)
     return text[start : text.index("</table>", start) + len("</table>")]
 
@@ -285,26 +285,27 @@ def test_resources_grouped_highlights_have_exact_trilingual_parity() -> None:
     assert len(set(observed)) == 1
 
 
-def test_resources_keep_the_wide_table_inside_a_keyboard_scroll_region() -> None:
-    labels = {
-        "zh-TW": "精選資源表（可左右捲動）",
-        "en": "Selected resources table (scroll horizontally)",
-        "zh-Hans": "精选资源表（可左右滚动）",
-    }
-    for locale, page in TRIOS["resources"].items():
+def test_resources_keep_complete_compact_tables_inside_visible_named_regions() -> None:
+    for page in TRIOS["resources"].values():
         text = page.read_text(encoding="utf-8")
-        opening = (
-            '<div class="resource-table-scroll" role="region" tabindex="0" '
-            f'aria-label="{labels[locale]}">'
+        opening = re.search(
+            r'<div class="reader-resource-catalog" role="region" tabindex="0" aria-label="[^"]+">',
+            text,
         )
-        assert text.count(opening) == 1
-        assert text.index(opening) < text.index('<table class="resource-table">')
-        assert text.index("</table>") < text.index("</div>", text.index("</table>"))
+        assert opening
+        table = _resource_table(text)
+        assert text.index(opening[0]) < text.index(table)
+        assert len(re.findall(r'<th scope="col">', table)) == 5
+        assert table in _without_details(text)
+        rows = re.findall(r'<tr>(.*?)</tr>', table, re.S)[1:]
+        assert len(rows) == 16
+        for row in rows:
+            fields = re.findall(r'<div data-field="([^"]+)">(.*?)</div>', row, re.S)
+            assert [name for name, _ in fields] == ["entry", "use", "limits"]
+            assert re.search(r'<td\b[^>]*><span data-field="rating">⭐{3,5}</span></td>', row)
+            assert all(re.sub(r'<[^>]+>', '', value).strip() for _, value in fields)
+        assert 'class="resource-table"' not in text
 
-    css = (ROOT / "docs" / "stylesheets" / "extra.css").read_text(encoding="utf-8")
-    assert ".md-typeset .resource-table-scroll" in css
-    assert "overflow-x: auto" in css
-    assert "min-inline-size: 44rem" in css
 
 
 def test_resources_use_current_official_integrations_and_limits() -> None:
@@ -378,6 +379,41 @@ def test_catalog_entry_urls_and_editorial_ratings_match_in_all_locales() -> None
         text = page.read_text(encoding="utf-8")
         assert "api.intuitek.ai" not in text
         assert "YIELD INTELLIGENCE" not in text
+
+
+@pytest.mark.parametrize("locale,page", TRIOS["catalog"].items())
+def test_sentry_catalog_uses_canonical_repo_and_preserves_mcp_identity(
+    locale: str, page: Path,
+) -> None:
+    text = page.read_text(encoding="utf-8")
+    heading = "### [getsentry/toolkit](https://github.com/getsentry/toolkit) ⭐⭐⭐⭐"
+    assert text.count(heading) == 1, page
+    assert "https://github.com/getsentry/sentry-mcp" not in text, page
+    entry = text.split(heading, 1)[1].split("\n### ", 1)[0]
+    assert "| License | FSL-1.1-Apache-2.0 |" in entry
+    assert "Competing Use" in entry
+    assert "`getsentry/sentry-mcp`" in entry
+    assert "`sentry-mcp`" in entry
+    assert "`@sentry/mcp-server`" in entry
+    assert "2026-10-02" in entry
+    facts = {
+        "zh-TW": (
+            "同一個專案", "Sentry MCP", "從 LLM 查 Sentry error event、issue、trace",
+            "用 Sentry 接 production error 的工程師", "⭐⭐⭐⭐（**Sentry 官方**）",
+        ),
+        "en": (
+            "same project", "Sentry MCP", "query Sentry error events / issues / traces from LLMs",
+            "engineers using Sentry for production errors", "⭐⭐⭐⭐ (**Sentry official**)",
+        ),
+        "zh-Hans": (
+            "同一个项目", "Sentry MCP", "从 LLM 查 Sentry error event、issue、trace",
+            "用 Sentry 接 production error 的工程师", "⭐⭐⭐⭐（**Sentry 官方**）",
+        ),
+    }
+    assert all(fact in entry for fact in facts[locale]), page
+    if locale in {"zh-TW", "zh-Hans"}:
+        note = next(line for line in entry.splitlines() if line.startswith("原 `"))
+        assert all(len(sentence.replace("`", "")) <= 60 for sentence in note.split("。")), page
 
 
 def test_catalog_rejects_volatile_rankings_counts_and_fixed_model_roles() -> None:

@@ -123,13 +123,17 @@ maturity ladder），彼此之間沒有箭頭。底部固定保留 permission、
 `resources/diagrams/` 的慣例是 `NAME.png` = zh-TW、`NAME.en.png`、`NAME.zh-Hans.png`。
 處理前有 5 張圖缺 9 個變體，導致 `.en.md` / `.zh-Hans.md` 頁面**alt text 已在地化、圖檔還是繁中**。
 
+<div align="center" markdown="1">
+
 | 圖 | 結果 |
-|---|---|
+|:---|:---|
 | `multi-llm-delegation-composition` | 補上 `.zh-Hans`，忠實比照既有的 `.png` / `.en.png`（深色霓虹＋廠商 logo） |
 | `teacher-ai-use-cases-overview` | 三語重產，**升級為 house style**（彩色卡片＋線條 icon） |
 | `teacher-ai-classroom-use-cases` | 三語重產，**升級為 house style**（五欄卡片式） |
 | `rag-pipeline-overview` | 三語重產，淺色卡片流程圖（**未達 house style**，見下方） |
 | `chunking-strategies` | 三語重產，淺色卡片流程圖（**未達 house style**，見下方） |
+
+</div>
 
 副檔名同時從 `.jpg` 改為 `.png`（house style 那 20 張都是 png，線條插圖＋密集文字用 jpeg 會有壓縮雜訊），
 `stages/06-memory-rag` 與 `branches/for-teacher` 共 12 處引用一併更新。
@@ -151,12 +155,16 @@ maturity ladder），彼此之間沒有箭頭。底部固定保留 permission、
 
 ### 1. delegate 回報 `success` 不等於做對了 —— 這批四次假成功
 
+<div align="center" markdown="1">
+
 | 事件 | 實際狀況 |
-|---|---|
+|:---|:---|
 | `chunking-strategies.zh-Hans` 第 1 次 | 殘留繁體 `種` / `純`，回報 success |
 | 同上第 2 次 | 修好 `純`→`纯`，**`種` 仍是繁體**，又回報 success |
 | rag/chunking house style 第 3 次 | 修好乾淨度但**整個丟掉 house style** |
 | 同上第 4 次 | **根本沒改寫檔案**（時間戳未變），卻列出一串「已執行的驗證指令」 |
+
+</div>
 
 **驗收必須是委派者自己看原始產出**，而且要有能分辨的方法。
 
@@ -324,3 +332,27 @@ GitHub stars 或其他容易漂移的指標。箭頭只能落在卡片／節點�
 `eval-case-anatomy` 只回答「完整 Eval Case 有哪些部分」：Input、Initial State、Success Criteria、Forbidden Actions、Optional Reference Answer、Grader 與 Case Metadata 是七個同層欄位。Input 只是完整 Eval Case 的其中一格。下方再整理 `Eval Suite → Reviewed Eval Set`，並註明 Golden／Reference Set 是需回到來源確認定義的外部名稱，不只是 input，也不等於訓練資料或 few-shot 範例。
 
 人工逐張檢查三語標題、七個欄位、箭頭、警告與 footer；文字、圖示、箭頭、邊框沒有重疊。圖中不放價格、stars、模型版本、benchmark 分數或供應商標誌。
+
+
+## 2026-10-28 · Stage 0 Git／GitHub 修改流程
+
+使用目前內建 image generation，工具未提供可選引擎 ID。新增 `github-change-flow.png`、`.en.png`、`.zh-Hans.png`，1672 × 941；繁中先定稿，英文／簡中以同一繁中圖編輯文字，保留構圖、卡片、圖示、顏色與箭頭。最終版依使用者提供的模型生命週期圖，採細線框、線條圖示與一般無襯線字體，取代初稿厚重卡通風格。
+
+共同提示：奶油白、深藍大字、亮色圓角卡與留白。左區是電腦上的 Git，右區是 GitHub 網站。Branch → Commit → Push → PR → Merge；下方列出 Commit 的作者、時間、說明與識別碼，並提示 History／Diff 可追查差異。正文須先定義圖中名詞；圖只整理這個本機協作範例，不把 Git 限定為只能在本機使用。圖中沒有價格、模型、日期或星數。
+
+繁中標籤：從修改到合併；你的電腦 · Git；GitHub · 網站；另外開線修改；保存版本；Push · 上傳；提出修改，請人檢查；確認後合併到 main；每個 Commit 留下紀錄；作者／時間／修改說明／版本識別碼；看 History 與 Diff，追查改了什麼；Commit ≠ Push ≠ Merge。
+
+英文替換：From changes to merge; Your computer · Git; GitHub · Website; Work on a separate branch; Save a version; Push · Upload; Propose changes for review; Merge after agreement; Each Commit keeps a record; Author / Time / Message / Commit ID; Check History and Diff to trace changes。簡中逐項替換同義文字，不另行改版。
+
+PNG 僅進行無損 IDAT 重壓縮，驗證解壓後掃描列位元組完全相同；未重畫或縮小圖中文字。手機保留圖的主要分流與原圖入口，詳細名詞以可見正文為準。
+
+
+### 真實 Commit 截圖（同批追加）
+
+`github-commit-example.png`、`.en.png`、`.zh-Hans.png` 使用 PR #343 的合併 Commit `2956dc0b4960f6fecf5d3ab00f8b89bacc886e18`。2026-10-29 重新用 Chromium 擷取本專案公開頁面，改成直接圈選欄位的紅框與編號；新增 `github-pr-example*`（PR #343）與 `github-issue-example*`（Issue #314）各三語。九張圖用同一份 `github-screenshot-guides.json` 保存來源 URL、取景、框的位置、編號與三語標註；採 HTML/CSS 疊加標記後截圖，未用生成式工具重製 GitHub 介面。
+
+原畫面僅裁切；來源文字、作者、時間、狀態與統計不改寫。Commit 畫面保留 10 個變更檔案、+15／-13 及兩個父版本；時間不是 Push 時間。英文／簡中版替換教學標註，公開紀錄原有的中英文仍照原樣保留。Diff 的教學紅框不代表刪除；Closed 不保證已修好，Checks 數量也不代表通過。原始頁面 URL 與逐號說明在三語正文保持可見。
+
+截圖先作完整尺寸與手機／桌面呈現檢查，再無損重壓縮 IDAT；解壓後的掃描列位元組一致。三份舊 Commit 大圖由精簡取景版本取代；六份新增 PR／Issue 圖使 PNG 數為 79。容量只依本批實測小幅調整總上限，單圖、單頁上限保持原值。
+
+維護者回饋後，九張圖的標註各縮成一句短說明；保留同一取景、紅框與編號。正文七個步驟各一句，操作指令與次要差別預設收合，逐號文字說明仍可見。

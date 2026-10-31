@@ -12,12 +12,16 @@
 
 Each recipe uses the same 4-part structure:
 
+<div align="center" markdown="1">
+
 | Section | Content | Why it exists |
-|---|---|---|
+|:---|:---|:---|
 | **Scenario** | A concrete situation you might run into today | Find a recipe from “I have X problem,” not from “I want to use a subagent” |
 | **Subagent** | Which one to use (Claude Code’s built-in name) | Copy the name directly; no guessing |
 | **Prompt Template** | Copy-paste-ready instruction text | No need to invent the prompt yourself |
 | **When Not to Use It** | A better alternative than using a subagent | Avoid overkill |
+
+</div>
 
 > 💡 **How to actually dispatch a subagent**: in your Claude Code terminal conversation, **type or paste the prompt template directly**. That is all. Claude sees the instruction, automatically uses the **Agent tool** (Claude Code’s internal dispatch mechanism) to find the right subagent, runs it, and returns a short summary to the main session. **No slash command or special syntax is required**.
 >
@@ -220,11 +224,12 @@ Don't make the change yet — just the impact analysis.
 
 **Subagent**: `general-purpose` × N (spawn several at the same time)
 
-> 💡 **How to spawn several at the same time**: in the Claude Code conversation, **enter the prompt below 4 times in a row** (changing `<file-path>` each time). Claude Code will run them in parallel automatically. You do not need to wait for the first subagent to finish before entering the second prompt. That is the practical workflow for “parallel spawn.”
+> 💡 **How to request parallel work**: Put all four files in one prompt and ask Claude to assign them to separate subagents. Check the run status after sending it; requesting parallel work does not prove it ran in parallel.
 
-**Prompt Template** (change `<file-path>` each time):
+**Prompt Template** (replace these with your four file paths):
 ```
-Audit `<file-path>` for academic-style issues: (1) over-engineering
+Use separate subagents to audit these files in parallel: A.md, B.md, C.md, D.md.
+Each subagent reports on one file. Check: (1) over-engineering
 jargon without first-use explanation, (2) clarity (long sentences,
 vague pronouns), (3) unsupported % claims, (4) persona-fit (wrong
 technical level for the file's stated target audience — see the
@@ -334,14 +339,18 @@ React Hook Form + Zod>. Include: component code, validation schema,
 
 Not sure which subagent to use? Look it up by **task type**:
 
+<div align="center" markdown="1">
+
 | Subagent | Recipes |
-|---|---|
+|:---|:---|
 | `code-reviewer` | **1** (pre-commit review) / **4** (cross-locale parity) / **8** (release security audit)|
 | `Explore` | **2** (new codebase) / **6** (find symbol) / **11** (cross-repo similar code)|
 | `Plan` | **3** (refactor plan) / **9** (blast radius)|
 | `general-purpose` | **5** (fact-check) / **7** (multi-paper compare) / **10** (parallel multi-target) / **12** (LLM-as-judge eval)|
 | `frontend-developer` | **13** (a11y audit) / **15** (React form)|
 | `claude-code-guide` | **14** (Claude Code feature lookup)|
+
+</div>
 
 ---
 

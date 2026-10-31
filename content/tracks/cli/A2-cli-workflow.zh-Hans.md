@@ -10,11 +10,15 @@
 
 ## 🧩 先认识三个核心词
 
+<div align="center" markdown="1">
+
 | 核心词 | 它是什么、像什么 | A2 怎么用 | 不是什么 |
-|---|---|---|---|
+|:---|:---|:---|:---|
 | **Project instructions（项目规则）** | 每次进入工作室都要看的守则 | 放项目用途、禁止事项、测试指令和交付格式 | 不放只用一次的任务或长篇参考资料 |
 | **Skill（操作卡）** | 需要时才拿出的可复用操作卡 | 放 review、release、整理文档等重复流程 | 不是每家 CLI 都使用相同路径、权限或 frontmatter |
 | **One-off prompt（单次提示）** | 只交代今天这一件事的便签 | 放本次任务、范围、输入和成功条件 | 不用它重复粘贴每次都相同的项目规则 |
+
+</div>
 
 ## 📌 学习目标
 
@@ -43,7 +47,7 @@
 
 官方资料查核日：**2026-08-30 UTC**。
 
-<table>
+<table align="center">
 <thead>
 <tr><th scope="col">工具</th><th scope="col">项目规则</th><th scope="col">Project Skill</th><th scope="col">要注意什么</th></tr>
 </thead>
@@ -65,7 +69,7 @@
 
 **成果：** CLI agent 每次进入 repo，都知道这个项目做什么、不能碰什么、怎么验证，以及完成时要回报什么。
 
-先从上方对照表中选出属于你所用工具的项目规则文件，再放入这四件事：
+展开上方“四个 CLI 的规则文件与 Skill 位置”，选你的工具，再把这四件事放进对应的规则文件：
 
 ```markdown
 # 项目规则
@@ -159,37 +163,37 @@ Claude Code 的 `.claude/commands/<name>.md` 目前仍能建立同名 `/name`，
 
 下面按用途分成五组。同一组只显示一次分类栏，避免重复文字把表格撑乱。
 
-<table>
-<thead>
-<tr><th scope="col">类型</th><th scope="col">资源</th><th scope="col">先看什么</th><th scope="col">适合什么时候使用</th><th scope="col">推荐度</th><th scope="col">来源</th></tr>
-</thead>
+<div class="reader-resource-catalog" role="region" tabindex="0" aria-label="CLI 工具与学习资源">
+<table align="center">
+<thead><tr><th scope="col">分类</th><th scope="col">项目／文档</th><th scope="col">评分</th><th scope="col">用途</th><th scope="col">来源</th></tr></thead>
 <tbody>
-<tr><th scope="rowgroup" rowspan="4">官方项目规则</th><td>Codex <code>AGENTS.md</code></td><td>分层加载和优先顺序</td><td>为 Codex 编写 repo 规则</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://learn.chatgpt.com/docs/agent-configuration/agents-md">官方文档</a></td></tr>
-<tr><td>Claude Code <code>CLAUDE.md</code></td><td>什么时候放规则、什么时候移到 Skill</td><td>为 Claude Code 编写持续规则</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://code.claude.com/docs/en/memory">官方文档</a></td></tr>
-<tr><td>Gemini CLI <code>GEMINI.md</code></td><td>目录范围和加载方式</td><td>为 Gemini CLI 放项目 context</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://geminicli.com/docs/cli/gemini-md/">官方文档</a></td></tr>
-<tr><td>OpenCode <code>AGENTS.md</code></td><td>rules 加载、合并与 fallback</td><td>为 OpenCode 编写规则</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://opencode.ai/docs/rules">官方文档</a></td></tr>
+<tr><th scope="rowgroup" rowspan="4" align="center" valign="middle" width="80">官方项目规则</th><td><div data-field="entry"><strong>Codex <code>AGENTS.md</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>先看：</strong> 分层加载和优先顺序</div><div data-field="when"><strong>适用：</strong> 为 Codex 编写 repo 规则</div></td><td><div data-field="sources"><strong>来源：</strong> <a href="https://learn.chatgpt.com/docs/agent-configuration/agents-md">官方文档</a></div></td></tr>
+<tr><td><div data-field="entry"><strong>Claude Code <code>CLAUDE.md</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>先看：</strong> 什么时候放规则、什么时候移到 Skill</div><div data-field="when"><strong>适用：</strong> 为 Claude Code 编写持续规则</div></td><td><div data-field="sources"><strong>来源：</strong> <a href="https://code.claude.com/docs/en/memory">官方文档</a></div></td></tr>
+<tr><td><div data-field="entry"><strong>Gemini CLI <code>GEMINI.md</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>先看：</strong> 目录范围和加载方式</div><div data-field="when"><strong>适用：</strong> 为 Gemini CLI 放项目 context</div></td><td><div data-field="sources"><strong>来源：</strong> <a href="https://geminicli.com/docs/cli/gemini-md/">官方文档</a></div></td></tr>
+<tr><td><div data-field="entry"><strong>OpenCode <code>AGENTS.md</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>先看：</strong> rules 加载、合并与 fallback</div><div data-field="when"><strong>适用：</strong> 为 OpenCode 编写规则</div></td><td><div data-field="sources"><strong>来源：</strong> <a href="https://opencode.ai/docs/rules">官方文档</a></div></td></tr>
 </tbody>
 <tbody>
-<tr><th scope="rowgroup" rowspan="4">官方 Skill 文档</th><td>Codex/ChatGPT Build skills</td><td><code>SKILL.md</code> 结构和加载位置</td><td>制作 Codex 可复用流程</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://learn.chatgpt.com/docs/build-skills">官方文档</a></td></tr>
-<tr><td>Claude Code Skills</td><td>按需加载、legacy commands、权限</td><td>制作 Claude Code Skill</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://code.claude.com/docs/en/skills">官方文档</a></td></tr>
-<tr><td>Gemini CLI Agent Skills</td><td>discovery、安装同意和启用同意</td><td>管理 Gemini CLI Skill</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://geminicli.com/docs/cli/using-agent-skills/">官方文档</a></td></tr>
-<tr><td>OpenCode Agent Skills</td><td>支持位置、frontmatter、permission</td><td>制作 OpenCode Skill</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://opencode.ai/docs/skills/">官方文档</a></td></tr>
+<tr><th scope="rowgroup" rowspan="4" align="center" valign="middle" width="80">官方 Skill 文档</th><td><div data-field="entry"><strong>Codex/ChatGPT Build skills</strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>先看：</strong> <code>SKILL.md</code> 结构和加载位置</div><div data-field="when"><strong>适用：</strong> 制作 Codex 可复用流程</div></td><td><div data-field="sources"><strong>来源：</strong> <a href="https://learn.chatgpt.com/docs/build-skills">官方文档</a></div></td></tr>
+<tr><td><div data-field="entry"><strong>Claude Code Skills</strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>先看：</strong> 按需加载、legacy commands、权限</div><div data-field="when"><strong>适用：</strong> 制作 Claude Code Skill</div></td><td><div data-field="sources"><strong>来源：</strong> <a href="https://code.claude.com/docs/en/skills">官方文档</a></div></td></tr>
+<tr><td><div data-field="entry"><strong>Gemini CLI Agent Skills</strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>先看：</strong> discovery、安装同意和启用同意</div><div data-field="when"><strong>适用：</strong> 管理 Gemini CLI Skill</div></td><td><div data-field="sources"><strong>来源：</strong> <a href="https://geminicli.com/docs/cli/using-agent-skills/">官方文档</a></div></td></tr>
+<tr><td><div data-field="entry"><strong>OpenCode Agent Skills</strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>先看：</strong> 支持位置、frontmatter、permission</div><div data-field="when"><strong>适用：</strong> 制作 OpenCode Skill</div></td><td><div data-field="sources"><strong>来源：</strong> <a href="https://opencode.ai/docs/skills/">官方文档</a></div></td></tr>
 </tbody>
 <tbody>
-<tr><th scope="rowgroup" rowspan="4">标准和易读范例</th><td>Agent Skills specification</td><td>共用格式的最低要求</td><td>让核心内容更容易跨工具使用</td><td>⭐⭐⭐⭐</td><td><a href="https://agentskills.io/specification">标准</a></td></tr>
-<tr><td><code>anthropics/claude-plugins-official</code></td><td>官方 plugin 内的 Skills 和 commands</td><td>查看 Skill 如何被打包分享</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://github.com/anthropics/claude-plugins-official">GitHub repo</a></td></tr>
-<tr><td><code>mattpocock/skills</code></td><td>工程工作中使用的短 Skill 范例</td><td>比较不同写法</td><td>⭐⭐⭐⭐</td><td><a href="https://github.com/mattpocock/skills">GitHub repo</a></td></tr>
-<tr><td><code>obra/superpowers</code></td><td>真实 workflow 如何拆成 Skills</td><td>完成第一个 Skill 后再看</td><td>⭐⭐⭐⭐</td><td><a href="https://github.com/obra/superpowers">GitHub repo</a></td></tr>
+<tr><th scope="rowgroup" rowspan="4" align="center" valign="middle" width="80">标准和易读范例</th><td><div data-field="entry"><strong>Agent Skills specification</strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>先看：</strong> 共用格式的最低要求</div><div data-field="when"><strong>适用：</strong> 让核心内容更容易跨工具使用</div></td><td><div data-field="sources"><strong>来源：</strong> <a href="https://agentskills.io/specification">标准</a></div></td></tr>
+<tr><td><div data-field="entry"><strong><code>claude-plugins-official</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>先看：</strong> 官方 plugin 内的 Skills 和 commands</div><div data-field="when"><strong>适用：</strong> 查看 Skill 如何被打包分享</div></td><td><div data-field="sources"><strong>来源：</strong> <a href="https://github.com/anthropics/claude-plugins-official">GitHub repo</a></div></td></tr>
+<tr><td><div data-field="entry"><strong><code>skills</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>先看：</strong> 工程工作中使用的短 Skill 范例</div><div data-field="when"><strong>适用：</strong> 比较不同写法</div></td><td><div data-field="sources"><strong>来源：</strong> <a href="https://github.com/mattpocock/skills">GitHub repo</a></div></td></tr>
+<tr><td><div data-field="entry"><strong><code>superpowers</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>先看：</strong> 真实 workflow 如何拆成 Skills</div><div data-field="when"><strong>适用：</strong> 完成第一个 Skill 后再看</div></td><td><div data-field="sources"><strong>来源：</strong> <a href="https://github.com/obra/superpowers">GitHub repo</a></div></td></tr>
 </tbody>
 <tbody>
-<tr><th scope="rowgroup" rowspan="2">索引和 prompt 练习</th><td><code>hesreallyhim/awesome-claude-code</code></td><td>按类型查找 Claude Code 资源</td><td>已经知道需求、想找更多范例时</td><td>⭐⭐⭐</td><td><a href="https://github.com/hesreallyhim/awesome-claude-code">GitHub repo</a></td></tr>
-<tr><td><code>anthropics/prompt-eng-interactive-tutorial</code></td><td>一步一步比较 prompt 写法</td><td>CLI-8 的共用核心不清楚时</td><td>⭐⭐⭐⭐</td><td><a href="https://github.com/anthropics/prompt-eng-interactive-tutorial">官方 GitHub repo</a></td></tr>
+<tr><th scope="rowgroup" rowspan="2" align="center" valign="middle" width="80">索引和 prompt 练习</th><td><div data-field="entry"><strong><code>awesome-claude-code</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐</span></td><td><div data-field="read"><strong>先看：</strong> 按类型查找 Claude Code 资源</div><div data-field="when"><strong>适用：</strong> 已经知道需求、想找更多范例时</div></td><td><div data-field="sources"><strong>来源：</strong> <a href="https://github.com/hesreallyhim/awesome-claude-code">GitHub repo</a></div></td></tr>
+<tr><td><div data-field="entry"><strong><code>prompt-eng-interactive-tutorial</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>先看：</strong> 一步一步比较 prompt 写法</div><div data-field="when"><strong>适用：</strong> CLI-8 的共用核心不清楚时</div></td><td><div data-field="sources"><strong>来源：</strong> <a href="https://github.com/anthropics/prompt-eng-interactive-tutorial">官方 GitHub repo</a></div></td></tr>
 </tbody>
 <tbody>
-<tr><th scope="rowgroup" rowspan="2">Repo context 工具</th><td><code>yamadashy/repomix</code></td><td>生成一次性的 codebase 快照</td><td>需要把 repo 内容整理给 agent 时</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://github.com/yamadashy/repomix">GitHub repo</a></td></tr>
-<tr><td><code>langchain-ai/openwiki</code></td><td>建立可持续更新的 repo wiki</td><td>大型 repo 需要按需查文档时</td><td>⭐⭐⭐⭐</td><td><a href="https://github.com/langchain-ai/openwiki">GitHub repo</a></td></tr>
+<tr><th scope="rowgroup" rowspan="2" align="center" valign="middle" width="80">Repo context 工具</th><td><div data-field="entry"><strong><code>repomix</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>先看：</strong> 生成一次性的 codebase 快照</div><div data-field="when"><strong>适用：</strong> 需要把 repo 内容整理给 agent 时</div></td><td><div data-field="sources"><strong>来源：</strong> <a href="https://github.com/yamadashy/repomix">GitHub repo</a></div></td></tr>
+<tr><td><div data-field="entry"><strong><code>openwiki</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>先看：</strong> 建立可持续更新的 repo wiki</div><div data-field="when"><strong>适用：</strong> 大型 repo 需要按需查文档时</div></td><td><div data-field="sources"><strong>来源：</strong> <a href="https://github.com/langchain-ai/openwiki">GitHub repo</a></div></td></tr>
 </tbody>
 </table>
+</div>
 <a id="-进入-a3-前的自我检查"></a>
 
 ## ✅ 进入 Stage 5 前的自我检查

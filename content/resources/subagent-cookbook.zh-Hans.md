@@ -12,12 +12,16 @@
 
 每个 recipe 都用同样的 4 段结构：
 
+<div align="center" markdown="1">
+
 | 段 | 内容 | 为什么有这段 |
-|---|---|---|
+|:---|:---|:---|
 | **场景** | 你今天工作会遇到的具体场景 | 从“我有 X 问题”找到 recipe，而不是从“我想用 subagent”找 |
 | **Subagent** | 用哪一个（Claude Code 内置名称） | 直接 copy 名字，不用想 |
 | **Prompt 模板** | 复制粘贴即可用的指令文字 | 不用自己想怎么写 |
 | **何时不用** | 比用 subagent 更好的替代方案 | 避免“大材小用” |
+
+</div>
 
 > 💡 **怎么实际派遣 subagent**：在你的 Claude Code 终端对话框里，**直接输入（或粘贴）prompt 模板**——就这样。Claude 看到指令，会自动通过 **Agent tool**（内部派遣机制）找到对应 subagent 跑，跑完后向主 session 回报一段摘要。**不需要 slash command，不需要特殊语法**。
 >
@@ -220,11 +224,12 @@ Don't make the change yet — just the impact analysis.
 
 **Subagent**：`general-purpose` × N（同时 spawn 多个）
 
-> 💡 **怎么“同时 spawn 多个”**：在 Claude Code 对话框内，**连续输入下面的 prompt 4 次**（每次换 `<file-path>`）。Claude Code 会自动并行跑，不需要等第一个 subagent 结束才能输入第二个——这就是“parallel spawn”的实际操作方式。
+> 💡 **怎么并行处理**：把四个文件放在同一条 prompt，请 Claude 分给不同 subagent。发送后查看运行状态；提出要求不代表已经并行运行。
 
-**Prompt 模板**（每次换 `<file-path>`）：
+**Prompt 模板**（换成你的四个文件路径）：
 ```
-Audit `<file-path>` for academic-style issues: (1) over-engineering
+Use separate subagents to audit these files in parallel: A.md, B.md, C.md, D.md.
+Each subagent reports on one file. Check: (1) over-engineering
 jargon without first-use explanation, (2) clarity (long sentences,
 vague pronouns), (3) unsupported % claims, (4) persona-fit (wrong
 technical level for the file's stated target audience — see the
@@ -334,14 +339,18 @@ React Hook Form + Zod>. Include: component code, validation schema,
 
 不确定该用哪个 subagent？从**任务类型**反查：
 
+<div align="center" markdown="1">
+
 | Subagent | Recipes |
-|---|---|
+|:---|:---|
 | `code-reviewer` | **1**（pre-commit review）/ **4**（cross-locale parity）/ **8**（release security audit）|
 | `Explore` | **2**（new codebase）/ **6**（find symbol）/ **11**（cross-repo similar code）|
 | `Plan` | **3**（refactor plan）/ **9**（blast radius）|
 | `general-purpose` | **5**（fact-check）/ **7**（multi-paper compare）/ **10**（parallel multi-target）/ **12**（LLM-as-judge eval）|
 | `frontend-developer` | **13**（a11y audit）/ **15**（React form）|
 | `claude-code-guide` | **14**（Claude Code feature 查询）|
+
+</div>
 
 ---
 

@@ -26,8 +26,10 @@
 
 ## 📋 全程概覽
 
+<div align="center" markdown="1">
+
 | Stage | 你會加的能力 | 這一步有多大 |
-|---|---|---|
+|:---|:---|:---|
 | 0 | 環境準備（Python、API key、git） | 準備工作 |
 | 1 | 第一次呼叫 LLM API | 小 |
 | 2 | 寫一個專業的 prompt | 小 |
@@ -37,6 +39,8 @@
 | 6 | 加 RAG 與 Memory：找回舊論文，再做比較 | 中 |
 | 7 | 加 Eval、Observability、人工核准／復原與 Deploy | 較大 |
 | 8 | 選最小操作介面與安全出口 | 出口，不是第 8 份重寫 |
+
+</div>
 
 **最後成果**：一個從最小 Python 程式一路長成可評測、可查看執行紀錄、能停下等人核准、能續跑，也能部署服務的具體例子。
 
@@ -97,7 +101,7 @@ response = client.messages.create(
     }]
 )
 
-print(response.content[0].text)
+print("".join(block.text for block in response.content if block.type == "text"))
 print(f"\n--- Tokens: input={response.usage.input_tokens}, "
       f"output={response.usage.output_tokens} ---")
 ```
@@ -106,7 +110,7 @@ print(f"\n--- Tokens: input={response.usage.input_tokens}, "
 
 **學到什麼**：API call 的長相、`messages` 結構、`usage` 怎麼算 token。
 
-這裡的 `claude-sonnet-5` 是現行 Claude API ID；型號有生命週期，實作前仍要對照 [Anthropic Model IDs and versioning](https://platform.claude.com/docs/en/about-claude/models/model-ids-and-versions)。
+這份實作用仍可使用的 `claude-sonnet-5` 固定範例；目前較新的 Sonnet 是 `claude-sonnet-5-5`。舊程式不能只改型號：工具指定和參數有變，升級前先看 [Sonnet 5.5 遷移指南](https://platform.claude.com/docs/en/models/sonnet-5-5/migration-guide)。
 
 ---
 
@@ -148,7 +152,7 @@ if __name__ == "__main__":
         system=SYSTEM_PROMPT,
         messages=[{"role": "user", "content": PAPER_TEXT}]
     )
-    print(response.content[0].text)
+    print("".join(block.text for block in response.content if block.type == "text"))
 ```
 
 **學到什麼**：system prompt 跟 user message 分工、明確格式要求、防 hallucinate 的「不知道就說沒提到」。
@@ -731,12 +735,16 @@ tests:
 
 上面兩題只是 smoke test，不足以證明能上線。先準備一份有版本的 20 題小型 Eval suite；每類 4 題放 development、1 題放 frozen holdout：
 
+<div align="center" markdown="1">
+
 | 類別 | Development | Holdout | 要檢查什麼 |
-|---|---:|---:|---|
+|:---|---:|---:|:---|
 | 正常論文 | 4 | 1 | 三段摘要、五個關鍵詞、來源一致 |
 | 無效／撤回／讀不到 | 4 | 1 | 說明限制並安全停止，不猜內容 |
 | 惡意或像指令的論文文字 | 4 | 1 | 當成資料，不改寫系統規則、不洩漏 secret |
 | 邊界案例 | 4 | 1 | 超長、空結果、重複請求與格式錯誤 |
+
+</div>
 
 每一題同時記錄 **Outcome**（最後結果）與 **Trajectory**（中間 tool／決定）。先在 16 題 development cases 上調整；準備 release candidate 時才跑 4 題 holdout。模型可能每次回答不同，重要 cases 要跑多個 trials。失敗案例去識別化後留下來，成為下一版 regression suite；報告記 dataset version、split、grader、trial 次數與 baseline。
 
@@ -964,12 +972,16 @@ docker run --read-only --tmpfs /tmp -p 127.0.0.1:8000:8000 \
 
 Paper Summary Bot 目前只需要讀公開 arXiv 資料，所以最小路線是 **arXiv API／Web Fetch → 產生 preview → 人工核准 → API 回傳**。不要因為 Browser Use 或 Computer Use 看起來更像「Agent」，就把門開得更大。
 
+<div align="center" markdown="1">
+
 | 任務 | 最小介面 | 何時才升級 |
-|---|---|---|
+|:---|:---|:---|
 | 讀 arXiv metadata／abstract | 正式 API／Fetch | API 真的拿不到必要資料時，才考慮 Browser Use |
 | 顯示摘要 preview | CLI、Web 或 HTTP API | 這是產品出口，不需要控制使用者電腦 |
 | 執行論文附帶的 code | Sandbox | 先限制 filesystem、network、secret 與生命週期 |
 | 跨桌面 app 發布結果 | Computer Use | 只有沒有正式 API／tool，而且已有人核准時 |
+
+</div>
 
 **安全出口**：遇到網域不在 allowlist、來源解析失敗、Eval 不過、預算用完、approval 缺失或 checkpoint／ledger 衝突，就停止並回傳 `needs_review`、原因與 task ID。安全停止也是成功路徑，不是程式壞掉。
 

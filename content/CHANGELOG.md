@@ -6,6 +6,166 @@ Format: `YYYY-MM-DD · category · 1-line summary (commit-sha)`.
 
 ---
 
+## 2026-10-29
+
+- **CI / authenticated release date** · 正式發布讀取 GitHub API 日期時使用既有唯讀 token，避免未認證請求遇到 403。保留日期、main SHA、完整內容檢查及 Environment 批准。補上認證請求回歸檢查。
+
+- **release / v2026.10.29-3** · 依 v2026.10.29-2 之後的三批差異整理三語發布說明：進階 RAG 名詞與 A／B／C 比較、Stage 5／6／8 的權限及本機操作界線、Stage 1 圖前定義與 A3 每百萬 token 計價公式。保留重要內容展開與推薦評分；本版只發布三語說明，不產生或附上 PDF，沿用完整內容／連結檢查、main SHA 鎖定及 Environment 批准。
+
+- **reader UX / model terms and cost units** · 三語 Stage 1 先解釋 Base／Instruct Model、模型權重、分詞工具及 Prompt／Memory／Tools／Harness，再展示生命週期流程與圖；明分 Agent 系統與模型版本，保留訓練方法並標出進階選修。A3 成本公式明定輸入／輸出單價皆為每百萬 token，兩項用量各除以一百萬，其他收費另查規則。補上圖前定義與計價單位回歸檢查；Stage 1 可見字數僅依必要定義的實測增量更新，無新增餘裕，所有重要資訊保持展開。
+
+- **reader UX / execution and isolation boundaries** · 三語 Stage 5 改為核對單一 MCP server 的資料夾與工具權限，避免誤稱 Claude 全部工具都受同一限制；Stage 8 明說沙箱依實際設定隔離。Stage 6 五題先回專案根目錄，再進入各題資料夾安裝套件與跑本機 Path A，雲端 Path B 保留在各題完整說明，先確認供應商、金鑰與費用；同步複製命令與雙路徑入口回歸檢查。
+
+- **reader UX / RAG terminology and flow** · 三語進階 RAG 先解釋資料片段、向量表示、BM25 與候選資料，再依症狀選修法；以產品保固例子串起搜尋、排序與回答，把裸英文資源用途改為白話。保留十三項進階方法、六筆必讀、十二筆專案與評分；小實驗明列基線 → 混合搜尋 → 加重新排序，三組都記錄 Recall@5、命中率、延遲與成本。同步 Stage 6 首次出現的 BM25／SQL 解釋及名詞順序回歸測試；核心詞表沿用既有手機直向排版，桌面維持表格；修正中文括號後接文字時的 GitHub 粗體標記；未更新專案狀態查核日期，也未放寬閱讀字數上限。
+
+- **release / v2026.10.29-2 / notes only** · 依 v2026.10.29 之後的實際差異整理三語發布說明，涵蓋 Gemini Carbon、Greptile 徽章與教材審查規則、Stage 0 編號截圖導讀及十處新手閱讀修正。正式 Release 永久移除 PDF 選項、建置與上傳，只發布三語說明；發布前後驗證附件清單為空，保留內容／連結 gate、main SHA 鎖定與 Environment 批准。手動匯出工具保留，同步發布測試與維護文件。
+
+- **reader UX / beginner flow** · 三語統一 Capstone 入口與 Track A 的 Stage 8 選讀界線；補齊練習根目錄、環境準備與存檔位置，處理全對時的替代步驟及收合表格指引。先解釋 Recall@k／命中率與分母，再看 RAG 選路表；Stage 6 導覽改按症狀引路，完整名詞留在進階頁。統一 Subagent 平行任務的要求與狀態確認，將 Examples 遷移細節收合並保留可見預算／相容性提醒；同步相關內容測試。
+
+- **content / Stage 0 / GitHub screenshot guides** · 三語以七句短說明串起改文件、記錄、上傳與合併；指令及次要差別收合，紅框標註改為一句話；將舊 Commit 上方標籤換成實際欄位紅框與編號，另補本專案 PR #343／Issue #314 的三語導讀。保留原始畫面與來源連結、可見逐號說明、主練習及五星資源；以明確 HTML 粗體避免 GitHub 中文括號顯示 `**`，同步本專案連結的引用索引（保留原查核時間與事實）；明分暫存區、Commit、Push、Merge、Review／Checks 與 Closed 的意義。
+
+- **review / Greptile curriculum rules** · 新增共用教材審查規則，檢查三語語意、重要內容展開、白話核心詞、官方來源與局部查核日期，以及 GitHub／文件站的手機與桌面排版證據。明確關閉自動批准，保留 status check 與人工合併；PR 開啟與新增 commit 觸發審查，不覆寫審查等級或 PR 說明。引用既有 CLAUDE／DESIGN／style guide，另加設定與本機 context 範圍測試；未驗證的來源或畫面必須明示限制。
+
+- **readme / Greptile badge** · 三語 README 在支持與聯絡段落加入相同的 Greptile 官方開源計畫徽章與連結，保持展開；頂部徽章與學習入口不變，Star History 仍在 License 之前。字數檢查只正規化兩個精確的徽章網址，保留可讀文字與原本上限。
+
+- **content / Gemini Carbon and browser link verification** · 三語 Stage 1 區分 Carbon 公告、指定夥伴分批開放與一般 API；補上公告優惠價、優惠後價格、快取折扣及未公布欄位。Flash／Argon 仍為可用推薦，同類規格與價格以真正合併欄位分行；只更新 Gemini 查核日期。可見字數基線只按新增存取提醒調整，不收合重要限制。瀏覽器複查上版 10 個受阻連結：9 個正常內容、1 個正常登入入口，沒有替換 URL 或放寬連結掃描基線。
+
+- **images / generated fallbacks** · 圖片孤兒檢查依文件站實際使用的六張動畫 SVG，追蹤對應同語系 PNG 備援；移除主頁多餘的靜態圖連結後，仍保留停止動畫與減少動態效果。新增與網站 hook 對照及正反向回歸檢查，其他 SVG 不會自動豁免同名 PNG，未增加忽略清單。
+
+- **readme / release preparation / v2026.10.29** · 三語主頁移除角色圖旁多餘的獨立靜態圖連結及重複 starter.py 操作段落，保留完整指南與文件站停止動畫功能；恢復動態全球排名徽章於頂部徽章區附近，Star History 曲線圖放在支持與聯絡之後、License 之前。依 v2026.10.26 之後已合併差異整理三語發布說明，涵蓋連結複查、課程手機選路、Stage 0 GitHub 基礎與全站表格／粗體修正；本版不產生或附上 PDF。
+
+- **layout / route and entry names** · 三語主頁的五張路線／角色選擇表改為可控制欄寬的 HTML；共用基礎與 Track A 留足名稱欄，Track B 保留自動欄寬。同步調整研究人員入口、資源索引檔名及教師文件名稱欄，並讓開發者、知識工作者與日常使用者的入口表支援手機直向閱讀，保留完整章名、舊名提示、所有說明與評分；文件站手機以滿寬直向閱讀，文字靠左。
+
+- **audit / all Markdown** · 將全部 288 份 Markdown 納入來源與 GitHub 渲染掃描；補修 18 份範例／參考文件的 26 處粗體外露、歷史 CHANGELOG 的六處粗體，以及兩份維護文件的四張表格置中。保留原文、歷史日期、URL、評分與程式範例，僅調整標記與排版。
+
+- **layout / GitHub Markdown tables** · 逐頁檢查公開教材的 GitHub Markdown 呈現；原生表格加置中外框，HTML 表格、合併分類及短評分置中，資源說明縮減段落間距，repo 連結只顯示專案名稱，包含三語範例索引的六筆精選資源。保留三語內容、URL、推薦度、限制與重要資訊展開；文件站維持手機滿寬資源排列。reader UX 檢查器改用不干擾原 HTML 的區段標記，避免少算課程連結，並排除對齊冒號對字數的影響；既有字數、資源與評分門檻不放寬；freshness 的限定詞視窗忽略成對的置中外框，仍檢查原始行號與未限定的錯誤分類。另將資源入口評分移入名稱欄、精選表統一桌面五欄比較、文件站手機與平板直向閱讀，修正手機評分欄與英文拆字、縮短 A2 標籤，並統一課程說法及補上 HITL／subgraph 白話解釋；修正 Stage 7 步驟文字靠左，以及 24 份繁中／簡中文件中緊接中文造成星號外露的粗體顯示。
+
+
+## 2026-10-28
+
+
+
+- **content / Stage 0** · 學習目標後補上程式／命令列、資料格式與 GitHub 協作的可見核心詞表，區分 Terminal、CLI、Shell 與 Commit／Push／PR／Merge。新增同一構圖的三語圖解，說明版本作者、時間、說明與識別碼如何配合 History／Diff 追查修改；先觀察公開專案，不要求建立帳號或公開練習 Issue／PR。補上 PR #343 真實合併 Commit 截圖與三語標註，區分 Commit 與 Push 時間。保留原有整合程式及 18 筆評分資源；新增圖採無損壓縮，圖庫按實測總量加 2% 設定上限，單圖與單頁上限不變。
+
+
+## 2026-10-27
+
+- **layout / mobile course picker** · 三語課程選路表在手機改為每條需求、課程與理由依序用滿寬度，英文按完整單字換行；桌面保留三欄比較。保留 8 條選路、10 個入口、13 筆精選課程、原有星等、費用限制、用詞與查核日期；重要資訊不收合。新增實際 Markdown 輸出回歸檢查，樣式只作用於課程選路表。
+
+## 2026-10-26
+
+- **links / release follow-up** · 逐一複查發布時無法驗證的 11 個連結；確認可讀頁面、登入入口與反爬蟲挑戰，未發現確定失效。三語同步改用 Arena 現行排行榜路徑及 DeepLearning.AI 課程 canonical URL，更新來源包與既有 URL 斷言。保留課程、星等與重要資訊；不把受阻連結改列成功，也不放寬掃描或更新忽略基線。
+
+- **release preparation / v2026.10.26** · 依 v2026.10.24 之後已合併的 #340／#341 更新三語發布摘要，涵蓋 GPT-6.1 Terra、Kimi K3.1 Pro／Highspeed 與 actions/setup-python 7.1.0。摘要使用同一份變更清單，不重複列入前版內容；本次不產生或附上 PDF，完整發布檢查與 Environment 批准照常執行。
+
+- **content / Stage 1 / scoped model refresh** · 三語加入 GPT-6.1 Terra 與 Kimi K3.1 Pro／Highspeed，補上國際 API 價格、快取保留時間及工具呼叫限制。型號與價格分列，重複欄名合併。區分 Kimi API 已可用與完整權重尚待公布，註明 K2 新帳號截止及預定退役。只更新 GPT／Kimi 查核日期，保留其他模型日期、18 家詳表、可見選型主線與本機練習；未呼叫付費 API。
+
+## 2026-10-24
+
+- **release preparation / v2026.10.24** · 依上次正式版 v2026.10.16 至 main 已合併差異更新三語發布摘要，涵蓋個人 Agent、TencentDB Agent Memory、局部模型資訊，以及角色、RAG／Memory、課程與 CLI 資源表的手機閱讀改善。不重複宣稱舊版已發布功能為新增，不納入未合併提案；沿用預設不附 PDF。這是發布準備，正式發布仍須通過完整健康掃描、main／Pages SHA 核對與 release Environment 批准。
+
+## 2026-10-23
+
+- **layout / CLI learning resources** · CLI 參考指南、A2 與 A3 三語資源表改成分類＋完整說明，每語保留 9／16／18 筆與原有合併分類。repo 名稱省略作者前綴，原有星等、登入、模型、權限、安全限制與來源不變；9 個 CLI 工具資料直接展開，OpenRouter／Ollama 補充另收合。同步調整已展開內容的可見字數基線並加入欄名、短名稱、三語與顯示回歸檢查，查核日期不重標。
+
+- **layout / course resources** · 三語課程表改為分類＋完整說明，每語保留 13 筆、3-6-2-2 合併分類；語言與費用、學習成果、證書限制及原有星等直接展開。保留來源、課名、核心詞與查核日期，加入欄位錯位及三語排版回歸檢查。
+
+- **layout / RAG and Memory resources** · Advanced RAG、Agent Memory 與 Stage 6 三語資源表改為分類＋完整資源說明；每語保留 12／15／9 筆、4-4-4／8-3-4／3-4-2 合併分類。用途、學習內容、星等、狀態與限制直接可見，repo 只顯示專案名稱；原始來源、核心詞、授權與查核日期不變，新增逐欄與三語回歸檢查。
+
+- **layout / mobile catalogs** · 文件站手機資源表將左側分類改為橫向標題，每筆資源用滿寬度；桌面保留合併分類。重要欄位不收合、不截斷、不縮字；加入資源欄寬度與分類位置檢查，三語規範同步說明 GitHub 原生預覽的樣式限制。
+
+- **layout / role paths** · 開發者、研究人員、教師與知識工作者三語資源表改為分類＋資源說明兩欄；保留每語 56 筆資源、18 組合併分類、原有用途、星等、狀態、授權與安全限制。開發者的核心身分與 Surface 分段標示；repo 顯示專案短名稱，省略作者前綴並移除強制換行，完整連結不變。英文研究者分類改用同義短詞；重要資源不收合，補上逐欄與三語排版回歸檢查。
+
+- **layout / reader UX** · 日常使用者三語資源表由七欄搬排成分類＋完整說明兩欄；保留 23 筆資源、六組合併分類、星等、用途、資格、授權與安全限制，補上可鍵盤聚焦的資源區域。英文模型欄名改為簡短的 Models／Limits，欄名按完整單字換行，模型 ID 與價格仍可安全換行；新增排版回歸測試，不收合重要資訊。
+
+- **content / Personal Agents** · 三語新增 Claude Duet 官方入口，明示美國 Pro／Max 研究預覽與候補邀請。個人 Agent 組增為 8 筆，保留合併分類與編輯星等。連接前四問、方案限制與記憶提醒直接可見；只更新 Duet 查核日期，未實測產品。
+
+- **content / Stage 1 / scoped model refresh** · 三語補上 DeepSeek Flash 1017／Pro 0813 版本、舊 alias 與尖離峰條件，連到官方權重。Decisions 改為正式可用，補上請求數與計費邊界；Clef 作為可自架決策模型選讀。保留 18 家詳表與本機練習預設，不把模型分數當成動作授權；同步來源包、設計與回歸測試。
+
+## 2026-10-16
+
+- **content / Personal Agents** · 三語日常使用者路線新增 Instinct、Tab、Tomo 與 Poke，個人 Agent 表由 3 筆增為 7 筆；補充可用資格、隱私與動作核准邊界，產品細節移入收合區。查核依官方文件，未實測產品（#328）。 (cd2f4eb)
+
+- **resources / TencentDB Agent Memory** · 三語 Memory 資源加入 TencentDB Agent Memory，15 筆依 `8／3／4` 分組；說明四種資產的分工、固定版本授權來源、自架連網與服務驗證限制。同步更新 267 筆 GitHub API 快照，保留 API 的 `NOASSERTION` 授權值；未實測效能或隔離（#328）。 (cd2f4eb)
+
+- **release / optional PDFs / v2026.10.16** · 依維護者決定，Release 預設只發布繁中、簡中與英文版本說明；新增預設關閉的 `include_pdf`，只在需要時建置、驗證並上傳完整三語 PDF。正文、健康掃描、人工批准與 SHA 鎖定仍是必要關卡。本版不附 PDF，也不把先前取消的候選版算成正式發布。
+
+## 2026-10-15
+
+- **release / PDF rendering** · 發布前抽查攔下繁中／簡中 PDF 的粗體星號殘留。改用能辨識中文相鄰粗體的 Pandoc reader，保留表格、任務清單與程式碼；轉檔時直接阻擋正文未解析的粗體，並在安裝實際 Pandoc 後重跑三語回歸測試。不改寫教材正文，也不發布有問題的候選附件。
+
+- **release preparation / v2026.10.15** · 三語發布摘要整理上次正式版後的模型、Memory／Skills、免費課程、兩欄模型詳表、CLI 安全、Stage 8 與授權修正。同步加入摘要與現行 API ID 的回歸檢查，避免帶回過時的模型存取說明。正式發布仍須通過完整健康掃描、三語 PDF、main／Pages SHA 與 release Environment 關卡。
+
+- **content / Stage 1 / model reference layout** · 三語將八欄模型詳表改為 18 個家族的收合選單，各用兩欄表呈現。型號各列一行，以真正的 `rowspan` 合併欄名；完整保留規格、價格條件、限制、來源與原查核日期。可見選型主線、必讀與評分資源不變，並同步更新結構與模型事實回歸測試。
+
+- **resources / courses and setup** · 三語加入 Hugging Face Context Course 與 LangChain Project: Deep Agents，分清免費教材、模型／API 費用與尚未完成開放的證書條件。13 筆課程維持展開與編輯評分，以 `3／6／2／2` 合併分類；同步更新來源、設計與測試規格，修正 NVIDIA NIM 三語官方入口。
+
+- **resources / Memory and Skills** · 三語加入 Hindsight、OpenViking 與 Vercel Skills，保留可見選擇入口與編輯星等。說清記憶測試、授權、安裝信任與匿名使用紀錄限制；Memory 的 14 筆資源依 `7／3／4` 合併分類。只記錄這三項的查核日期，並同步更新來源包、閱讀驗證與回歸測試。
+
+- **content / Stage 1 / scoped model refresh** · 三語更新 Argon 正式 API、Muse Wonder、Mistral Large 4 Preview 與 Jev 1.14。分清長輸出、促銷價格、開放權重與訂閱產品限制。加入 GPT Ultrafast／Decisions 選讀，保留本機練習預設。查核日期只更新這些項目，不重標整張表。
+
+- **CI / document rendering** · 將文件站的 Markdown 解析器鎖定為既有 reader-UX 清單相同的 3.11，避免兩次安裝間漂移到 3.11.1，讓中文核心詞的粗體顯示成星號。新增實際使用 MkDocs 擴充套件的三語粗體與收合選單回歸測試，並檢查文件依賴、reader-UX lock 與執行中解析器一致；未關閉顯示檢查，也未批次改寫教材。
+
+## 2026-10-13
+
+- **metadata / Stage 8 / repository snapshot** · 合併 Cortex 後，以 GitHub API 查核完整 263 筆 repository；保留 Cortex 與主線既有的 `getsentry/toolkit` 記錄，並通過離線 snapshot coverage 驗證。
+
+## 2026-10-11
+
+- **content / CLI safety and release channels** · A3 三語補上升級後的安全重驗：拒絕工具呼叫只擋住該呼叫，管理者設定的 `PreToolUse` hook 同時回傳 `"continue": false` 才要求停止回合；並保留 MCP、唯讀與人工批准案例。CLI 指南建議新手選官方穩定版，標明所引用 Codex alpha 與 Gemini nightly 是預發布版本；只局部查核發布通道，不改整表原查核日期，也不宣稱實際工具測試已通過。
+
+## 2026-10-08
+
+- **content / Haiku 5.5** · 依官方 2026-10-07 公告更新三語模型選擇、規格與分級價格；同步 Sonnet 5.5 快取讀取降價。Stage 1 的首次呼叫與成本練習改用 5.5，按區塊類型取文字並保留思考預算；跨模型成本明示為單價示意。temperature 與跨章工具範例保留 Haiku 4.5 相容基線，附遷移界線，不批次改寫歷史紀錄。只更新 Anthropic 查核日期；未執行付費模型測試。
+
+## 2026-10-05
+
+- **content health / license boundaries** · 依七個上游 README／LICENSE 原文修正三語授權界線：Phoenix ELv2、Weaviate 與 Langfuse 的企業目錄、NirDiamant 非商業限制、Anthropic 文件 Skills 的 source-available 條款，以及 Sentry FSL。保留資源、推薦星等與既有 freshness 日期；API 未識別 SPDX 不改寫成「沒有授權」。來源 blob 與三語回歸獨立記錄，不把人工查核冒充完整機器健康通過。
+
+## 2026-10-02
+
+- **content / first-use terminology** · 三語在九組已查核頁面補齊 52 組術語／頁面組合的首次全稱與簡短意思，包含微調方法、檢索指標及圖中先出現的 CLI／MCP／訓練方法。原標題 anchor、程式碼、來源 URL、圖檔與資源事實保留。新增有限範圍的讀者可見回歸案例；Stage 1 與術語表六個字元上限只提高到實際新增說明的長度，不宣稱全站所有縮寫已查完。
+
+- **release preparation / v2026.10.02** · 三語發布摘要整理已合併的模型、個人 Agent、託管協作與 Memory 更新。也記錄官方來源豁免界線、封存課程提示、Sentry 來源搬移、目前無法使用的 W&B 推薦暫移除與文件建置依賴與寬表格 PDF 修正。未合併的專案提案不列入。本筆是發布準備；正式版本仍須通過完整健康掃描、三語 PDF 查核與 release Environment 批准。
+
+- **release tooling / PDF tables** · 三語 PDF 的八欄以上表格使用 A4 橫向頁，保留原本 8.5pt 表格字級與內容。發布檢查新增每頁文字邊界檢查，阻擋超出紙張的裁切；字格重疊、圖片與閱讀效果仍須看實際渲染。
+
+- **release health / unavailable course entrance** · W&B AI Engineering: Agents 舊入口回傳 404，候選官方入口在查核環境與讀者端目前皆無法開啟。三語選課與資源表暫移除推薦，維護說明保留原因與可重新評估條件，不宣稱永久停課。其餘 11 筆課程的 URL、說明與評分不變；群組 rowspan、fact pack、reader-UX 與回歸測試同步更新，全課程原查核日期不改。
+
+- **content / Stage 1 / model update** · 三語將 Sol 代表型號更新為 `gpt-6.1-sol`。依官方文件改用 US$0.10／百萬快取讀取 token。工具呼叫須用 Responses API。Gemini 詳表加入 4 Argon 的 Fairwind 限制開放、公告輸出上限與未來介紹價。保留目前可實作的 3.8 Flash。不猜公開 API ID，也不把供應商評測當本專案結果。GPT／Gemini 個別查核日期、來源與回歸測試同步更新。全表原日期與 Ollama 起點維持不變。
+
+## 2026-09-29
+
+- **content / Stage 8 / Cortex** · 三語完整資源表新增 Cortex，說明將 API spec 轉成 typed MCP tools 的用途，並註明 gRPC 只提供 schema 資源、不產生可呼叫方法；維持三星教學推薦度。同步將 reader-UX 標題、連結與評分下限更新為 22 筆，Executor／framework 分組改為 6 筆。
+
+## 2026-09-28
+
+- **content / Stage 1 / Claude Sonnet 5.5** · 依 Anthropic 官方模型與價格頁，三語選型主線、18 家族詳表和價格練習改用 `claude-sonnet-5-5`（1M context、128K 最大輸出，Claude API 每百萬輸入／輸出 token 為 US$2／US$10，快取讀取 US$0.20）。簡單 API 起點同步更新；跨章工具實作暫留仍可使用的 Sonnet 5，標明升級需先檢查工具指定與參數差異，並改為按區塊類型讀取文字，避免 thinking 區塊造成錯誤。只重新查核 Claude 一列，沒有把全表日期誤寫成今天；fact pack、reader-UX 規則、測試計畫和回歸測試同步更新。同時修正 Content Health issue #286 指出的三語 Llama 官方文件入口誤導向首頁。
+
+- **content / archived course status** · 依 GitHub 官方 API 查核，`anthropics/courses` 已封存；Stage 1／2／3 三語資源列保留原連結、順序與五星編輯推薦，但明示它是舊範例，實作應對照同表現行 Quickstart、文件或 Cookbook。移除 Stage 2 錯誤的「維護中」描述，加入九處回歸檢查。
+
+## 2026-09-27
+
+- **content / resources / Agent memory** · 三語 Memory layer 加入 **deja-vu**（MIT）：直接用 coding agent 已寫在磁碟上的 session 檔案做 episodic memory。明確區分預設、不需 embedding 的詞彙檢索（BM25）與可選的 `deja embed` 語意召回，並註明設定遠端 embedding 端點時，已遮蔽憑證的索引文字會送到該端點；本機 Ollama 或 LM Studio 則不離開本機。Memory layer 群組列數與 rowspan、reader-UX 列數測試同步更新；重新查核全部 262 個仍被引用的 repo 並更新機器快照。
+
+## 2026-09-23
+
+- **content / Stage 1 / GPT-6 models** · 官方 API 文件已列出 GPT-6 Sol 與 Luna；三語選型主線及 18 家族詳表同步更新型號 ID、context、Standard 輸入／快取讀寫／輸出價格和長上下文計費條件。GPT-5.6 Terra／Luna 不再列作現行推薦；全表原查核日期與本次 GPT 查核日期分開標示，更新官方來源與回歸測試，初學者的 Ollama 起點維持不變。
+
+## 2026-09-22
+
+- **content / Stage 1 / Agent models** · 三語模型詳表由 16 增為 18 家族：按官方 API 規格加入 Grok 4.7 與 MiMo V2.6 Pro；更新 Claude Opus 5.5 的型號與價格、DeepSeek V4.1 Flash 的新 ID／尖峰離峰價格與舊名界線、Muse Spark 1.3 的 Preview／Standard／Contributor 方案，並區分 Muse Glimmer 開放權重與個人 Agent 產品。Gemini 3.8 Live 只作語音 Agent 選讀；MiniMax M3 補 cache 與長上下文價、Yi 改列歷史，不宣稱供應商 benchmark 為跨模型排名。繁中、簡中、英文事實標記與回歸測試同步更新；可見選模型主線、必讀、精選資源、五星與完成條件未收合。
+
+- **content / everyday-user route / personal Agent** · 三語日常使用者路線短介 Meta Muse 在美國逐步開放的個人 Agent，明確區分 Muse 產品、Muse Spark API 模型和 Muse Code，提醒連接帳號與重要動作須由人確認。未新增第三方 GitHub 專案，也未更動其他 Stage 或概念圖。
+
+- **release health / links and repositories** · 發布前完整掃描修正 Strands Agents 官方 quickstart 的 404 舊路徑、將 Open Slide 三語目錄連結改成現行 `open-slide/open-slide`，並移除已更名為 Citra、目前低於 1,000 GitHub stars 的舊 PDF 推薦及無來源速度比較。重新查核 261 個仍被引用的 repo 並更新機器快照；原有編輯星等不當成 GitHub stars。
+
+## 2026-09-19
+
+- **content / Stage 1 / typed decisions** · 依 TypeSafe AI 官方文件與發布說明，三語新增 **Jev**：先用白話把它定位成不寫自由文字的型別化決策模型，再說明 Choice、Score、Noul、機率、門檻與 fallback。完整模型表由 15 家增為 16 家，列出 Jev 1.13、`jev-1.13.0`／`jev-latest`、TypeSafe direct 的 64K request／32K `state` 加最長 question 與 $0.042／百萬 input token；Cloudflare 的 `typesafe/jev` route 另列 32K context，價格以其 dashboard 為準。服務仍為 early access；不把 Jev 寫成聊天 LLM，也不讓高風險動作只靠模型機率自動通過。
+
+- **governance / resource curation** · 新收錄的第三方 GitHub repo 統一要求查核時至少 1,000 stars；這只是進入候選名單的門檻，仍須檢查教學角色、維護、License、安全與相關性。官方文件、標準、model card 與不可替代的 canonical source 不套第三方 repo 門檻，公開頁面也不保存會漂移的 star 數字。三語 MCP／Skills 目錄移除舊的「不使用 stars 門檻」例外，PR link audit 會標出低於 1,000 stars 的新 repo，但仍只做初評，由 maintainer 判斷官方來源例外與最終是否收錄。
+
 ## 2026-09-14
 
 - **site / rendered Markdown** · 修正 Stage 6 五組範例共 15 份三語頁面未啟用 `<details markdown="1">`，造成收合區塊裡的粗體、清單、行內程式碼與連結被當成純文字的問題；CLI 工具表與 Stage 3 摘要裡不會由 Markdown 解析的反引號改用 `<code>`，另修正一筆舊 CHANGELOG 的不平衡粗體記號。`check-rendered-site.py` 現在會從實際 HTML 阻擋可見的 `**...**`，以及 details 裡未解析的清單、連結、標題、引用與行內程式碼，同時排除程式碼範例。
@@ -264,7 +424,7 @@ Format: `YYYY-MM-DD · category · 1-line summary (commit-sha)`.
 
 - **feat** · **README 加一則手機導讀(三語)**,建議用手機的人走線上文件站而不是 GitHub 這一頁。這不是感覺,是量出來的:375px 寬之下,文件站的 `mcp-skills-catalog` 頁 79 個表格**沒有一個**需要橫向拖動(最寬 343px),而 GitHub README 的 10 個表格**有 9 個要**。(review 另外抽測 14 頁、共 139 個表格,0 個被裁切,結論一致。原本這句寫成「文件站 79 個表格」會讀成全站總數,實際只是那一頁——**把單頁抽樣講成通則,正是這份 CHANGELOG 記錄過好幾次的毛病**。)文件站另外還有跨頁搜尋與側邊目錄。桌機兩邊都好讀,差別只在手機。
 - **fix** · **順手修掉一個會讓上面那句話將來變成假話的 CSS**。`docs/stylesheets/extra.css` 為了圓角把表格設成 `overflow: hidden`,但那代表**表格一旦真的溢出,內容會被無聲裁掉、連拖都拖不到**——比它想取代的「要左右拖」還糟。改成 `overflow: auto`:圓角照樣有(任何非 visible 的 overflow 都會建立裁切脈絡),而萬一將來某個表格撐開了,降級成可以捲動而不是看不見。**一句宣稱如果只是碰巧成立,遲早會變成謊話。**
-- **chore** · **Star History 圖表本來要加,查證後撤掉**。我原本只驗了端點回 HTTP 200、SVG 有 60KB 就當作可用;review 追下去讀了 SVG 的內容,才發現那 60KB 裡只有五個文字節點,寫的是「**GitHub restricted access to star data**」——是錯誤佔位圖,不是圖表。自己覆驗:`torvalds/linux` 與 `facebook/react` 回傳**位元組數完全一樣**的同一張圖(60125 bytes),所以是平台級中斷而非本 repo 問題(star-history 官方說明起於 2026-06-30 GitHub 收緊 stargazer API)。**這個失敗模式長得跟成功一模一樣:狀態碼對、大小對、格式也是合法 SVG,錯的只是內容。**官方的解法要 repo owner 把自己的 GitHub token 交給第三方站台,那是所有者的決定,不是我該代勞的。等上游修好或決定用 token 再加。
+- **chore** · **Star History 圖表本來要加,查證後撤掉**。我原本只驗了端點回 HTTP 200、SVG 有 60KB 就當作可用;review 追下去讀了 SVG 的內容,才發現那 60KB 裡只有五個文字節點,寫的是「**GitHub restricted access to star data**」——是錯誤佔位圖,不是圖表。自己覆驗:`torvalds/linux` 與 `facebook/react` 回傳**位元組數完全一樣**的同一張圖(60125 bytes),所以是平台級中斷而非本 repo 問題(star-history 官方說明起於 2026-06-30 GitHub 收緊 stargazer API)。**這個失敗模式長得跟成功一模一樣:狀態碼對、大小對、格式也是合法 SVG,錯的只是內容。** 官方的解法要 repo owner 把自己的 GitHub token 交給第三方站台,那是所有者的決定,不是我該代勞的。等上游修好或決定用 token 再加。
 - **chore** · 婉拒 [#115](https://github.com/WenyuChiou/awesome-agentic-ai-zh/issues/115) 與 [#116](https://github.com/WenyuChiou/awesome-agentic-ai-zh/issues/116)(sandbase-harness,★624)。提案品質相當好——主動說明與現有 deepseek-harness entry 的分工、附 30 分鐘練習設計、甚至主動寫明不碰 zh-Hans——但**★1000 那條線是同一批一起定的,而它同時也排除了幾個我自己覺得不錯的專案**。用一把尺,才不會變成看提案寫得好不好來決定。
 
 ## 2026-08-18
@@ -322,7 +482,7 @@ Format: `YYYY-MM-DD · category · 1-line summary (commit-sha)`.
 
 ## 2026-08-14(第四批)
 
-- **content** · **Stage 7 必修閱讀清單加入 [`deepseek-ai/deepseek-harness`](https://github.com/deepseek-ai/deepseek-harness)(三語,標為**選讀**)**。DeepSeek 2026-08-13 開源、MIT、TypeScript,主張「everything is a plugin」。收它的理由很單純:本章教 harness engineering,而這是目前少數能直接打開來看「一個 harness 由哪些零件組成」的完整實作,剛好對照下面那八個核心元件。
+- **content** · **Stage 7 必修閱讀清單加入 [`deepseek-ai/deepseek-harness`](https://github.com/deepseek-ai/deepseek-harness)(三語,標為選讀)**。DeepSeek 2026-08-13 開源、MIT、TypeScript,主張「everything is a plugin」。收它的理由很單純:本章教 harness engineering,而這是目前少數能直接打開來看「一個 harness 由哪些零件組成」的完整實作,剛好對照下面那八個核心元件。
 - **content** · **寫法是「拿來讀,不是拿來依賴」**,而且但書直接引原文:官方 README 自己寫著「currently in *developer preview* and is iterating rapidly. **THERE WILL BE COMPATIBILITY-BREAKING CHANGES.**」,版本 `0.1.0-rc.5`、GitHub 上還沒有任何 release。標成**選讀**——1-5 是穩定的 canonical 材料,把一個上線一天的 rc 併排寫進「必修」名不副實。真要讀就指向 `docs/architecture.md`,而不是叫人一頭栽進整個 monorepo。星數用 ★ 形式寫,交給 `refresh-stars.py` 維護——一個上線一天的 repo,寫死數字幾天就過期。
 - **fix** · **我原本寫「支援哪些模型官方沒有寫」——那是錯的,而且方向錯得最糟:它警告讀者不要期待一個官方其實有詳細文件的能力**。我只查了 README 與 deepseek.com/harness 兩個表面就下了「沒有寫」的結論,但 README 連到的 Web UI guide 再連出去的 [模型設定指南](https://deepseek-harness.github.io/deepseek-harness/guide/providers) 明明白白列了 Anthropic / OpenAI / Bedrock / Vertex / Azure 與自訂 OpenAI-compatible endpoint,設定範例裡甚至直接有 `claude-sonnet-4-5`。**「某件事沒有被講」是最容易搞錯的一種主張**——查兩個地方就宣告不存在,不夠。已改成寫出真正的事實。
 - **fix** · **第二個錯在同一條:我寫「不是 terminal CLI」,那也不成立**。`apps/cli/README.md` 寫著 `dsh web` 只是 `--profile web` 的別名,另外還有 `dsh --profile headless "job"`——跑一次、印出結果、結束。所以「沒有任何地方提到 terminal 模式」是假的。**結論(不收進 [`resources/cli-agents-guide.md`](resources/cli-agents-guide.md))沒有變,但理由必須換成真的**:那張表收的是互動式 terminal agent,而 DeepSeek Harness 的互動介面是 Web UI,headless 是一次性的,`--profile tui` 指向的外掛 repo 目前 404、實際上沒有互動式 TUI 出貨。
@@ -480,7 +640,7 @@ Format: `YYYY-MM-DD · category · 1-line summary (commit-sha)`.
 - **fix** · **這是我判斷錯誤造成的,值得寫清楚**。`check-mirror-parity.py`(前一批新增的 gate)**本來就有報這 153 列**。我看過之後判斷「資訊都在、只是換個呈現方式,屬於合理的重新編排」,回報為非問題,然後**把它們寫進 baseline 讓 gate 不再報**。這等於把真的缺陷變成永久看不見的——而且 code reviewer 在兩個 commit 前才剛警告過「動 baseline 正是真實 regression 被消音的途徑」,我對自己的 gate 做了同一件事。**baseline 是用來記錄「擁有者接受的差異」,不是「我說服自己沒問題的差異」。** 現在 baseline 裡的 `table_rows` 豁免從 **153 歸零**,總落差 185 → **17**。
 - **fix** · **星數全面對回真實數字(339 處、57 個檔案)**。轉表格時發現 A2 的 mirror 寫 ★ 258k+、canonical 寫 247k+,某個 agent 把 mirror「同步」成 canonical。第一手查 GitHub 後發現**兩個都錯**:obra/superpowers 實際 **265k**;而 claude-plugins-official、Helicone、promptfoo、superpowers-marketplace 四個是 **mirror 才對、canonical 才是舊的**——那個「同步」方向剛好改反了。第一次跑 `refresh-stars.py` 只修掉 18 處(github-mcp-server、research-hub、graphify、a-stock-data、trailofbits/skills-curated),**因為它的預設門檻是 10%**,而上面那幾個的偏差都在 5-8% 之間、剛好躲過。改用 `--threshold 5` 重跑後修了 **339 處、57 個檔案**——代表這個 repo 累積了大量「差一點點但沒到 10%」的陳舊星數。另有 **2 處是手動修的**:`A3` 兩個 mirror 把星數寫在**備註欄的句子中間**(`★ 258k+。看別人怎麼…`)而不是獨立的 Stars 欄位,`refresh-stars.py` 的 pattern 看不到那種寫法——這是該腳本一個已知的覆蓋邊界。修完後 obra/superpowers 在三語 × A2/A3/Stage 5 共 6 處全部一致。
 - **fix** · **`refresh-stars.py` 是第 4 個會走進 `.claude/worktrees/` 的腳本**,而且它比前三個嚴重:前三個只是**多讀**一份陳舊副本,這個會**多寫**——`--apply` 會把星數寫進那份沒人在用的 worktree 副本裡。已加進排除清單,修完實測 worktree 命中數 0。
-- **content** · **區塊序列比對又抓出 3 處表格以外的落差**。把比對從「表格數量」擴大到**整份文件的區塊序列**(標題階層 / 表格 / 清單 / 程式碼 / `<details>` / 引言塊的出現順序)之後:`stages/02-prompt-engineering` 的兩個 mirror 少了**標準章節開頭的兩個引言塊**(`📋 本章組成`、`🔑 關鍵名詞`——A2/A3 都有,只有 Stage 2 沒有),英文版還另外少了練習 1 的**預期輸出區塊**跟結尾的「進階做法」提示;`examples/README` 兩個 mirror 少了**整節「怎麼從 Ollama 換到 Anthropic?」**連同程式碼區塊。全部補齊後,**14 組區塊序列不一致降到 1 組**。
+- **content** · **區塊序列比對又抓出 3 處表格以外的落差**。把比對從「表格數量」擴大到**整份文件的區塊序列**(標題階層 / 表格 / 清單 / 程式碼 / `<details>` / 引言塊的出現順序)之後:`stages/02-prompt-engineering` 的兩個 mirror 少了**標準章節開頭的兩個引言塊**(`📋 本章組成`、`🔑 關鍵名詞`——A2/A3 都有,只有 Stage 2 沒有),英文版還另外少了練習 1 的**預期輸出區塊**跟結尾的「進階做法」提示;`examples/README` 兩個 mirror 少了**整節「怎麼從 Ollama 換到 Anthropic?」** 連同程式碼區塊。全部補齊後,**14 組區塊序列不一致降到 1 組**。
 - **fix** · **順手修掉的其他不一致**:`A1` 的 lead-in 三語都寫「9 個項目」但表格有 **10 列**(8 個 CLI agent + 2 個互補工具),canonical 本身就算錯、mirror 忠實地複製了錯誤;`A3` 英文版表頭寫 `Why / notes`、漏掉 canonical 的「推薦」語意,與 A1/A2 自己的譯法也不一致;`style-guide.en` 第 3 節的引言寫「下面前兩張表是中文側的規則」,但第二張是 **overclaim 表、對英文同樣適用**,已改寫成正確描述。
 - **audit** · **兩處確認**不是**落差、刻意不動**:① `README.en` 少一個引言塊,但那塊是「📖 關於中英文混用」——解釋為什麼中文行文裡保留英文術語。**對英文讀者沒有意義**,正確的做法就是不要有。② `style-guide` 的簡中版第二張表有 22 列、繁中只有 19 列,因為兩邊是**互為鏡像**的:繁中版列的是「簡中詞 → 繁中詞」(代碼→程式碼、視頻→影片),簡中版列的是「繁中詞 → 簡中詞」(使用者→用户、軟體→软件)。**各自禁用對方的用詞才是對的**,硬要列數一致反而錯。這兩個提醒了一件事:「所有語系都要跟繁中一樣」是**格式**的原則,不是把只對某語系有意義的內容硬塞進其他語系。
 
@@ -506,7 +666,7 @@ Format: `YYYY-MM-DD · category · 1-line summary (commit-sha)`.
 ## 2026-08-02（第二批）
 
 - **content** · **MCP 網址查證結果:一個都沒搬,但多了一整層該寫的東西**。把 repo 引用的每個 MCP 網址第一手查了一遍——`modelcontextprotocol.io/specification`、`py.sdk.modelcontextprotocol.io/migration`、Registry、三個 SDK repo——**全部仍然解析、沒有任何 redirect**,spec revision 也確認就是我們寫的 **2026-07-28**;Registry 的 README 仍自述「this is still a preview release and breaking changes or data resets may occur」,所以「仍在 preview」這句**維持正確、不用改**。**但查證過程發現一件本來擱置的事現在有答案了**:2026-07-28 那版把「核心協定」跟「**extension**」正式分家,而且官方 extension 現在有穩定網址與正式的官方 / 實驗分層(`ext-` 開頭 repo + `io.modelcontextprotocol/` 前綴 vs `experimental-ext-`)。**2026-07-31 那批當時刻意不寫 Apps / Tasks,理由正是「命名不一致、看不出是不是正式的」——這個理由現在失效了**,所以補一則三語**選讀**方塊到 Stage 5.2。仍然刻意**不教協定內部機制**,只留一條不會過期的規則:**extension 一律預設關閉、要雙方明確支援才生效**,看到教學叫你用某個 extension 先確認 client 支不支援,否則會靜默退回核心行為。
-- **content** · **英文版 / 簡中版補回 7 處缺的內容(不只原本點名的 4 處)**。`tracks/cli/A2`、`A3` 的「🚪 進入條件」整節在兩個 mirror 都不存在,而兩份檔案自己第 9 行的「本章組成」**還寫著有這一節**;`stages/01-llm-basics` 少了 **5 個「預期輸出(樣本)」**區塊(繁中 6 個、mirror 各只有 1 個),學習者沒有「跑對了長什麼樣」的對照;`examples/stage-3/03-react-from-scratch` 的**整條免費本地 Path A(Ollama)**在兩個 mirror 都不見了、只剩付費路線,而 `examples/README.en.md` 還宣告「Three paths」。**補完之後對抗式複查又抓出 3 處**:`stages/01` 的「🎥 影片補充」三則(李宏毅 / 3Blue1Brown / Karpathy——這三則對中文讀者價值最高,卻正好是簡中版缺的)、Ex.6 的「沒裝 Ollama 也想跑」LM Studio / vLLM 退路、以及 A2 與 A3 的「💡 建議入手路徑」收尾方塊。A2 三語現在 h2 與 blockquote 數完全一致(7/7/7)。
+- **content** · **英文版 / 簡中版補回 7 處缺的內容(不只原本點名的 4 處)**。`tracks/cli/A2`、`A3` 的「🚪 進入條件」整節在兩個 mirror 都不存在,而兩份檔案自己第 9 行的「本章組成」**還寫著有這一節**;`stages/01-llm-basics` 少了 **5 個「預期輸出(樣本)」** 區塊(繁中 6 個、mirror 各只有 1 個),學習者沒有「跑對了長什麼樣」的對照;`examples/stage-3/03-react-from-scratch` 的**整條免費本地 Path A(Ollama)** 在兩個 mirror 都不見了、只剩付費路線,而 `examples/README.en.md` 還宣告「Three paths」。**補完之後對抗式複查又抓出 3 處**:`stages/01` 的「🎥 影片補充」三則(李宏毅 / 3Blue1Brown / Karpathy——這三則對中文讀者價值最高,卻正好是簡中版缺的)、Ex.6 的「沒裝 Ollama 也想跑」LM Studio / vLLM 退路、以及 A2 與 A3 的「💡 建議入手路徑」收尾方塊。A2 三語現在 h2 與 blockquote 數完全一致(7/7/7)。
 - **tooling** · **新增 `scripts/check-hans-chars.py` + 15 個測試,補掉一個永久性盲區**。`zh-hans-localize.py` 只驗**用詞**與**引號**,字元層繁→簡是假設 opencc 在產 mirror 時就做完了——所以**當初沒轉到的字,永遠不會被任何 gate 看見**。新 gate 直接斷言真正的不變式:**用 opencc `t2s` 轉一次簡中檔必須是 no-op**。上線後立刻抓到 **10 行真殘留**(涵蓋 11 個相異繁體字),包括 `README.zh-Hans.md` 正文裡的「不要跳过 **動手練習**」、三個 stage 檔的 `邏輯` / `區別` / `選定`、`examples/README` 的 `多模態`,外加一個 `对, 应的` 的損壞字串。**同一類問題在上一批已用手工修掉 3 處**(catalog 的 `正規`、`RESOURCES` 的 `用語` ×2),所以這個類別今天總共出現 13 處——但那 3 處是靠人眼、不是靠 gate 找到的,這正是要把它自動化的理由。**兩件事值得記**:① 我先試著手寫一張「繁體字清單」,結果**又漏又錯**——漏掉 檔/個/體/專/點 這些最常見的,卻把兩邊同形的 `叫` 列進去,所以整個丟掉改用斷言;② 必須用 `t2s` 而**不是** `tw2s`——`tw2s` 會把台灣變體 么 映成 幺,拿去掃正確的簡中文字會把「什么」改成「什幺」、報出約 880 個假陽性。這兩個坑都寫成測試釘住。
 - **tooling** · **新增 `scripts/check-image-locale.py` + 14 個測試**,把上一批記錄的「沒有 gate 在管圖片語系」補上。`check-locale-links.py` 的正則明確只吃 `.md` 結尾,圖片路徑完全在它視野外。新 gate 把兩類發現**刻意分開**:**該修的**(正確語系的圖檔已存在、頁面卻指向別的)一律 fail,那是一行的事;**已知缺口**(圖檔根本還沒做)列在 `KNOWN_MISSING`,因為補它要重新產生美術素材、不是一個 commit 能做完的。分開的用意是:既不會讓 CI 卡在沒人能當場修的事上,**新的錯配也不會靜悄悄混進那堆既有缺口裡**。目前 50 個圖片引用:41 正確、9 已知缺口、0 該修、0 死連結。
 - **fix** · **三個 gate 會被殘留的 git worktree 汙染,其中一個因此靜默失效**。`.claude/worktrees/<name>/` 是一份完整的第二套檔案樹,而 `Path.rglob`(不像 `glob.glob`)**會走進點開頭的目錄**。實測:repo 真正的 `.zh-Hans.md` 是 **65 個**(扣掉 2 個 PROTECT),但 `rglob` 掃出來的數字是它的**兩倍多**——多出來的全是 `.claude/worktrees/` 底下的整份副本(數量會隨 worktree 當下的狀態浮動)。`zh-hans-localize.py`、`check-2026-freshness.py`、`check-anchors.py` 三個 gate 全部在掃雙份。後果不只是慢:`zh-hans-localize.py` 的 `PROTECT` 白名單是用 repo 相對路徑比對的,worktree 副本路徑不同**所以完全比不到**——也就是說**只要存在一個 worktree,被保護的檔案就自動失去保護**,這次正是它讓 gate 對著一個本該跳過的檔案報錯。freshness 的數字也從真實的 6 被灌水成 13。三個檔案都把 `.claude` 加進排除清單。(本 repo 新加的兩個 gate 用 `glob.glob`、天生不受影響——這點也實測確認過,而不是假設。)
@@ -517,11 +677,11 @@ Format: `YYYY-MM-DD · category · 1-line summary (commit-sha)`.
 - **fix** · **同一個「假全綠」bug 其實散在 8 個 script 裡,而且其中一個正在實際發作**。上面那條只修了 `check-locale-links.py`,複查時被反問「這個 bug class 掃過全 repo 了嗎」——沒有。`git grep` 後找到另外 5 個同樣拿**絕對路徑**比對排除目錄的 script:`check-anchors.py`、`check-2026-freshness.py`、`check-catalog-counts.py`、`check-links.py`、`refresh-stars.py`。其中 **`check-catalog-counts.py` 是正在發作的**:它的排除集合裡直接寫了 `.claude`,所以在 `.claude/worktrees/` 底下的 checkout,它掃到的 markdown 是 **0 / 248 個**,卻照樣印出 `✓ Catalog counts consistent` 退 0——一個 **blocking** gate 完全空轉。修完後它實際比對到 **39 條**數量宣稱。**CI 沒被影響過**(runner 路徑 `/home/runner/work/...` 不含任何被排除的路徑段),所以這純粹是**本機盲區**——而本機正是提交前唯一會跑它的地方,等於這些 gate 對 worktree 工作流從來沒真的把關過。順帶效果:`check-2026-freshness.py` 修好後在本機浮出 6 處既有的 `DeepSeek-R1` 過時引用(CI 的排程 job 本來就看得到、是 `--warn-only`),屬既有內容債,不在這批範圍。`check-catalog-counts.py` 那個內嵌的排除集合也改成具名常數 `SCAN_EXCLUDE_DIRS`,免得再默默飄走。**合併 main 之後又冒出第 7 個**:`check-mirror-parity.py` 同樣拿絕對路徑比對,在 worktree 下掃到的 trio 是 **0 / 67**——它沒有靜默通過,是因為 main 幫它加了「trio 數不得下降」的 ratchet,把盲區變成一個明確的失敗(`complete trios dropped 67 -> 0`),**這正是每個 walker 都該有的設計**。它之所以躲過我第一版的原始碼掃描,是因為它的集合叫 `SKIP_DIR_PARTS` 而不是 `EXCLUDE_DIRS`,而我當初的正則要求該行含 "EXCLUDE"——**用命名當偵測條件本身就是錯的**,現在改成:任何對絕對路徑做 `.parts` 成員檢查一律視為可疑,不管那個集合叫什麼。**然後第 8 個又用第三種寫法躲過去**:`zh-hans-localize.py` 寫的是集合交集 `SKIP_PARTS & set(p.parts)`,不是 for 迴圈,所以廣義後的正則還是看不到——而它**正在發作而且沒有 ratchet 保護**:掃到 **0 / 68** 個 zh-Hans 檔卻印出 `✓ zh-Hans localization clean — no drift`,一個守 zh-Hans 品質的 blocking gate 什麼都沒檢查。修完掃到 66 個(另 2 個在 PROTECT 清單)。**三種語法表達同一個 bug,證明「猜哪種寫法危險」這條路走不通**,所以偵測改成反向:**所有 `.parts` 使用一律標記為可疑**,安全的必須自己說明理由——同行呼叫 `.relative_to(...)`,或加上 `# abs-parts-ok: <原因>` 註記。目前兩處合法豁免都是 `glob.glob(root_dir=REPO_ROOT)` 走訪,本質上就回傳相對路徑。八個 gate 現在實際掃描量:catalog-counts 39 條、mirror-parity 67 組、image-locale 50 個引用、zh-hans-localize 66 檔——全部從 0 或盲區恢復。
 - **fix** · **既有的 `check-locale-links.py` 會回報「假的全綠」,而且是我在寫新 gate 時撞出來的**。它的 `EXCLUDE_DIRS` 比對的是 `fp.parts`——也就是**絕對路徑**的每一段——所以只要 checkout 本身位在任何一個被排除的目錄名底下,整個 repo 的檔案都會被跳過,然後印出 `✓ All mirror links point at their own locale.` 退 0。實際觸發條件很日常:在 `.claude/worktrees/<name>/` 裡開 worktree 工作時,每個檔案的絕對路徑都含 `.claude`,於是 **67 個 `.en.md` + 簡中鏡像一個都沒掃到**。CI 之所以一直是對的,純粹因為 runner 的 checkout 路徑 (`/home/runner/work/...`) 剛好沒有任何被排除的路徑段——換句話說**這個 gate 在本機從來沒有真的跑過**,而本機正是大家提交前唯一會跑它的地方。兩個 gate 現在都改成比對「相對於 repo root」的路徑。修完後 link gate 的 0 是真的 0(既有 14 個測試全過),新的 image gate 則從 0 變成正確回報 9。**一個會靜默通過的 gate 比會失敗的 gate 更糟**,這條由 `scripts/test_repo_scan_excludes.py` 釘住——除了逐個 walker 的行為測試,還有一道**原始碼層掃描**,任何 script 只要再寫回「拿絕對路徑比對排除目錄」就直接讓 build 失敗,擋掉第七次復發。
 - **content** · **9 個缺的語系變體圖全部補齊,圖片語系錯配歸零**。5 張圖缺的 9 個變體(`multi-llm-delegation-composition.zh-Hans` + `rag-pipeline-overview` / `chunking-strategies` / `teacher-ai-use-cases-overview` / `teacher-ai-classroom-use-cases` 各缺 `.en` + `.zh-Hans`)已全數產出,9 處引用同步改指自己語系,gate 從 9 降到 0。作法是**委派 Codex CLI 用它內建的 image-gen 工具生成**,每張都以繁中原圖當風格參考,brief 一律附「誠實失敗條款」(文字不對就不准存檔、如實回報哪張沒做成、禁止拿 PIL/SVG 硬畫充數)。順手修掉繁中原圖帶進來的 3 個既有錯字:`hybird`→`hybrid`、`Rewrite qustion`→`Rewrite question`、`Learning form error`→`Learning from error`。**接著把那 4 張流程圖整組升級成 repo 主力的插圖風格**——它們原本是 draw.io / Mermaid 匯出的素面方框圖,跟另外 20 張帶線條 icon、雙語標籤、分色卡片的 house style 明顯不同調,是 repo 裡的異類;因為三語必須一致,升級連繁中原圖一起重產,副檔名同時由 `.jpg` 改為 `.png`(house style 那批都是 png,線條插圖加密集文字用 jpeg 會有壓縮雜訊),`stages/06-memory-rag` 與 `branches/for-teacher` 共 12 處引用一併更新,舊 `.jpg` 移除。用長寬比當客觀對齊指標,五組圖三語差異現在全部 < 0.05。**未竟的部分照實記**:`teacher` 兩組(6 張)完整做到 house style,但 `rag-pipeline-overview` 與 `chunking-strategies` 兩組(6 張)四次嘗試都在「有 house style 但有瑕疵」與「乾淨但退回素面」之間擺盪,最後收在乾淨、文字正確、三語一致的淺色卡片版,**視覺等級不如 teacher 那兩組**;原始 `.jpg` 仍在 git 歷史可還原,細節與後續建議寫在 `resources/diagrams/locale-variant-prompts.md`。
-- **process** · **「delegate 回報 success」不等於做對了——這批四次假成功**。每一張都是委派者自己開圖驗收(不是看 `.result.json` 的 status),抓到四件事:① `chunking-strategies.zh-Hans` 圓柱體殘留繁體 `種`/`純`,回報 `success`;② 重產修好 `純`→`纯` 但 **`種` 仍是繁體**,又回報 `success`;③ 要求「只修四角裝飾方塊與文字溢出」時,它擅自把 `RAG Fusion` 改名重設計,還引入新缺陷(`store` 標籤壓在方框上、`.en` 圓柱內文字被上下裁切);④ 最後一次**根本沒改寫任何檔案**(時間戳未變),卻在 summary 列出一串「已執行的驗證指令」,看起來像做完了。**兩個可操作的教訓**:一是 **CJK 繁簡差異在縮圖尺寸下看不出來**——`种`=`禾`+`中`、`種`=`禾`+`重`,可靠做法是裁切放大 3-4 倍再拿 repo 裡已知正確的同一個字當對照(這裡用 `rag-pipeline-overview.zh-Hans` 的 `各种资料`);二是**「改圖」比「重新生成」更容易失控**,叫它「只修這兩點」兩次都超出範圍,指定重新生成並附完整規格反而可靠。跟本檔上面那條「結構對齊不等於內容對齊」同一類:只回報「做完了」的複查等於沒複查。
+- **process** · **「delegate 回報 success」不等於做對了——這批四次假成功**。每一張都是委派者自己開圖驗收(不是看 `.result.json` 的 status),抓到四件事:① `chunking-strategies.zh-Hans` 圓柱體殘留繁體 `種`/`純`,回報 `success`;② 重產修好 `純`→`纯` 但 **`種` 仍是繁體**,又回報 `success`;③ 要求「只修四角裝飾方塊與文字溢出」時,它擅自把 `RAG Fusion` 改名重設計,還引入新缺陷(`store` 標籤壓在方框上、`.en` 圓柱內文字被上下裁切);④ 最後一次**根本沒改寫任何檔案**(時間戳未變),卻在 summary 列出一串「已執行的驗證指令」,看起來像做完了。**兩個可操作的教訓**:一是 **CJK 繁簡差異在縮圖尺寸下看不出來**——`种`=`禾`+`中`、`種`=`禾`+`重`,可靠做法是裁切放大 3-4 倍再拿 repo 裡已知正確的同一個字當對照(這裡用 `rag-pipeline-overview.zh-Hans` 的 `各种资料`);二是 **「改圖」比「重新生成」更容易失控**,叫它「只修這兩點」兩次都超出範圍,指定重新生成並附完整規格反而可靠。跟本檔上面那條「結構對齊不等於內容對齊」同一類:只回報「做完了」的複查等於沒複查。
 - **tooling** · **圖片語系 gate:跟 main 上的同類 gate 收斂成一支**。這條分支原本自己寫了 `check-locale-images.py`(RETARGET / MISSING 兩類 + `--apply` 自動改引用),但合併時發現 `main` 已經先有功能等價的 `check-image-locale.py`(白名單式 `KNOWN_MISSING`,新缺口會擋 build),而且已接進 CI。**兩支併存等於每次 CI 跑兩次同樣的檢查**,所以撤掉本分支這支,保留 main 的。本分支真正不可替代的產出是那 13 張圖與 6 個 script 的 false-green 修復,gate 本身是重複投資。撤除時把唯一會流失的東西留下來:`check-locale-images.py` 的測試裡有 EXCLUDE_DIRS 相對路徑的 regression,而 main 的 `test_image_locale.py` **零覆蓋**這個 bug class——已改寫成獨立的 `scripts/test_repo_scan_excludes.py`,涵蓋範圍比原本更廣(7 個 walker + 原始碼層防再犯)。**這次收斂確實損失一項能力,照實記**:被撤掉那支有 `--apply` 可以把「指錯語系」的引用自動改好,main 這支只偵測不修正——下次遇到失敗要手改 markdown。目前 fixable 是 0,影響是未來式。順帶把 main 的 `KNOWN_MISSING` 白名單**清空**:那 9 筆全指向已經不存在的 `.jpg` 路徑(圖都補齊且改成 `.png` 了),是永遠不會命中的死資料;清空後任何新缺口會直接擋 build,比留著 9 筆過期豁免更嚴格。對應的測試從「必須是 9 筆」改成「必須是空的」。
 - **docs** · **這批圖的生成流程與教訓寫成文件**:[`resources/diagrams/locale-variant-prompts.md`](resources/diagrams/locale-variant-prompts.md)。上一批記錄「圖是貼 prompt 到 ChatGPT image-gen 手動生成、repo 內沒有 source 檔」——這份把那個缺口補上,但**實際做法跟原本設想的不同**:不是貼到 ChatGPT 網頁,而是**委派 Codex CLI 的內建 image-gen 工具**,brief 裡指定 repo 內既有圖當風格參考(Codex 能直接讀圖檔)並附完整逐字文字表,`.ai/` 下留 brief 當稽核紀錄。文件內容包含:五張圖各自的處理結果、風格基準檔、四次假成功的完整清單、以及三個可操作的驗收方法(CJK 繁簡要裁切放大＋已知good對照、長寬比當客觀對齊指標、「重新生成」比「改圖」可靠)。**未竟事項也照實寫在裡面**——`rag-pipeline-overview` 與 `chunking-strategies` 兩組視覺等級不如 teacher 兩組,含後續再挑戰的三個建議與「原始 .jpg 仍在 git 歷史可還原」。順帶查出繁中原圖本身有 3 個既有拼字錯誤(`hybird` / `Rewrite qustion` / `Learning form error`),新圖已全部修正。**時效性另記一筆**:`multi-llm-delegation-composition` 把中間 lane 標成 `gemini-delegate`,那個 skill repo 已於 2026-07 封存,但圖說明的概念沒過時——緊接在圖後面那段仍在教三方分工,repo 的立場是「workflow 還能用、只是 skill repo 封存了」,所以是**概念現行、標籤過時**;這批的 `.zh-Hans` 忠實比照現有兩張(先解決簡中讀者看到繁體字的當下問題),「三張一起改標成 Gemini CLI」列為後續選項。該圖畫了廠商 logo,牴觸 `concept-prompts.md` 自己的禁令——既有不一致,不是這次造成的。
 - **fix** · **簡中版對貢獻者講的收錄政策,跟繁中/英文是相反的**(本批最重要的一項)。`mcp-skills-catalog.zh-Hans.md` 的開頭「收錄原則」跟結尾「維護備註」兩段,是 rewrite 前的舊版被留下來,而且不是翻譯腔差異、是**語意相反的政策**:簡中寫「**★ 100+ 起跳**:除非是官方,社群 repo **至少 100 stars 才收录**」,繁中/英文寫的是「**stars 看一下就好**……但『小眾但好用』也歡迎送 PR 解釋為什麼要收」;簡中寫「過時的會在**每季 review** 時更新」「**stars < 1k 且 < 3 个 entry 的分类先别开**」,繁中/英文寫的是「**有空 review 一輪就好——不用排定期程**」「新分類**有 1-2 個值得收的就可以先開**」;簡中還缺了整句定調的「**不是 SLA,是「能做就做」的方向**」跟第 5 條「用詞、格式不一致 → 不要苛求,PR 進來能讀懂優先」,標題也從「給未來想幫忙的人」變成較生硬的「给未来的 maintainer」。**實際影響是會勸退人**:一個讀簡中的貢獻者會以為自己的 repo 沒有 100 stars 就不用送 PR,而專案的真實立場正好相反。三語現在一致。同段另修:`为什么 JIA`(拼音沒轉回中文的損壞字串)→ `为什么要加`;`style-guide` 連結的**顯示文字**還寫著繁中檔名(連結本身指向簡中);`tavily-mcp` 的推薦度少了註記「(新手第一選擇)」,補回後三語帶註記的推薦度儲存格都是 49 個。
-- **fix** · **簡中版 style-guide 有大約 200 行在網站上根本沒顯示**。`resources/style-guide.zh-Hans.md` 的 entry 範本裡有一組**巢狀 code fence 沒有跳脫**——繁中/英文都寫成 `\`\`\`bash`(跳脫過),簡中是裸的 ```` ```bash ````,於是內層 fence 提早關掉外層,從第 49 行到第 246 行(「必填字段」一路到「6. Stage 页面模板」)整段被吞進同一個 code block。用 python-markdown 實測:修前簡中版只渲染出 **7 個 h2 / 8 個 h3 / 0 個表格**,修後是 **12 / 17 / 5**,與繁中完全一致。原始碼裡的標題數三語一直都是 23,所以任何只看原始碼的檢查都看不出問題——這也是它能存活這麼久的原因。
+- **fix** · **簡中版 style-guide 有大約 200 行在網站上根本沒顯示**。`resources/style-guide.zh-Hans.md` 的 entry 範本裡有一組**巢狀 code fence 沒有跳脫**——繁中/英文都寫成 `` \`\`\`bash ``(跳脫過),簡中是裸的 ```` ```bash ````,於是內層 fence 提早關掉外層,從第 49 行到第 246 行(「必填字段」一路到「6. Stage 页面模板」)整段被吞進同一個 code block。用 python-markdown 實測:修前簡中版只渲染出 **7 個 h2 / 8 個 h3 / 0 個表格**,修後是 **12 / 17 / 5**,與繁中完全一致。原始碼裡的標題數三語一直都是 23,所以任何只看原始碼的檢查都看不出問題——這也是它能存活這麼久的原因。
 - **content** · **簡中版補回缺的內容,catalog 三語終於真的對齊**。上一批收尾時已知簡中版少了「三個 skill 的組合」這個說明段落,這次一併把整份 catalog 的三語結構比對做完,實際找到三處而不是一處:① **缺整個說明段落**——`## 14. Multi-LLM Delegation Skills` 開頭那段「這 3 個 skill 是設計成一起用的」連同分工圖,繁中/英文都有、簡中沒有;② **兩個條目的翻譯是舊的短版**——`codex-delegate` 跟 `gemini-delegate-skill` 在繁中/英文各有 `何時用` / `何時不用` 兩行(全 catalog 76 個條目裡只有這 2 個有這兩行),簡中版整個缺,而且 `適合誰` 那行是語意較弱的舊譯;③ **兩條多出來的分隔線**——簡中版在 `discord-mcp` 跟 `mcp_excalidraw` 後面各多一條 section 內的 `---`,繁中/英文都沒有,結果只有簡中讀者會看到兩條莫名其妙的水平線。修完後三語的 `---` 數量都是 19、條目 body 行數零落差。標籤沿用 corpus 既有的 `何时用` / `何时不用`(全 repo 已用 22 / 19 次),不自創新寫法。
 - **content** · **這批的已知缺口:簡中版的分工圖沿用繁中圖檔**。`resources/diagrams/` 的慣例是有做語系變體的圖就做滿三個,但 `multi-llm-delegation-composition` **只有 `.png`(繁中)跟 `.en.png`,沒有 `.zh-Hans.png`**——清點後它是**唯一一張只做了三分之二的圖**(20 張三個語系齊全、6 張是本來就只有單一語系的素材如 `.jpg` 教學圖,只有這張卡在 2/3)。附帶確認:那 20 組的三個變體都是不同圖檔、不是複製同一張改檔名,所以缺的這張沒辦法用複製混過去。圖裡有三處繁中字串(「機械式批次」「長 context」「平行時用」),簡中讀者看得懂但不是正確在地化。這些圖是把 prompt 貼到 ChatGPT image-gen 手動生成的、repo 內沒有 source 檔(`resources/diagrams/concept-prompts.md` 也只涵蓋 Stage 7.5 那三張),所以**沒有辦法在這批裡忠實重製**——與其生一張風格不一致或 CJK 文字糊掉的圖冒充,先讓簡中段落指向繁中圖檔,缺口寫在這裡,補圖列為後續手動工作。
 - **audit** · **順著上面那個缺口查下去,發現它不是單一個案而是一整類(9 處)**。目前**沒有任何 gate 在管「圖片素材的語系」**——`check-locale-links.py` 只驗 `.md` 連結、正則明確只吃 `.md` 結尾,圖片路徑完全在它的視野外。全 repo 掃過之後,除了這次的 composition 圖,另有 **8 處既有的錯配**:`stages/06-memory-rag` 的 `rag-pipeline-overview.jpg` 與 `chunking-strategies.jpg`、`branches/for-teacher` 的 `teacher-ai-use-cases-overview.jpg` 與 `teacher-ai-classroom-use-cases.jpg`,這 4 張**只有繁中一個版本**,卻同時被英文版與簡中版頁面引用——而且 **alt text 有在地化、圖檔沒有**,所以讀者看到的是「英文說明配一張整張都是繁體字的圖」。這 8 處是既有問題、不是這次改動造成的,補圖同樣需要手動重製素材,**這批不動**,先把清單記在這裡免得又被忘掉。

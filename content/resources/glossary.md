@@ -12,9 +12,9 @@
 - [**Agent**](#agent代理人) — 能為了人的目標，自己判斷下一步並採取行動；只在規則與權限內自動做事的 AI 系統。
 - [**Tool Use（工具使用）**](#tool-use--function-calling) — 模型提出工具請求，程式檢查後才真正執行。
 - [**Agent Loop**](#agent-loop) — Agent 重複「決定、行動、觀察」直到完成或停止的執行迴圈。
-- [**RAG**](#ragretrieval-augmented-generation) — 先找資料，再把證據交給模型回答。
+- [**RAG**（Retrieval-Augmented Generation）](#ragretrieval-augmented-generation) — 先找資料，再把證據交給模型回答。
 - [**Memory（記憶）**](#memory記憶-兩種正交分類軸) — 把之後還要用的資訊保存起來，再於需要時讀回。
-- [**MCP**](#mcpmodel-context-protocol) — 讓 AI 應用用共同方式連接工具與資料的開放協定。
+- [**MCP**（Model Context Protocol）](#mcpmodel-context-protocol) — 讓 AI 應用用共同方式連接工具與資料的開放協定。
 - [**Eval（評估）**](#eval評估) — 用固定題目和成功條件檢查改動有沒有真的變好。
 - [**Agent Harness（執行工作台）**](#agent-harness執行工作台) — 包住模型並管理工具、權限、狀態、記錄與停止規則的系統。
 - [**Workflow Graph（工作流程圖）**](#workflow-graph工作流程圖) — 用節點和連線把工作步驟、分支與狀態畫清楚。
@@ -23,13 +23,13 @@
 
 同一個畫面可能同時出現模型、Router 與 Agent。先問「它負責哪一件事」，就不會把產品名稱混在一起。
 
-<table>
+<table align="center">
 <thead>
 <tr><th>身分</th><th>白話工作</th><th>例子與邊界</th></tr>
 </thead>
 <tbody>
-<tr><td><strong>Model Provider／API</strong></td><td>模型公司的服務入口。</td><td><a href="https://platform.claude.com/docs/en/api/overview">Anthropic API</a>；它回傳模型結果，不是會改檔的 Agent。</td></tr>
-<tr><td><strong>LLM Router</strong></td><td>用一個入口轉接模型或供應商。</td><td><a href="https://openrouter.ai/docs/faq">OpenRouter</a>；它不是模型，也不是 coding agent。</td></tr>
+<tr><td><strong>Model Provider／API（Application Programming Interface）</strong></td><td>模型公司的服務入口。</td><td><a href="https://platform.claude.com/docs/en/api/overview">Anthropic API</a>；它回傳模型結果，不是會改檔的 Agent。</td></tr>
+<tr><td><strong>LLM（Large Language Model） Router</strong></td><td>LLM 是讀寫語言的模型；Router 用一個入口轉接供應商。</td><td><a href="https://openrouter.ai/docs/faq">OpenRouter</a>；它不是模型，也不是 coding agent。</td></tr>
 <tr><td><strong>Model Runtime</strong></td><td>把模型在本機或服務上跑起來。</td><td><a href="https://docs.ollama.com/api/introduction">Ollama</a>；它提供模型 API，本身不會自動改專案。</td></tr>
 <tr><td><strong>Coding Agent／Harness</strong></td><td>讀檔、改檔、跑命令並回報結果。</td><td><a href="https://opencode.ai/docs">OpenCode</a>、<a href="https://github.com/earendil-works/pi">Pi</a>；裡面的模型可以更換。</td></tr>
 <tr><td><strong>Agent Framework</strong></td><td>讓開發者組合 Agent、工具、狀態與流程。</td><td><a href="https://learn.microsoft.com/en-us/agent-framework/concepts/workflows/">Microsoft Agent Framework</a>；它是工具箱，不等於一個模型。</td></tr>
@@ -41,16 +41,16 @@
 
 這張表用來維持跨 Stage 命名一致。一般讀者不用先背。
 
-<table>
+<table align="center">
 <thead>
 <tr><th>類型</th><th>英文術語</th><th>中文理解名</th><th>主要 Stage</th></tr>
 </thead>
 <tbody>
-<tr><th scope="rowgroup" rowspan="2">輸入與資訊</th><td>Prompt Engineering</td><td>Prompt 設計</td><td>Stage 2</td></tr>
+<tr><th scope="rowgroup" rowspan="2" align="center" valign="middle">輸入與資訊</th><td>Prompt Engineering</td><td>Prompt 設計</td><td>Stage 2</td></tr>
 <tr><td>Context Engineering</td><td>上下文管理</td><td>Stage 6／7</td></tr>
 </tbody>
 <tbody>
-<tr><th scope="rowgroup" rowspan="17">Agent 執行</th><td>Agent Production Engineering</td><td>Agent 可用化工程</td><td>Stage 7</td></tr>
+<tr><th scope="rowgroup" rowspan="17" align="center" valign="middle">Agent 執行</th><td>Agent Production Engineering</td><td>Agent 可用化工程</td><td>Stage 7</td></tr>
 <tr><td>Harness Engineering</td><td>Agent 執行系統設計</td><td>Stage 7</td></tr>
 <tr><td>Loop Engineering</td><td>Agent 迴圈設計</td><td>Stage 7</td></tr>
 <tr><td>Graph Engineering</td><td>Workflow Graph 工程</td><td>Stage 4／7</td></tr>
@@ -69,7 +69,7 @@
 <tr><td>Scaffolding</td><td>支撐架構</td><td>Stage 7</td></tr>
 </tbody>
 <tbody>
-<tr><th scope="rowgroup" rowspan="9">品質與上線</th><td>Observability</td><td>觀測與紀錄</td><td>Stage 7</td></tr>
+<tr><th scope="rowgroup" rowspan="9" align="center" valign="middle">品質與上線</th><td>Observability</td><td>觀測與紀錄</td><td>Stage 7</td></tr>
 <tr><td>Telemetry</td><td>運行紀錄</td><td>Stage 7</td></tr>
 <tr><td>Eval</td><td>效果評估</td><td>Stage 7</td></tr>
 <tr><td>Evaluation Harness</td><td>評估框架</td><td>Stage 7</td></tr>
@@ -80,14 +80,14 @@
 <tr><td>Latency</td><td>延遲／等待時間</td><td>Stage 7</td></tr>
 </tbody>
 <tbody>
-<tr><th scope="rowgroup" rowspan="5">檢索與模型</th><td>Vector DB</td><td>向量資料庫</td><td>Stage 6</td></tr>
+<tr><th scope="rowgroup" rowspan="5" align="center" valign="middle">檢索與模型</th><td>Vector DB</td><td>向量資料庫</td><td>Stage 6</td></tr>
 <tr><td>Retrieval</td><td>檢索</td><td>Stage 6</td></tr>
 <tr><td>Reranking</td><td>重排序</td><td>Stage 6</td></tr>
 <tr><td>Long Context</td><td>長上下文</td><td>Stage 6</td></tr>
 <tr><td>Fine-tuning</td><td>模型微調</td><td>Stage 6</td></tr>
 </tbody>
 <tbody>
-<tr><th scope="rowgroup" rowspan="4">操作介面</th><td>Agent Interfaces</td><td>Agent 操作介面</td><td>Stage 8</td></tr>
+<tr><th scope="rowgroup" rowspan="4" align="center" valign="middle">操作介面</th><td>Agent Interfaces</td><td>Agent 操作介面</td><td>Stage 8</td></tr>
 <tr><td>Code Sandbox</td><td>隔離程式執行環境</td><td>Stage 8</td></tr>
 <tr><td>Cold Start</td><td>啟動延遲</td><td>Stage 8</td></tr>
 <tr><td>Reward Hacking</td><td>鑽評分漏洞</td><td>Stage 7／8</td></tr>
@@ -178,15 +178,15 @@
 
 ### RLHF / RL
 
-**RLHF／RL** 用人類或規則的回饋來訓練模型。回饋設計錯誤時，模型也可能學會鑽評分漏洞，所以仍要做獨立 Eval。
+**RLHF**（Reinforcement Learning from Human Feedback）／RL（Reinforcement Learning） 用人類或規則的回饋來訓練模型。回饋設計錯誤時，模型也可能學會鑽評分漏洞，所以仍要做獨立 Eval。
 
 ### GRPO
 
-**GRPO** 讓同一題的多個答案互相比較，再依相對表現更新模型。它是 Post-training 方法之一，不是每個專案都必須使用。
+**GRPO**（Group Relative Policy Optimization） 讓同一題的多個答案互相比較，再依相對表現更新模型。它是 Post-training 方法之一，不是每個專案都必須使用。
 
 ### PEFT / LoRA
 
-**PEFT** 是只訓練較少參數的一組方法；**LoRA** 會凍結原本權重，再訓練新增的低秩矩陣。它們能減少需要更新的參數，但仍需要資料與 Eval。
+**PEFT**（Parameter-Efficient Fine-Tuning） 是只訓練較少參數的一組方法；**LoRA**（Low-Rank Adaptation） 會凍結原本權重，再訓練新增的低秩矩陣。它們能減少需要更新的參數，但仍需要資料與 Eval。
 
 ### Distillation（蒸餾）
 

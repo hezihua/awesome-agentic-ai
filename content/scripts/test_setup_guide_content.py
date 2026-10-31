@@ -75,13 +75,13 @@ def _external_urls(text: str) -> tuple[str, ...]:
 
 def _table_shapes(text: str) -> tuple[tuple[int, ...], ...]:
     shapes: list[tuple[int, ...]] = []
-    for table in re.findall(r"<table>.*?</table>", text, flags=re.DOTALL):
+    for table in re.findall(r"<table align=\"center\">.*?</table>", text, flags=re.DOTALL):
         groups = re.findall(r"<tbody>(.*?)</tbody>", table, flags=re.DOTALL)
         spans: list[int] = []
         for group in groups:
             rows = re.findall(r"<tr>", group)
             headers = re.findall(
-                r'<th scope="rowgroup" rowspan="(\d+)">', group
+                r'<th scope="rowgroup" rowspan="(\d+)" align="center" valign="middle">', group
             )
             assert len(headers) == 1
             assert int(headers[0]) == len(rows)
@@ -120,7 +120,7 @@ def test_visible_beginner_path_keeps_choices_terms_practice_and_exit(
     assert "IDE Assistant" in visible
     assert "CLI Agent" in visible
     assert "**API**" in visible
-    assert "claude-sonnet-5" in visible
+    assert "claude-sonnet-5-5" in visible
     assert "uv python install 3.12" in visible
     assert ".claude/skills/hello-skill/SKILL.md" in visible
 
@@ -159,7 +159,7 @@ def test_three_locales_share_freshness_sources_commands_and_model_ids() -> None:
         url_orders.append(_external_urls(text))
         for command in NATIVE_INSTALLERS:
             assert command in text
-        assert text.count("claude-sonnet-5") == 1
+        assert text.count("claude-sonnet-5-5") == 1
         assert text.count("uv python install 3.12") == 1
     assert len(set(url_orders)) == 1
 

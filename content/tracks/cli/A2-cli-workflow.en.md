@@ -10,11 +10,15 @@ You will put rules that must always be known into **Project instructions**, turn
 
 ## 🧩 Three Core Terms First
 
+<div align="center" markdown="1">
+
 | Core term | What it is, in plain language | How A2 uses it | What it is not |
-|---|---|---|---|
+|:---|:---|:---|:---|
 | **Project instructions (project rules)** | Rules you read every time you enter the workshop | Put the project purpose, forbidden actions, test commands, and delivery format here | Not one-off tasks or long reference material |
 | **Skill (reusable instruction card)** | An instruction card you take out when needed | Put repeated review, release, and document-cleanup processes here | Not a universal path, permission set, or frontmatter format |
 | **One-off prompt (single-task prompt)** | Instructions needed only today | Put this task’s scope, inputs, and success conditions here | Not a place to repeat project rules used every time |
+
+</div>
 
 ## 📌 Learning Goals
 
@@ -43,7 +47,7 @@ If you have not completed A1, go back and run “read-only inspection → view t
 
 Official information checked on: **2026-08-30 UTC**.
 
-<table>
+<table align="center">
 <thead>
 <tr><th scope="col">Tool</th><th scope="col">Project instructions</th><th scope="col">Project Skill</th><th scope="col">What to note</th></tr>
 </thead>
@@ -65,7 +69,7 @@ The common part is what you need to explain; filenames, search locations, permis
 
 **Outcome:** Every time the CLI agent enters the repo, it knows what the project does, what it must not touch, how to verify changes, and what to report when finished.
 
-First choose the project-instructions file for your tool from the comparison above, then add these four things:
+Expand “the project-instructions and Skill locations for four CLIs” above. Find your tool, then put these four things in its instructions file:
 
 ```markdown
 # Project rules
@@ -159,37 +163,37 @@ The complete subagent, agent team, background-work, and review processes are in 
 
 The resources below are divided into five groups by purpose. Each group shows its category only once so repeated text does not stretch the table.
 
-<table>
-<thead>
-<tr><th scope="col">Type</th><th scope="col">Resource</th><th scope="col">What to look at first</th><th scope="col">When it is useful</th><th scope="col">Rating</th><th scope="col">Source</th></tr>
-</thead>
+<div class="reader-resource-catalog" role="region" tabindex="0" aria-label="CLI tools and learning resources">
+<table align="center">
+<thead><tr><th scope="col">Group</th><th scope="col">Project / document</th><th scope="col">Rating</th><th scope="col">Use</th><th scope="col">Sources</th></tr></thead>
 <tbody>
-<tr><th scope="rowgroup" rowspan="4">Official project instructions</th><td>Codex <code>AGENTS.md</code></td><td>Layered loading and precedence</td><td>Writing repo rules for Codex</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://learn.chatgpt.com/docs/agent-configuration/agents-md">Official docs</a></td></tr>
-<tr><td>Claude Code <code>CLAUDE.md</code></td><td>When to put something in rules and when to move it to a Skill</td><td>Writing persistent rules for Claude Code</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://code.claude.com/docs/en/memory">Official docs</a></td></tr>
-<tr><td>Gemini CLI <code>GEMINI.md</code></td><td>Directory scope and loading method</td><td>Adding project context for Gemini CLI</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://geminicli.com/docs/cli/gemini-md/">Official docs</a></td></tr>
-<tr><td>OpenCode <code>AGENTS.md</code></td><td>Rules loading, merging, and fallback</td><td>Writing rules for OpenCode</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://opencode.ai/docs/rules">Official docs</a></td></tr>
+<tr><th scope="rowgroup" rowspan="4" align="center" valign="middle" width="80">Official project rules</th><td><div data-field="entry"><strong>Codex <code>AGENTS.md</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read:</strong> Layered loading and precedence</div><div data-field="when"><strong>Use for:</strong> Writing repo rules for Codex</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://learn.chatgpt.com/docs/agent-configuration/agents-md">Official docs</a></div></td></tr>
+<tr><td><div data-field="entry"><strong>Claude Code <code>CLAUDE.md</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read:</strong> When to put something in rules and when to move it to a Skill</div><div data-field="when"><strong>Use for:</strong> Writing persistent rules for Claude Code</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://code.claude.com/docs/en/memory">Official docs</a></div></td></tr>
+<tr><td><div data-field="entry"><strong>Gemini CLI <code>GEMINI.md</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read:</strong> Directory scope and loading method</div><div data-field="when"><strong>Use for:</strong> Adding project context for Gemini CLI</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://geminicli.com/docs/cli/gemini-md/">Official docs</a></div></td></tr>
+<tr><td><div data-field="entry"><strong>OpenCode <code>AGENTS.md</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read:</strong> Rules loading, merging, and fallback</div><div data-field="when"><strong>Use for:</strong> Writing rules for OpenCode</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://opencode.ai/docs/rules">Official docs</a></div></td></tr>
 </tbody>
 <tbody>
-<tr><th scope="rowgroup" rowspan="4">Official Skill docs</th><td>Codex/ChatGPT Build skills</td><td><code>SKILL.md</code> structure and loading location</td><td>Making a reusable Codex process</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://learn.chatgpt.com/docs/build-skills">Official docs</a></td></tr>
-<tr><td>Claude Code Skills</td><td>On-demand loading, legacy commands, and permissions</td><td>Making a Claude Code Skill</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://code.claude.com/docs/en/skills">Official docs</a></td></tr>
-<tr><td>Gemini CLI Agent Skills</td><td>Discovery, installation consent, and activation consent</td><td>Managing Gemini CLI Skills</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://geminicli.com/docs/cli/using-agent-skills/">Official docs</a></td></tr>
-<tr><td>OpenCode Agent Skills</td><td>Supported locations, frontmatter, and permission</td><td>Making an OpenCode Skill</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://opencode.ai/docs/skills/">Official docs</a></td></tr>
+<tr><th scope="rowgroup" rowspan="4" align="center" valign="middle" width="80">Official Skill docs</th><td><div data-field="entry"><strong>Codex/ChatGPT Build skills</strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read:</strong> <code>SKILL.md</code> structure and loading location</div><div data-field="when"><strong>Use for:</strong> Making a reusable Codex process</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://learn.chatgpt.com/docs/build-skills">Official docs</a></div></td></tr>
+<tr><td><div data-field="entry"><strong>Claude Code Skills</strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read:</strong> On-demand loading, legacy commands, and permissions</div><div data-field="when"><strong>Use for:</strong> Making a Claude Code Skill</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://code.claude.com/docs/en/skills">Official docs</a></div></td></tr>
+<tr><td><div data-field="entry"><strong>Gemini CLI Agent Skills</strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read:</strong> Discovery, installation consent, and activation consent</div><div data-field="when"><strong>Use for:</strong> Managing Gemini CLI Skills</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://geminicli.com/docs/cli/using-agent-skills/">Official docs</a></div></td></tr>
+<tr><td><div data-field="entry"><strong>OpenCode Agent Skills</strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read:</strong> Supported locations, frontmatter, and permission</div><div data-field="when"><strong>Use for:</strong> Making an OpenCode Skill</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://opencode.ai/docs/skills/">Official docs</a></div></td></tr>
 </tbody>
 <tbody>
-<tr><th scope="rowgroup" rowspan="4">Standards and readable examples</th><td>Agent Skills specification</td><td>Minimum requirements for a shared format</td><td>Making the core content easier to carry across tools</td><td>⭐⭐⭐⭐</td><td><a href="https://agentskills.io/specification">Standard</a></td></tr>
-<tr><td><code>anthropics/claude-plugins-official</code></td><td>Skills and commands inside official plugins</td><td>Seeing how a Skill is packaged for sharing</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://github.com/anthropics/claude-plugins-official">GitHub repo</a></td></tr>
-<tr><td><code>mattpocock/skills</code></td><td>Short Skill examples used in engineering work</td><td>Comparing different writing styles</td><td>⭐⭐⭐⭐</td><td><a href="https://github.com/mattpocock/skills">GitHub repo</a></td></tr>
-<tr><td><code>obra/superpowers</code></td><td>How real workflows are split into Skills</td><td>After completing your first Skill</td><td>⭐⭐⭐⭐</td><td><a href="https://github.com/obra/superpowers">GitHub repo</a></td></tr>
+<tr><th scope="rowgroup" rowspan="4" align="center" valign="middle" width="80">Standards and readable examples</th><td><div data-field="entry"><strong>Agent Skills specification</strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read:</strong> Minimum requirements for a shared format</div><div data-field="when"><strong>Use for:</strong> Making the core content easier to carry across tools</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://agentskills.io/specification">Standard</a></div></td></tr>
+<tr><td><div data-field="entry"><strong><code>claude-plugins-official</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read:</strong> Skills and commands inside official plugins</div><div data-field="when"><strong>Use for:</strong> Seeing how a Skill is packaged for sharing</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://github.com/anthropics/claude-plugins-official">GitHub repo</a></div></td></tr>
+<tr><td><div data-field="entry"><strong><code>skills</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read:</strong> Short Skill examples used in engineering work</div><div data-field="when"><strong>Use for:</strong> Comparing different writing styles</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://github.com/mattpocock/skills">GitHub repo</a></div></td></tr>
+<tr><td><div data-field="entry"><strong><code>superpowers</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read:</strong> How real workflows are split into Skills</div><div data-field="when"><strong>Use for:</strong> After completing your first Skill</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://github.com/obra/superpowers">GitHub repo</a></div></td></tr>
 </tbody>
 <tbody>
-<tr><th scope="rowgroup" rowspan="2">Indexes and prompt practice</th><td><code>hesreallyhim/awesome-claude-code</code></td><td>Finding Claude Code resources by type</td><td>When you know the need and want more examples</td><td>⭐⭐⭐</td><td><a href="https://github.com/hesreallyhim/awesome-claude-code">GitHub repo</a></td></tr>
-<tr><td><code>anthropics/prompt-eng-interactive-tutorial</code></td><td>Comparing prompt approaches step by step</td><td>When the shared core in CLI-8 is unclear</td><td>⭐⭐⭐⭐</td><td><a href="https://github.com/anthropics/prompt-eng-interactive-tutorial">Official GitHub repo</a></td></tr>
+<tr><th scope="rowgroup" rowspan="2" align="center" valign="middle" width="80">Indexes and prompt practice</th><td><div data-field="entry"><strong><code>awesome-claude-code</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐</span></td><td><div data-field="read"><strong>Read:</strong> Finding Claude Code resources by type</div><div data-field="when"><strong>Use for:</strong> When you know the need and want more examples</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://github.com/hesreallyhim/awesome-claude-code">GitHub repo</a></div></td></tr>
+<tr><td><div data-field="entry"><strong><code>prompt-eng-interactive-tutorial</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read:</strong> Comparing prompt approaches step by step</div><div data-field="when"><strong>Use for:</strong> When the shared core in CLI-8 is unclear</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://github.com/anthropics/prompt-eng-interactive-tutorial">Official GitHub repo</a></div></td></tr>
 </tbody>
 <tbody>
-<tr><th scope="rowgroup" rowspan="2">Repo context tools</th><td><code>yamadashy/repomix</code></td><td>Creating a one-off codebase snapshot</td><td>When you need to organize repo contents for an agent</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://github.com/yamadashy/repomix">GitHub repo</a></td></tr>
-<tr><td><code>langchain-ai/openwiki</code></td><td>Creating a continuously updated repo wiki</td><td>When a large repo needs on-demand document lookup</td><td>⭐⭐⭐⭐</td><td><a href="https://github.com/langchain-ai/openwiki">GitHub repo</a></td></tr>
+<tr><th scope="rowgroup" rowspan="2" align="center" valign="middle" width="80">Repo context tools</th><td><div data-field="entry"><strong><code>repomix</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read:</strong> Creating a one-off codebase snapshot</div><div data-field="when"><strong>Use for:</strong> When you need to organize repo contents for an agent</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://github.com/yamadashy/repomix">GitHub repo</a></div></td></tr>
+<tr><td><div data-field="entry"><strong><code>openwiki</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read:</strong> Creating a continuously updated repo wiki</div><div data-field="when"><strong>Use for:</strong> When a large repo needs on-demand document lookup</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://github.com/langchain-ai/openwiki">GitHub repo</a></div></td></tr>
 </tbody>
 </table>
+</div>
 <a id="-self-check-before-a3"></a>
 
 ## ✅ Self-check before Stage 5

@@ -17,11 +17,15 @@ After finishing, you can:
 
 ## 🧩 Three Core Terms First
 
+<div align="center" markdown="1">
+
 | Core term | What it is, in plain language | How A3 uses it | What it is not |
-|---|---|---|---|
+|:---|:---|:---|:---|
 | **MCP (Model Context Protocol)** | A standard adapter that connects an agent to external tools or data | Give a server only one demo folder or read-only tool | Not automatically safe; permissions still decide what it can touch |
 | **CI (Continuous Integration)** | A checkpoint that runs automatically when a push or PR appears | Run one read-only review automatically on a test PR | Not an auto-merge button that skips human review |
 | **Observability** | A receipt plus dashcam recording that keeps what happened | Record provider, model, usage, time, result, and failure reason | Not just one total-token number or a guess about unavailable cost |
+
+</div>
 
 The three terms appear together but are not the same thing: MCP connects tools, CI decides when to run automatically, and observability records the evidence after a run.
 
@@ -128,23 +132,27 @@ GitHub recommends pinning third-party Actions in production workflows to a full 
 
 **Outcome:** you record the provider/model, input usage, output usage, time, and result; fields you cannot obtain are clearly marked “unconfirmed” instead of guessed.
 
-First distinguish whether you use a subscription plan or pay by API usage. When the official source provides token counts and prices, calculate cost only with this formula:
+Separate subscription fees from API usage fees. This estimates ordinary input/output token costs, with both prices quoted per million tokens. Check provider rules for other charges.
 
-`input tokens × input price + output tokens × output price`
+`(input tokens ÷ 1,000,000 × input price) + (output tokens ÷ 1,000,000 × output price)`
 
 <details markdown="1">
 <summary>Expand for the CLI-11 record card, stop rules, and observability</summary>
 
 Start with one small task and fill in this card:
 
+<div align="center" markdown="1">
+
 | Field | What to record |
-|---|---|
+|:---|:---|
 | Task | What you asked the agent to do |
 | Provider/model | The provider and model actually used; write unconfirmed if unavailable |
 | Usage | Input/output usage; do not write only a vague “total tokens” |
 | Time | The actual duration shown by the workflow or CLI |
 | Result | `PASS`, an issue list, or the reason for failure |
 | Cost | Calculate only when it matches official prices; otherwise write the billing method or unconfirmed |
+
+</div>
 
 Then set a stop rule the tool really supports, such as a job timeout, maximum retries, provider spend limit, or human confirmation before each paid step. Do not create a setting a tool will not read just to create a false sense of safety.
 
@@ -180,6 +188,14 @@ The core idea of a Skill can be shared, but folders, permissions, frontmatter, a
 
 If you have no scope, evidence, or recovery method, do not increase permissions yet. This matters more than memorizing many tool names.
 
+> **After an upgrade, recheck safety boundaries:** In a disposable demo repo, rerun negative cases: a folder-disabled MCP stays off
+> after a headless directory change or plugin reload. A `PreToolUse` hook (run before a tool call) in managed settings (administrator settings)
+> must block a call it denies; if it also returns `"continue": false`, the turn must end. Denying only the call lets Claude choose another approach.
+> Read-only mode cannot write, and a command
+> requiring human approval is not auto-approved (include a `BASH_ARGV0` permission case). Anthropic’s [Claude Code v2.1.296 release
+> notes (Oct 9)](https://github.com/anthropics/claude-code/releases/tag/v2.1.296) supply upstream regression cues for MCP, hooks,
+> and `BASH_ARGV0`; they do not show that this repository or your installed version passed these checks.
+
 ### 📋 Playbook 4: Dispatching subagents for independent tasks
 
 **Outcome:** first list the agents the current tool really provides, then delegate an independent, verifiable task; do not assume every computer has an agent with the same name.
@@ -205,39 +221,39 @@ Further reading: [`resources/subagent-cookbook.en.md`](../../resources/subagent-
 
 Editorial ratings are learning-map guidance, not GitHub stars. `⭐⭐⭐⭐⭐` marks a must-read or must-run entry for this path; it does not mean the tool is always safe or that production can skip its own threat model.
 
-<table>
-<thead>
-<tr><th scope="col">Type</th><th scope="col">Resource</th><th scope="col">Read first</th><th scope="col">When to use</th><th scope="col">Rating</th><th scope="col">Source</th></tr>
-</thead>
+<div class="reader-resource-catalog" role="region" tabindex="0" aria-label="CLI tools and learning resources">
+<table align="center">
+<thead><tr><th scope="col">Group</th><th scope="col">Project / document</th><th scope="col">Rating</th><th scope="col">Use</th><th scope="col">Sources</th></tr></thead>
 <tbody>
-<tr><th scope="rowgroup" rowspan="4">Safe MCP connections</th><td>MCP Connect to local servers</td><td>Allowed directories and explicit authorization</td><td>Connecting a local server for the first time</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://modelcontextprotocol.io/docs/2026-07-28/develop/connect-local-servers">Official docs</a></td></tr>
-<tr><td>MCP Security Best Practices</td><td>Least privilege, scopes, and token handling</td><td>Before connecting an account or remote service</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices">Official docs</a></td></tr>
-<tr><td><code>github/github-mcp-server</code></td><td><code>--read-only</code>, toolsets, and tools allow-list</td><td>Reading GitHub PRs/issues</td><td>⭐⭐⭐⭐</td><td><a href="https://github.com/github/github-mcp-server">GitHub repo</a></td></tr>
-<tr><td><code>modelcontextprotocol/servers</code></td><td>Reference implementations and the not-production-ready warning</td><td>Learning the protocol or reading example code</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://github.com/modelcontextprotocol/servers">GitHub repo</a></td></tr>
+<tr><th scope="rowgroup" rowspan="4" align="center" valign="middle" width="80">Safe MCP connections</th><td><div data-field="entry"><strong>MCP Connect to local servers</strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read first:</strong> Allowed directories and explicit authorization</div><div data-field="when"><strong>When to use:</strong> Connecting a local server for the first time</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://modelcontextprotocol.io/docs/2026-07-28/develop/connect-local-servers">Official docs</a></div></td></tr>
+<tr><td><div data-field="entry"><strong>MCP Security Best Practices</strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read first:</strong> Least privilege, scopes, and token handling</div><div data-field="when"><strong>When to use:</strong> Before connecting an account or remote service</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://modelcontextprotocol.io/docs/2026-07-28/tutorials/security/security_best_practices">Official docs</a></div></td></tr>
+<tr><td><div data-field="entry"><strong><code>github-mcp-server</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read first:</strong> <code>--read-only</code>, toolsets, and tools allow-list</div><div data-field="when"><strong>When to use:</strong> Reading GitHub PRs/issues</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://github.com/github/github-mcp-server">GitHub repo</a></div></td></tr>
+<tr><td><div data-field="entry"><strong><code>servers</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read first:</strong> Reference implementations and the not-production-ready warning</div><div data-field="when"><strong>When to use:</strong> Learning the protocol or reading example code</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://github.com/modelcontextprotocol/servers">GitHub repo</a></div></td></tr>
 </tbody>
 <tbody>
-<tr><th scope="rowgroup" rowspan="5">CI and PR review</th><td>GitHub Actions Secure Use</td><td>Least privilege, untrusted input, and pinning SHAs</td><td>Before writing any workflow with secrets</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://docs.github.com/en/actions/reference/security/secure-use">Official docs</a></td></tr>
-<tr><td>Claude Code GitHub Actions</td><td>Official setup, permissions, and troubleshooting</td><td>Running Claude Code in CI</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://code.claude.com/docs/en/github-actions">Official docs</a></td></tr>
-<tr><td><code>anthropics/claude-code-action</code></td><td>Official examples and action inputs</td><td>Starting from an executable template</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://github.com/anthropics/claude-code-action">GitHub repo</a></td></tr>
-<tr><td>Codex GitHub Action</td><td>Permission profile, trigger, and output</td><td>Running Codex in CI</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://learn.chatgpt.com/docs/github-action">OpenAI official docs</a></td></tr>
-<tr><td><code>openai/codex-action</code></td><td><code>:read-only</code> and safety strategy</td><td>Checking the latest inputs and examples</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://github.com/openai/codex-action">GitHub repo</a></td></tr>
+<tr><th scope="rowgroup" rowspan="5" align="center" valign="middle" width="80">CI and PR review</th><td><div data-field="entry"><strong>GitHub Actions Secure Use</strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read first:</strong> Least privilege, untrusted input, and pinning SHAs</div><div data-field="when"><strong>When to use:</strong> Before writing any workflow with secrets</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://docs.github.com/en/actions/reference/security/secure-use">Official docs</a></div></td></tr>
+<tr><td><div data-field="entry"><strong>Claude Code GitHub Actions</strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read first:</strong> Official setup, permissions, and troubleshooting</div><div data-field="when"><strong>When to use:</strong> Running Claude Code in CI</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://code.claude.com/docs/en/github-actions">Official docs</a></div></td></tr>
+<tr><td><div data-field="entry"><strong><code>claude-code-action</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read first:</strong> Official examples and action inputs</div><div data-field="when"><strong>When to use:</strong> Starting from an executable template</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://github.com/anthropics/claude-code-action">GitHub repo</a></div></td></tr>
+<tr><td><div data-field="entry"><strong>Codex GitHub Action</strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read first:</strong> Permission profile, trigger, and output</div><div data-field="when"><strong>When to use:</strong> Running Codex in CI</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://learn.chatgpt.com/docs/github-action">OpenAI official docs</a></div></td></tr>
+<tr><td><div data-field="entry"><strong><code>codex-action</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read first:</strong> <code>:read-only</code> and safety strategy</div><div data-field="when"><strong>When to use:</strong> Checking the latest inputs and examples</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://github.com/openai/codex-action">GitHub repo</a></div></td></tr>
 </tbody>
 <tbody>
-<tr><th scope="rowgroup" rowspan="4">Observability and evaluation</th><td><code>langfuse/langfuse</code></td><td>Traces, usage, and eval</td><td>Viewing multiple runs together</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://github.com/langfuse/langfuse">GitHub repo</a></td></tr>
-<tr><td><code>Arize-ai/phoenix</code></td><td>Tracing and evaluation</td><td>Observing an AI system with open source</td><td>⭐⭐⭐⭐</td><td><a href="https://github.com/Arize-ai/phoenix">GitHub repo</a></td></tr>
-<tr><td><code>Helicone/helicone</code></td><td>Proxy/gateway data flow and privacy boundary</td><td>Collecting request records from a gateway</td><td>⭐⭐⭐⭐</td><td><a href="https://github.com/Helicone/helicone">GitHub repo</a></td></tr>
-<tr><td><code>promptfoo/promptfoo</code></td><td>Eval cases and CI regression</td><td>Comparing whether a change made things worse</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://github.com/promptfoo/promptfoo">GitHub repo</a></td></tr>
+<tr><th scope="rowgroup" rowspan="4" align="center" valign="middle" width="80">Observability and evaluation</th><td><div data-field="entry"><strong><code>langfuse</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read first:</strong> Traces, usage, and eval</div><div data-field="when"><strong>When to use:</strong> Viewing multiple runs together</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://github.com/langfuse/langfuse">GitHub repo</a></div></td></tr>
+<tr><td><div data-field="entry"><strong><code>phoenix</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read first:</strong> Tracing and evaluation</div><div data-field="when"><strong>When to use:</strong> Observing an AI system locally</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://github.com/Arize-ai/phoenix">GitHub repo</a></div></td></tr>
+<tr><td><div data-field="entry"><strong><code>helicone</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read first:</strong> Proxy/gateway data flow and privacy boundary</div><div data-field="when"><strong>When to use:</strong> Collecting request records from a gateway</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://github.com/Helicone/helicone">GitHub repo</a></div></td></tr>
+<tr><td><div data-field="entry"><strong><code>promptfoo</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read first:</strong> Eval cases and CI regression</div><div data-field="when"><strong>When to use:</strong> Comparing whether a change made things worse</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://github.com/promptfoo/promptfoo">GitHub repo</a></div></td></tr>
 </tbody>
 <tbody>
-<tr><th scope="rowgroup" rowspan="3">Sharing Skills/plugins</th><td>Claude Code Plugins</td><td>Plugin structure, installation, and marketplace</td><td>Packaging for Claude Code</td><td>⭐⭐⭐⭐</td><td><a href="https://code.claude.com/docs/en/plugins">Official docs</a></td></tr>
-<tr><td><code>anthropics/claude-plugins-official</code></td><td>Officially managed plugin directory</td><td>Finding readable official examples</td><td>⭐⭐⭐⭐⭐</td><td><a href="https://github.com/anthropics/claude-plugins-official">GitHub repo</a></td></tr>
-<tr><td><code>obra/superpowers-marketplace</code></td><td>Minimal marketplace shell</td><td>Understanding curator-only structure</td><td>⭐⭐⭐</td><td><a href="https://github.com/obra/superpowers-marketplace">GitHub repo</a></td></tr>
+<tr><th scope="rowgroup" rowspan="3" align="center" valign="middle" width="80">Sharing Skills/plugins</th><td><div data-field="entry"><strong>Claude Code Plugins</strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read first:</strong> Plugin structure, installation, and marketplace</div><div data-field="when"><strong>When to use:</strong> Packaging for Claude Code</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://code.claude.com/docs/en/plugins">Official docs</a></div></td></tr>
+<tr><td><div data-field="entry"><strong><code>claude-plugins-official</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read first:</strong> Officially managed plugin directory</div><div data-field="when"><strong>When to use:</strong> Finding readable official examples</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://github.com/anthropics/claude-plugins-official">GitHub repo</a></div></td></tr>
+<tr><td><div data-field="entry"><strong><code>superpowers-marketplace</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐</span></td><td><div data-field="read"><strong>Read first:</strong> Minimal marketplace shell</div><div data-field="when"><strong>When to use:</strong> Understanding curator-only structure</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://github.com/obra/superpowers-marketplace">GitHub repo</a></div></td></tr>
 </tbody>
 <tbody>
-<tr><th scope="rowgroup" rowspan="2">Directories and complete examples</th><td><code>wong2/awesome-mcp-servers</code></td><td>Classify first, then check sources and permissions one by one</td><td>When official resources lack the server you need</td><td>⭐⭐⭐⭐</td><td><a href="https://github.com/wong2/awesome-mcp-servers">GitHub repo</a></td></tr>
-<tr><td><code>obra/superpowers</code></td><td>How Skills, rules, and workflows fit together</td><td>Looking at a complete example after the minimal workflow works</td><td>⭐⭐⭐⭐</td><td><a href="https://github.com/obra/superpowers">GitHub repo</a></td></tr>
+<tr><th scope="rowgroup" rowspan="2" align="center" valign="middle" width="80">Directories and complete examples</th><td><div data-field="entry"><strong><code>awesome-mcp-servers</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read first:</strong> Classify first, then check sources and permissions one by one</div><div data-field="when"><strong>When to use:</strong> When official resources lack the server you need</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://github.com/wong2/awesome-mcp-servers">GitHub repo</a></div></td></tr>
+<tr><td><div data-field="entry"><strong><code>superpowers</code></strong></div></td><td align="center" valign="middle"><span data-field="rating">⭐⭐⭐⭐</span></td><td><div data-field="read"><strong>Read first:</strong> How Skills, rules, and workflows fit together</div><div data-field="when"><strong>When to use:</strong> Looking at a complete example after the minimal workflow works</div></td><td><div data-field="sources"><strong>Source:</strong> <a href="https://github.com/obra/superpowers">GitHub repo</a></div></td></tr>
 </tbody>
 </table>
+</div>
 
 The directory only helps you “find candidates”; it does not guarantee a candidate is safe. Before installing any MCP, Action, Skill, or plugin, check its source, permissions, recent maintenance, and removal method again.
 ## ✅ Track A Completion Check

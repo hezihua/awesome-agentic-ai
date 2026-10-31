@@ -19,6 +19,8 @@
 ![GitHub stars](https://img.shields.io/github/stars/WenyuChiou/awesome-agentic-ai-zh?style=flat&logo=github)
 [![線上文件站](https://img.shields.io/badge/線上閱讀-立即開始-2ea44f?style=flat)](https://wenyuchiou.github.io/awesome-agentic-ai-zh/)
 
+[![Star History 全球排名](https://api.star-history.com/badge?repo=WenyuChiou/awesome-agentic-ai-zh&type=rank)](https://www.star-history.com/wenyuchiou/awesome-agentic-ai-zh)
+
 </div>
 
 > 📱 手機閱讀請使用[線上文件站](https://wenyuchiou.github.io/awesome-agentic-ai-zh/)。
@@ -27,13 +29,13 @@
 
 **AI Agent**（AI 代理人）是「能為了人的目標，自己判斷下一步並採取行動的 AI 系統」。人給它目標後，它會看目前情況、選擇下一步，必要時使用工具，再依結果繼續、修正、停止，或把控制權交還給人。它可以自動替人完成工作，但只能在人給的規則與權限內行動。只回答一次的聊天機器人，或每一步都固定寫好的腳本，不一定是 Agent。這個 repo 不要求你一開始就懂所有名詞，而是帶你依序完成三件事：
 
-1. **先懂基礎**：LLM、Prompt、API 與 Token 是什麼。
+1. **先懂基礎**：LLM（Large Language Model，能讀寫語言的模型）、Prompt、API（Application Programming Interface，讓程式呼叫服務的介面） 與 Token 是什麼。
 2. **再做出東西**：讓模型呼叫工具、跑 Agent Loop、讀文件與記住事情。
 3. **最後做得可靠**：加入權限、Eval、人工批准、觀測與失敗復原。
 
 這裡的角色是**學習路線圖 + 精選資源 + 可直接執行的小練習**。需要完整章節時，我們會帶你去官方文件、[Datawhale Hello-Agents](https://github.com/datawhalechina/hello-agents) 或對應的 Cookbook，不重寫另一套百科全書。需要連模型時，每個練習會再說明雲端或本機路徑。
 
-重要技術詞第一次出現時會先用白話說明，再保留正式英文。忘記某個詞時，直接查[名詞表](resources/glossary.md)。
+章節中的重要技術詞第一次出現時會先用白話說明，再保留正式英文。忘記某個詞時，直接查[名詞表](resources/glossary.md)。
 
 ## 🚀 現在就開始
 
@@ -43,11 +45,16 @@
 
 走 Track A 或 Track B 前，先確認 Stage 0–2；只走日常使用者路線的人可以直接打開角色指南。
 
-| 你現在想做什麼？ | 建議路線 | 路線入口 |
-|---|---|---|
-| 用 Claude Code、Codex、OpenCode 等 CLI Agent 完成工作 | **Track A — CLI Power User** | [A1：選一個 CLI Agent](tracks/cli/A1-cli-intro.md) |
-| 自己寫 Agent、工具迴圈、Workflow 與服務 | **Track B — Agent Builder** | [Stage 3：第一個 Agent Loop](stages/03-tool-use-and-hello-agent.md) |
-| 只想在日常生活安全使用 AI，暫時不寫程式 | **日常使用者路線** | [日常使用者指南](branches/for-everyday-users.md) |
+<div class="reader-route-table" role="region" tabindex="0" aria-label="依需求選擇路線">
+<table align="center">
+<thead><tr><th scope="col">你現在想做什麼？</th><th scope="col">建議路線</th><th scope="col">路線入口</th></tr></thead>
+<tbody>
+<tr><td>用 Claude Code、Codex、OpenCode 等 CLI Agent 完成工作</td><td><strong>Track A — CLI Power User</strong></td><td><a href="tracks/cli/A1-cli-intro.md">A1：選一個 CLI Agent</a></td></tr>
+<tr><td>自己寫 Agent、工具迴圈、Workflow 與服務</td><td><strong>Track B — Agent Builder</strong></td><td><a href="stages/03-tool-use-and-hello-agent.md">Stage 3：第一個 Agent Loop</a></td></tr>
+<tr><td>只想在日常生活安全使用 AI，暫時不寫程式</td><td><strong>日常使用者路線</strong></td><td><a href="branches/for-everyday-users.md">日常使用者指南</a></td></tr>
+</tbody>
+</table>
+</div>
 
 <details markdown="1">
 <summary>💻 展開：下載到本機</summary>
@@ -69,41 +76,56 @@ cd awesome-agentic-ai-zh
 
 ### 共用基礎：Stage 0–2
 
-| Stage | 這一步解決什麼？ | 完成後你能做什麼？ |
-|---|---|---|
-| **0** · [基礎準備](stages/00-foundations.md) | 電腦與基本工具準備好了嗎？ | 用 Python 呼叫公開 API、讀 JSON，並用 Git 保存成果 |
-| **1** · [LLM 基礎](stages/01-llm-basics.md) | LLM、Token、Context 與模型差在哪裡？ | 呼叫一個 LLM，並依需求選雲端或本機模型 |
-| **2** · [Prompt 設計](stages/02-prompt-engineering.md) | 怎麼把目標、資料、規則與輸出說清楚？ | 用固定案例比較 Zero-Shot、One-Shot、Few-Shot 與 CoT 的邊界 |
+<div class="reader-route-table" role="region" tabindex="0" aria-label="共用基礎路線比較">
+<table align="center">
+<thead><tr><th scope="col" width="260">Stage</th><th scope="col">這一步解決什麼？</th><th scope="col">完成後你能做什麼？</th></tr></thead>
+<tbody>
+<tr><td><strong>0</strong> · <a href="stages/00-foundations.md">基礎準備</a></td><td>電腦與基本工具準備好了嗎？</td><td>用 Python 呼叫公開 API、讀 JSON（JavaScript Object Notation，程式交換資料常用的文字格式），並用 Git 保存成果</td></tr>
+<tr><td><strong>1</strong> · <a href="stages/01-llm-basics.md">LLM 基礎</a></td><td>LLM、Token、Context 與模型差在哪裡？</td><td>呼叫一個 LLM，並依需求選雲端或本機模型</td></tr>
+<tr><td><strong>2</strong> · <a href="stages/02-prompt-engineering.md">Prompt 設計</a></td><td>怎麼把目標、資料、規則與輸出說清楚？</td><td>用固定案例比較 Zero-Shot、One-Shot、Few-Shot 與 CoT（Chain-of-Thought，以中間步驟處理問題的推理提示方法） 的邊界</td></tr>
+</tbody>
+</table>
+</div>
 
 ### Track A：使用 CLI Agent 把工作做完
 
-正式順序是 `A1 → A2 → Stage 5 → A3 → Stage 8`。
+正式順序是 `A1 → A2 → Stage 5 → A3 → Stage 8`。 Stage 8 建議接著學，不擋 Track A Capstone。
 
-| 順序 | 這一步解決什麼？ | 完成後你能做什麼？ |
-|---|---|---|
-| **A1** · [選一個 CLI Agent](tracks/cli/A1-cli-intro.md) | OpenRouter、OpenCode、Pi、Ollama 分別是什麼？ | 選對工具並完成第一個小任務 |
-| **A2** · [建立可重複流程](tracks/cli/A2-cli-workflow.md) | 怎麼把規則與步驟留給下一次使用？ | 寫 Project Instructions、Skill 與可重用工作流程 |
-| **5** · [Claude Code 生態](stages/05-claude-code-ecosystem.md) | MCP、Skills、Plugins、Hooks 與 Subagents 怎麼分？ | 先讀核心 5.1–5.4；5.5–5.8 依工作需要選讀 |
-| **A3** · [接進真實工作](tracks/cli/A3-cli-production.md) | 怎麼安全連接外部工具、CI 與團隊流程？ | 用最小權限、人工檢查與紀錄完成整合 |
-| **8** · [Agent 操作介面](stages/08-agent-interfaces.md) | Agent 怎麼操作瀏覽器、畫面與 Sandbox？ | 判斷任務該用 CLI、Browser、Computer Use 還是 API |
+<div class="reader-route-table" role="region" tabindex="0" aria-label="Track A 路線比較">
+<table align="center">
+<thead><tr><th scope="col" width="260">順序</th><th scope="col">這一步解決什麼？</th><th scope="col">完成後你能做什麼？</th></tr></thead>
+<tbody>
+<tr><td><strong>A1</strong> · <a href="tracks/cli/A1-cli-intro.md">選一個 CLI Agent</a></td><td>OpenRouter、OpenCode、Pi、Ollama 分別是什麼？</td><td>選對工具並完成第一個小任務</td></tr>
+<tr><td><strong>A2</strong> · <a href="tracks/cli/A2-cli-workflow.md">建立可重複流程</a></td><td>怎麼把規則與步驟留給下一次使用？</td><td>寫 Project Instructions、Skill 與可重用工作流程</td></tr>
+<tr><td><strong>5</strong> · <a href="stages/05-claude-code-ecosystem.md">Claude Code 生態</a></td><td>MCP、Skills、Plugins、Hooks 與 Subagents 怎麼分？</td><td>先讀核心 5.1–5.4；5.5–5.8 依工作需要選讀</td></tr>
+<tr><td><strong>A3</strong> · <a href="tracks/cli/A3-cli-production.md">接進真實工作</a></td><td>怎麼安全連接外部工具、CI 與團隊流程？</td><td>用最小權限、人工檢查與紀錄完成整合</td></tr>
+<tr><td><strong>8</strong> · <a href="stages/08-agent-interfaces.md">Agent 操作介面</a></td><td>Agent 怎麼操作瀏覽器、畫面與 Sandbox？</td><td>判斷任務該用 CLI、Browser、Computer Use 還是 API</td></tr>
+</tbody>
+</table>
+</div>
 
 ### Track B：從零打造 Agent
 
-| 順序 | 這一步解決什麼？ | 完成後你能做什麼？ |
-|---|---|---|
-| **3** · [工具使用與第一個 Agent Loop](stages/03-tool-use-and-hello-agent.md) | 模型怎麼安全呼叫工具並重複下一步？ | 做出有最大輪數、會驗證參數的 Agent Loop |
-| **4** · [Workflow Graph 與 Agent 框架](stages/04-agent-frameworks.md) | 怎麼把多個步驟畫成工作地圖？ | 選擇 Workflow、Agent、Graph 與 Framework |
-| **5** · [Claude Code 生態](stages/05-claude-code-ecosystem.md) | MCP、Skills、Plugins、Hooks 與 Subagents 怎麼合作？ | 組合工具、規則與可重用能力 |
-| **6** · [Memory · RAG](stages/06-memory-rag.md) | Agent 怎麼查文件、保存與取回重要資訊？ | 建立最小 RAG、long-term memory 與 contextual retrieval 流程 |
-| **7** · [Agent 上線工程：可測、可看、可停、可恢復](stages/07-multi-agent-production.md) | Agent 怎麼在真實環境穩定運作？ | 加入 Eval、觀測、預算、Human-in-the-loop（HITL，人工批准）與復原 |
-| **7.5** · [進階 Agentic 概念地圖](stages/07.5-advanced-agentic-concepts.md) | 還有哪些進階 Pattern 值得認得？ | 從 12 個概念選讀 PAR loop、agent-as-judge 等需要的主題 |
-| **8** · [Agent 操作介面](stages/08-agent-interfaces.md) | Agent 怎麼操作 API 以外的真實環境？ | 選擇 Computer Use、Browser Use 或 Code Sandbox |
+<div class="reader-route-table" role="region" tabindex="0" aria-label="Track B 路線比較">
+<table align="center">
+<thead><tr><th scope="col">順序</th><th scope="col">這一步解決什麼？</th><th scope="col">完成後你能做什麼？</th></tr></thead>
+<tbody>
+<tr><td><strong>3</strong> · <a href="stages/03-tool-use-and-hello-agent.md">工具使用與第一個 Agent Loop</a></td><td>模型怎麼安全呼叫工具並重複下一步？</td><td>做出有最大輪數、會驗證參數的 Agent Loop</td></tr>
+<tr><td><strong>4</strong> · <a href="stages/04-agent-frameworks.md">Workflow Graph 與 Agent 框架</a></td><td>怎麼把多個步驟畫成工作地圖？</td><td>選擇 Workflow、Agent、Graph 與 Framework</td></tr>
+<tr><td><strong>5</strong> · <a href="stages/05-claude-code-ecosystem.md">Claude Code 生態</a></td><td>MCP、Skills、Plugins、Hooks 與 Subagents 怎麼合作？</td><td>組合工具、規則與可重用能力</td></tr>
+<tr><td><strong>6</strong> · <a href="stages/06-memory-rag.md">Memory · RAG（Retrieval-Augmented Generation，先找相關資料，再依資料回答）</a></td><td>Agent 怎麼查文件、保存與取回重要資訊？</td><td>建立最小 RAG、long-term memory 與 contextual retrieval 流程</td></tr>
+<tr><td><strong>7</strong> · <a href="stages/07-multi-agent-production.md">Agent 上線工程：可測、可看、可停、可恢復</a></td><td>Agent 怎麼在真實環境穩定運作？</td><td>加入 Eval、觀測、預算、Human-in-the-loop（HITL，人工批准）與復原</td></tr>
+<tr><td><strong>7.5</strong> · <a href="stages/07.5-advanced-agentic-concepts.md">進階 Agentic 概念地圖</a></td><td>還有哪些進階 Pattern 值得認得？</td><td>從 12 個概念選讀 PAR loop、agent-as-judge 等需要的主題</td></tr>
+<tr><td><strong>8</strong> · <a href="stages/08-agent-interfaces.md">Agent 操作介面</a></td><td>Agent 怎麼操作 API 以外的真實環境？</td><td>選擇 Computer Use、Browser Use 或 Code Sandbox</td></tr>
+</tbody>
+</table>
+</div>
 
-Stage 4 先看懂 **Workflow Graph**，再用 framework 把它做出來；Stage 7 再加入 Eval、觀測、批准與復原，讓同一張工作圖可以穩定運作。
+Stage 4 先看懂 **Workflow Graph**，再用 framework 把它做出來；Stage 7 加入 Eval、觀測、批准與復原，讓流程穩定運作。
 
 > 🔭 **學習順序**：Stage 2 Prompt → Stage 3 **Agent Loop** → Stage 4 **Workflow Graph**／Framework → Stage 5 工具與規則 → Stage 6 **Context Engineering** → Stage 7 production。Prompt、Context、Harness、Loop、Graph 會一起工作；它們不是五層，也不是互相取代的產品世代。
 
-完成 A3 或 Stage 7 後，可以開始 [Capstone 專案](CAPSTONE.md)；想記錄進度可使用 [PROGRESS.md](PROGRESS.md)。
+Track A 完成 A3 後，可開始 [Capstone 專案](CAPSTONE.md)。Track B 則先完成 Stage 8（含 Stage 7.5）。用 [PROGRESS.md](PROGRESS.md) 記錄進度。
 
 <details markdown="1">
 <summary>⏱️ 查看時間估算（安排參考，不是截止日期）</summary>
@@ -121,15 +143,18 @@ Stage 4 先看懂 **Workflow Graph**，再用 framework 把它做出來；Stage 
 
 ![研究、開發、教學、知識工作與日常使用是五種選擇，依需求選讀，不必全部走完](resources/diagrams/branch-decision-tree.svg)
 
-[靜態圖](resources/diagrams/branch-decision-tree.png)
-
-| 路線 | 適合誰 | 你會處理什麼？ |
-|---|---|---|
-| 🔬 [研究人員](branches/for-researcher.md) | 研究生、博後、PI | 文獻證據、可重現流程、Multi-Agent Review |
-| 💻 [開發者](branches/for-developer.md) | 軟體工程師 | CLI Delegation、Code Review、測試與回復 |
-| 🎓 [教師](branches/for-teacher.md) | 老師、講師 | 備課、回饋、隱私與教學 Prompt |
-| 📊 [知識工作者](branches/for-knowledge-worker.md) | 顧問、PM、分析師 | Email、會議與報告工作流程 |
-| 👥 [日常使用者](branches/for-everyday-users.md) | 不一定寫程式的 AI 使用者 | 寫作、學習、隱私與安全使用 |
+<div class="reader-route-table" role="region" tabindex="0" aria-label="依身分選擇路線">
+<table align="center">
+<thead><tr><th scope="col">路線</th><th scope="col">適合誰</th><th scope="col">你會處理什麼？</th></tr></thead>
+<tbody>
+<tr><td>🔬 <a href="branches/for-researcher.md">研究人員</a></td><td>研究生、博後、PI</td><td>文獻證據、可重現流程、Multi-Agent Review</td></tr>
+<tr><td>💻 <a href="branches/for-developer.md">開發者</a></td><td>軟體工程師</td><td>CLI Delegation、Code Review、測試與回復</td></tr>
+<tr><td>🎓 <a href="branches/for-teacher.md">教師</a></td><td>老師、講師</td><td>備課、回饋、隱私與教學 Prompt</td></tr>
+<tr><td>📊 <a href="branches/for-knowledge-worker.md">知識工作者</a></td><td>顧問、PM、分析師</td><td>Email、會議與報告工作流程</td></tr>
+<tr><td>👥 <a href="branches/for-everyday-users.md">日常使用者</a></td><td>不一定寫程式的 AI 使用者</td><td>寫作、學習、隱私與安全使用</td></tr>
+</tbody>
+</table>
+</div>
 
 ## 💡 怎麼學才不容易卡住？
 
@@ -139,31 +164,31 @@ Stage 4 先看懂 **Workflow Graph**，再用 framework 把它做出來；Stage 
 4. **一次只改一件事**：改完立刻再跑測試，才知道是哪個改動造成結果。
 5. **做到完成條件再往下走**：看懂不等於做得到。
 
-每個 `starter.py` 都是可執行參考。先看題目與成功條件，再修改一個地方並重跑測試。完整方法見[如何使用這份教材](docs/HOW_TO_USE.md)。
-
 ## 📚 先收藏的學習入口
 
 這裡只放最常用入口；完整清單在 [RESOURCES.md](RESOURCES.md)。星號表示**學習優先順序**，不是專案排行榜。
 
-<table>
+<div class="reader-reference-table" role="region" tabindex="0" aria-label="學習資源比較">
+<table align="center">
   <thead><tr><th>用途</th><th>入口</th><th>什麼時候用？</th><th>重要性</th></tr></thead>
   <tbody>
-    <tr><th scope="rowgroup" rowspan="3">開始</th><td><a href="resources/setup-guide.md">零基礎設定指南</a></td><td>第一次安裝與執行</td><td>⭐⭐⭐⭐⭐</td></tr>
-    <tr><td><a href="docs/HOW_TO_USE.md">如何使用這份教材</a></td><td>開始第一個動手練習前</td><td>⭐⭐⭐⭐⭐</td></tr>
-    <tr><td><a href="PROGRESS.md">學習進度表</a></td><td>想知道下一步或記錄完成項目</td><td>⭐⭐⭐⭐</td></tr>
+    <tr><th scope="rowgroup" rowspan="3" align="center" valign="middle">開始</th><td><a href="resources/setup-guide.md">零基礎設定指南</a></td><td>第一次安裝與執行</td><td align="center" valign="middle">⭐⭐⭐⭐⭐</td></tr>
+    <tr><td><a href="docs/HOW_TO_USE.md">如何使用這份教材</a></td><td>開始第一個動手練習前</td><td align="center" valign="middle">⭐⭐⭐⭐⭐</td></tr>
+    <tr><td><a href="PROGRESS.md">學習進度表</a></td><td>想知道下一步或記錄完成項目</td><td align="center" valign="middle">⭐⭐⭐⭐</td></tr>
   </tbody>
   <tbody>
-    <tr><th scope="rowgroup" rowspan="3">學習</th><td><a href="resources/glossary.md">核心名詞表</a></td><td>遇到 Token、RAG、MCP 等陌生詞</td><td>⭐⭐⭐⭐⭐</td></tr>
-    <tr><td><a href="examples/README.md">可執行範例入口</a></td><td>想直接跑離線測試與小型案例</td><td>⭐⭐⭐⭐⭐</td></tr>
-    <tr><td><a href="resources/cookbook.md">實作 Cookbook</a></td><td>想做 Skill、MCP、Office、Zotero 或本機 LLM</td><td>⭐⭐⭐⭐</td></tr>
+    <tr><th scope="rowgroup" rowspan="3" align="center" valign="middle">學習</th><td><a href="resources/glossary.md">核心名詞表</a></td><td>遇到 Token、RAG、MCP 等陌生詞</td><td align="center" valign="middle">⭐⭐⭐⭐⭐</td></tr>
+    <tr><td><a href="examples/README.md">可執行範例入口</a></td><td>想直接跑離線測試與小型案例</td><td align="center" valign="middle">⭐⭐⭐⭐⭐</td></tr>
+    <tr><td><a href="resources/cookbook.md">實作 Cookbook</a></td><td>想做 Skill、MCP、Office、Zotero 或本機 LLM</td><td align="center" valign="middle">⭐⭐⭐⭐</td></tr>
   </tbody>
   <tbody>
-    <tr><th scope="rowgroup" rowspan="4">查資料</th><td><a href="resources/README.md">資源工具櫃</a></td><td>不知道該查 Guide、Catalog 還是 Cookbook</td><td>⭐⭐⭐⭐⭐</td></tr>
-    <tr><td><a href="RESOURCES.md">完整資源清單</a></td><td>想找官方文件、課程、社群與延伸閱讀</td><td>⭐⭐⭐⭐</td></tr>
-    <tr><td><a href="resources/cli-agents-guide.md">CLI Agent 選擇指南</a></td><td>準備走 Track A 或比較 CLI 工具</td><td>⭐⭐⭐⭐</td></tr>
-    <tr><td><a href="resources/courses.md">課程與認證地圖</a></td><td>分清完成證書、技能徽章與認證考試</td><td>⭐⭐⭐⭐</td></tr>
+    <tr><th scope="rowgroup" rowspan="4" align="center" valign="middle">查資料</th><td><a href="resources/README.md">資源工具櫃</a></td><td>不知道該查 Guide、Catalog 還是 Cookbook</td><td align="center" valign="middle">⭐⭐⭐⭐⭐</td></tr>
+    <tr><td><a href="RESOURCES.md">完整資源清單</a></td><td>想找官方文件、課程、社群與延伸閱讀</td><td align="center" valign="middle">⭐⭐⭐⭐</td></tr>
+    <tr><td><a href="resources/cli-agents-guide.md">CLI Agent 選擇指南</a></td><td>準備走 Track A 或比較 CLI 工具</td><td align="center" valign="middle">⭐⭐⭐⭐</td></tr>
+    <tr><td><a href="resources/courses.md">課程與認證地圖</a></td><td>分清完成證書、技能徽章與認證考試</td><td align="center" valign="middle">⭐⭐⭐⭐</td></tr>
   </tbody>
 </table>
+</div>
 
 ## 🤝 一起改進這張地圖
 
@@ -208,6 +233,12 @@ Stage 4 先看懂 **Workflow Graph**，再用 framework 把它做出來；Stage 
 這份學習地圖採 MIT 授權，會繼續免費公開。一般問題與建議請使用 Issue；需要私下聯絡時可寄信至 [wenyuchiou12@gmail.com](mailto:wenyuchiou12@gmail.com)。
 
 如果這份地圖幫到你，歡迎給一個 ⭐ Star，或[請作者喝杯咖啡](https://www.buymeacoffee.com/wenyuchiou)。
+
+[![Greptile: The War on Bugs](https://www.greptile.com/badge.svg)](https://www.greptile.com/?utm_source=oss_badge&utm_medium=readme&utm_campaign=greptile_for_open_source)
+
+## ⭐ Star 歷史
+
+[![此專案的 GitHub Star 歷史圖](https://api.star-history.com/svg?repos=WenyuChiou/awesome-agentic-ai-zh&type=Date)](https://www.star-history.com/#WenyuChiou/awesome-agentic-ai-zh&Date)
 
 ## License
 

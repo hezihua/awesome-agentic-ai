@@ -1,0 +1,117 @@
+name: Site (mkdocs + mdBook) → GitHub Pages
+
+permissions: {}
+
+# SINGLE owner of the GitHub Pages deployment. GitHub Pages has exactly
+# one root per repo, so the mkdocs site (root /) and the mdBook (/book/)
+# MUST be built and published by ONE workflow — two workflows both
+# calling actions/deploy-pages race and clobber each other (that is
+# exactly what happened when the old deploy-book.yml coexisted with
+# this one; deploy-book.yml has been removed).
+#
+# Layout published:
+#   /                         → mkdocs-material trilingual site (canonical homepage)
+#   /en/  /zh-Hans/           → mkdocs locale builds (mkdocs-static-i18n)
+#   /book/                    → mdBook (zh-TW long-form "book" packaging)
+#
+# Pages source must be "GitHub Actions" (Settings → Pages → Source).
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'stages/**'
+      - 'tracks/**'
+      - 'branches/**'
+      - 'resources/**'
+      - 'walkthroughs/**'
+      - 'docs/**'
+      - 'examples/**'
+      - '*.md'
+      - 'mkdocs.yml'
+      - 'requirements-docs.txt'
+      - 'scripts/build-docs-tree.py'
+      - 'scripts/build-mdbook.sh'
+      - 'scripts/mkdocs_hooks.py'
+      - 'book.toml'
+      - '.github/workflows/docs.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build mkdocs (root) + mdBook (/book/)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+
+      - name: Install docs dependencies
+        run: pip install -r requirements-docs.txt
+
+      - name: Stage content tree
+        run: python scripts/build-docs-tree.py
+
+      - name: Build mkdocs site (→ _build/site, the Pages root)
+        run: python -m mkdocs build
+
+      - name: Verify rendered image delivery
+        run: python scripts/check-image-delivery.py --site _build/site
+
+      - name: Verify rendered links, locale metadata, and public search
+        run: python scripts/check-rendered-site.py --site _build/site
+
+      - name: Install mdBook
+        run: |
+          MDBOOK_VERSION="0.4.52"
+          curl -sSL "https://github.com/rust-lang/mdBook/releases/download/v${MDBOOK_VERSION}/mdbook-v${MDBOOK_VERSION}-x86_64-unknown-linux-gnu.tar.gz" | tar -xz
+          chmod +x mdbook
+          echo "$PWD" >> "$GITHUB_PATH"
+
+      - name: Build mdBook (subpath base-url → /book/)
+        # MDBOOK_OUTPUT__HTML__SITE_URL overrides book.toml's site-url
+        # (which is "/awesome-agentic-ai-zh/" for a root deploy) so every
+        # mdBook asset/link resolves under the /book/ subpath. No
+        # book.toml edit needed — env override is non-invasive.
+        env:
+          MDBOOK_OUTPUT__HTML__SITE_URL: /awesome-agentic-ai-zh/book/
+        run: bash scripts/build-mdbook.sh
+
+      - name: Merge mdBook into the mkdocs site under /book/
+        run: |
+          set -euo pipefail
+          test -f _build/site/index.html   # mkdocs root must exist
+          test -f book/dist/index.html     # mdBook must have built
+          mkdir -p _build/site/book
+          cp -r book/dist/. _build/site/book/
+          test -f _build/site/book/index.html
+          echo "merged: $(find _build/site/book -type f | wc -l) mdBook files under /book/"
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: _build/site
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
